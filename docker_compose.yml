@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+
+  postgres:
+    image: adv-db/postgres
+    ports:
+      - "5432:5432"
+    network_mode: "host"
+    environment:
+      - POSTGRES_PASSWORD=password
+  
+  pg_client:
+    image: adv-db/clients
+    network_mode: "host"
+    command: psql -h localhost -U postgres postgres
+  
+  general_client:
+    image: adv-db/clients
+    network_mode: "host"
+    volumes:
+      - "C:/Users/Ben/Repositories/csci-540:/mount"
