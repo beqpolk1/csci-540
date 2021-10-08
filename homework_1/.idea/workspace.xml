@@ -10,8 +10,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -23,6 +23,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../esof_322_implementation" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
@@ -51,7 +52,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1633592731575</updated>
-      <workItem from="1633592732716" duration="1555000" />
+      <workItem from="1633592732716" duration="1810000" />
+      <workItem from="1633657398228" duration="6352000" />
     </task>
     <servers />
   </component>
@@ -63,5 +65,9 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="910" y="389" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/3840.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1633593835796" />
+    <state x="1061" y="455" key="FileChooserDialogImpl" timestamp="1633658882425">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1061" y="455" key="FileChooserDialogImpl/3840.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1633658882425" />
   </component>
 </project>

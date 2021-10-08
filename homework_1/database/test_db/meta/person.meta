@@ -1,6 +1,11 @@
 {
 	"table_name": "person",
-	"columns": [{"name": "first_name", "type": "string"}, {"name": "last_name", "type": "string"}, {"name": "age", "type": "int"}],
+	"columns": [
+		{"name": "id", "type": "int"},
+		{"name": "first_name", "type": "string"},
+		{"name": "last_name", "type": "string"},
+		{"name": "age", "type": "int"}
+	],
 	"block_count": 1,
 	"blocks": ["0x01"],
 	"first_block": ["0x01"],

@@ -1,4 +1,4 @@
 public interface Tuple
 {
-    public Object getField(String field);
+    public Object getField(Integer field);
 }
