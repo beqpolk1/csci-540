@@ -39,6 +39,8 @@ public class DiskHead
             recordsRaw.add(inFile.nextLine());
         }
 
+        //todo: need to advance to next block automatically
+
         return recordsRaw;
     }
 

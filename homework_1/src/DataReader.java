@@ -1,20 +1,38 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class TableReader {
-    public static List<Tuple> readBlock(String logicalAddr, Environment env)
+public class DataReader {
+    public static ResultSet readBlock(String logicalAddr, DiskHead disk, List<String> tableCols, List<String> colTypes)
     {
-        List<String> rawData = env.getDisk().fetchBlock(logicalAddr);
+        List<String> rawData = disk.fetchBlock(logicalAddr);
 
         String[] parseLine;
+        List<Tuple> tuples = new ArrayList<>();
         for (String curLine : rawData) {
             parseLine = parseCsvLine(curLine);
-
+            Tuple newTuple = buildTuple(parseLine, colTypes);
+            tuples.add(newTuple);
         }
 
-        ArrayList<Tuple> recordSet = new ArrayList<Tuple>();
+        ResultSet blockRecords = new ListResultSet(tableCols, colTypes, tuples);
+        return blockRecords;
+    }
 
-        return recordSet;
+    private static Tuple buildTuple(String[] fieldVals, List<String> types){
+        List<Object> objVals = new ArrayList<>();
+
+        for (int i = 0; i <= fieldVals.length - 1; i++) {
+            if (types.get(i).equals("string")) {
+                String newStr = fieldVals[i];
+                objVals.add(newStr);
+            }
+            else if (types.get(i).equals("int")) {
+                Integer newInt = Integer.parseInt(fieldVals[i]);
+                objVals.add(newInt);
+            }
+        }
+
+        return new ListTuple(objVals);
     }
 
     //helper function to parse a csv line that contains literals enclosed in quotes ("")
