@@ -6,8 +6,8 @@
 		{"name": "last_name", "type": "string"},
 		{"name": "age", "type": "int"}
 	],
-	"block_count": 1,
-	"blocks": ["0x01"],
+	"block_count": 2,
+	"blocks": ["0x01", "0x02"],
 	"first_block": ["0x01"],
-	"record_count": 5
+	"record_count": 10
 }

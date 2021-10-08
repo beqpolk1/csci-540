@@ -1,5 +1,6 @@
 public interface ExternalMem {
-    public ExternalMem getNext();
-    public ExternalMem getPrev();
+    public String getNext();
+    public String getPrev();
+    public String getLogiAddr();
     public String getPhysAddr();
 }

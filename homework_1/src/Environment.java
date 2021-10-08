@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.List;
 
 public class Environment {
@@ -6,7 +7,7 @@ public class Environment {
 
     public Environment(String newDatabase)
     {
-        disk = new DiskHead(getBlockMap());
+        disk = new DiskHead();
         database = newDatabase;
         rootDir = "\\database\\" + database + "\\";
     }
@@ -23,11 +24,11 @@ public class Environment {
         return null; //todo: lookup the table in metadata and return type list
     }
 
-    public ExternalMem getTableStart(String theTab) {
+    public String getTableStart(String theTab) {
         return null; //todo: lookup the table in metadata and return first block
     }
 
-    private String getBlockMap() {
-        return null; //todo: load block map as single JSON string from file
+    public ExternalMem getBlock(String logiAddr) {
+        return null; //todo: lookup the logical address in metadata, construct block, and return
     }
 }

@@ -7,12 +7,12 @@ public class TestDBQueries {
         String myTable = "person";
         List<String> tableCols = env.getColumnsForTable(myTable);
         List<String> colTypes = env.getTypesForTable(myTable);
-        ExternalMem curBlock = env.getTableStart(myTable);
+        ExternalMem curBlock = env.getBlock(env.getTableStart(myTable));
 
         while (curBlock != null) {
             ResultSet blockResults = DataReader.readMem(curBlock, env.getDisk(), tableCols, colTypes);
             output(blockResults);
-            curBlock = curBlock.getNext();
+            curBlock = env.getBlock(curBlock.getNext());
         }
 
         System.out.println("Done reading " + myTable);

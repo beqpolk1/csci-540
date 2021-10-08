@@ -1,14 +1,15 @@
 public class Block implements ExternalMem {
-    private String physAddr;
-    private Block prev, next;
+    private String logiAddr, physAddr, prev, next;
 
-    public Block(String newAddr, Block newPrev, Block newNext) {
-        physAddr = newAddr;
+    public Block(String newLogi, String newPhys, String newPrev, String newNext) {
+        logiAddr = newLogi;
+        physAddr = newPhys;
         prev = newPrev;
         next = newNext;
     }
 
-    public Block getNext() { return next; }
-    public Block getPrev() { return prev; }
+    public String getNext() { return next; }
+    public String getPrev() { return prev; }
+    public String getLogiAddr() { return logiAddr; }
     public String getPhysAddr() { return physAddr; }
 }

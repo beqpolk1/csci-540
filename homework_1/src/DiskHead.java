@@ -9,7 +9,7 @@ public class DiskHead
     private Integer seeks, scans;
     private String curAddr;
 
-    public DiskHead(String newBlockMap) {
+    public DiskHead() {
         seeks = 0;
         scans = 0;
         curAddr = null;
@@ -18,13 +18,13 @@ public class DiskHead
     public List<String> fetchMemContents(ExternalMem block)
     {
         List<String> recordsRaw = new ArrayList<>();
-        String physAddr = block.getPhysAddr();
 
-        if (!(curAddr.equals(physAddr))) {
+        if (!(curAddr.equals(block.getLogiAddr()))) {
             seeks++;
-            curAddr = physAddr;
+            curAddr = block.getLogiAddr();
         }
 
+        String physAddr = block.getPhysAddr();
         File file = new File(physAddr);
         Scanner inFile = null;
         try {
@@ -37,7 +37,7 @@ public class DiskHead
             recordsRaw.add(inFile.nextLine());
         }
 
-        curAddr = block.getNext().getPhysAddr();
+        curAddr = block.getNext();
         return recordsRaw;
     }
 
