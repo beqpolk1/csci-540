@@ -8,6 +8,6 @@
 	],
 	"block_count": 2,
 	"blocks": ["0x01", "0x02"],
-	"first_block": ["0x01"],
+	"first_block": "0x01",
 	"record_count": 10
 }

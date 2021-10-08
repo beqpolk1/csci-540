@@ -1,15 +1,26 @@
-import java.util.HashMap;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Environment {
     private DiskHead disk;
     private String database, rootDir;
+    JsonObject blockMap;
 
     public Environment(String newDatabase)
     {
         disk = new DiskHead();
         database = newDatabase;
-        rootDir = "\\database\\" + database + "\\";
+        rootDir = "homework_1\\database\\" + database + "\\";
+
+        blockMap = new JsonParser().parse(openReader(rootDir + "meta\\blockMap.meta")).getAsJsonObject();
     }
 
     public DiskHead getDisk() { return disk; }
@@ -17,18 +28,51 @@ public class Environment {
     public String getDatabase() { return database; }
 
     public List<String> getColumnsForTable(String theTab) {
-        return null; //todo: lookup the table in metadata and return column list
+        JsonObject tableMeta = new JsonParser().parse(openReader(rootDir + "meta\\" + theTab + ".meta")).getAsJsonObject();
+        JsonArray colList = tableMeta.get("columns").getAsJsonArray();
+
+        List<String> types = new ArrayList<>();
+        for (JsonElement curItem : colList) {
+            types.add(curItem.getAsJsonObject().get("name").getAsString());
+        }
+        return types;
     }
 
     public List<String> getTypesForTable(String theTab) {
-        return null; //todo: lookup the table in metadata and return type list
+        JsonObject tableMeta = new JsonParser().parse(openReader(rootDir + "meta\\" + theTab + ".meta")).getAsJsonObject();
+        JsonArray colList = tableMeta.get("columns").getAsJsonArray();
+
+        List<String> types = new ArrayList<>();
+        for (JsonElement curItem : colList) {
+            types.add(curItem.getAsJsonObject().get("type").getAsString());
+        }
+        return types;
     }
 
     public String getTableStart(String theTab) {
-        return null; //todo: lookup the table in metadata and return first block
+        JsonObject tableMeta = new JsonParser().parse(openReader(rootDir + "meta\\" + theTab + ".meta")).getAsJsonObject();
+        return tableMeta.get("first_block").getAsString();
     }
 
     public ExternalMem getBlock(String logiAddr) {
-        return null; //todo: lookup the logical address in metadata, construct block, and return
+        if (logiAddr == null) return null;
+
+        JsonObject theBlock = blockMap.get(logiAddr).getAsJsonObject();
+
+        return new Block(logiAddr,
+                rootDir + theBlock.get("physAddr").getAsString(),
+                theBlock.get("prev").isJsonNull() ? null : theBlock.get("prev").getAsString(),
+                theBlock.get("next").isJsonNull()  ? null : theBlock.get("next").getAsString()
+        );
+    }
+
+    private Reader openReader(String theFile) {
+        Reader fileReader = null;
+        try {
+            fileReader = new FileReader(theFile);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return fileReader;
     }
 }

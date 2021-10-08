@@ -12,7 +12,7 @@ public class DiskHead
     public DiskHead() {
         seeks = 0;
         scans = 0;
-        curAddr = null;
+        curAddr = "";
     }
 
     public List<String> fetchMemContents(ExternalMem block)
