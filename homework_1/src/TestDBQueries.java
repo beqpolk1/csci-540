@@ -2,21 +2,29 @@ import java.util.List;
 
 public class TestDBQueries {
     public static void selectAllFromPerson(Environment env) {
-        if (!(env.getDatabase().equals("test_db"))) { throw new IllegalStateException("Cannot run test_db queries in this environment!"); }
+        checkEnv(env);
 
         String myTable = "person";
         List<String> tableCols = env.getColumnsForTable(myTable);
         List<String> colTypes = env.getTypesForTable(myTable);
-        List<String> tableBlocks = env.getBlocksForTable(myTable); //todo: blocks need to have linked-list data structure
+        ExternalMem curBlock = env.getTableStart(myTable);
 
-        for (String curBlock : tableBlocks) {
-            ResultSet blockResults = DataReader.readBlock(curBlock, env.getDisk(), tableCols, colTypes);
+        while (curBlock != null) {
+            ResultSet blockResults = DataReader.readMem(curBlock, env.getDisk(), tableCols, colTypes);
             output(blockResults);
+            curBlock = curBlock.getNext();
         }
+
+        System.out.println("Done reading " + myTable);
     }
 
     private static void output(ResultSet results)
     {
+        System.out.println(results.toString());
         //todo: print results to console output
+    }
+
+    private static void checkEnv(Environment env) {
+        if (!(env.getDatabase().equals("test_db"))) { throw new IllegalStateException("Cannot run test_db queries in this environment!"); }
     }
 }

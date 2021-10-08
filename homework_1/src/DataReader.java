@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataReader {
-    public static ResultSet readBlock(String logicalAddr, DiskHead disk, List<String> tableCols, List<String> colTypes)
+    public static ResultSet readMem(ExternalMem block, DiskHead disk, List<String> tableCols, List<String> colTypes)
     {
-        List<String> rawData = disk.fetchBlock(logicalAddr);
+        List<String> rawData = disk.fetchMemContents(block);
 
         String[] parseLine;
         List<Tuple> tuples = new ArrayList<>();
         for (String curLine : rawData) {
-            parseLine = parseCsvLine(curLine);
+            parseLine = parseCsvLine(curLine.substring(curLine.indexOf(':') + 1));
             Tuple newTuple = buildTuple(parseLine, colTypes);
             tuples.add(newTuple);
         }

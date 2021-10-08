@@ -7,25 +7,24 @@ import java.util.Scanner;
 public class DiskHead
 {
     private Integer seeks, scans;
-    private String blockMap, curBlock;
+    private String curAddr;
 
     public DiskHead(String newBlockMap) {
         seeks = 0;
         scans = 0;
-        curBlock = null;
-        blockMap = newBlockMap;
+        curAddr = null;
     }
 
-    public List<String> fetchBlock(String logicalAddr)
+    public List<String> fetchMemContents(ExternalMem block)
     {
         List<String> recordsRaw = new ArrayList<>();
+        String physAddr = block.getPhysAddr();
 
-        if (!(curBlock.equals(logicalAddr))) {
+        if (!(curAddr.equals(physAddr))) {
             seeks++;
-            curBlock = logicalAddr;
+            curAddr = physAddr;
         }
 
-        String physAddr = translateAddr(logicalAddr);
         File file = new File(physAddr);
         Scanner inFile = null;
         try {
@@ -34,24 +33,16 @@ public class DiskHead
             e.printStackTrace();
         }
 
-        while (inFile.hasNextLine())
-        {
+        while (inFile.hasNextLine()) {
             recordsRaw.add(inFile.nextLine());
         }
 
-        //todo: need to advance to next block automatically
-
+        curAddr = block.getNext().getPhysAddr();
         return recordsRaw;
     }
 
     public void reset() {
         seeks = 0;
         scans = 0;
-    }
-
-    private String translateAddr(String logicalAddr)
-    {
-        //todo: need something like blockMap.get(logicalAddr), but blockMap is a JSON string
-        return null;
     }
 }

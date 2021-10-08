@@ -23,6 +23,10 @@ public class Environment {
         return null; //todo: lookup the table in metadata and return type list
     }
 
+    public ExternalMem getTableStart(String theTab) {
+        return null; //todo: lookup the table in metadata and return first block
+    }
+
     private String getBlockMap() {
         return null; //todo: load block map as single JSON string from file
     }
