@@ -12,9 +12,13 @@ public class ListResultSet implements ResultSet{
         types = newTypes;
     }
 
+    public Integer getNumTuples() { return tuples.size(); }
+
     public Tuple get(Integer idx){
         return tuples.get(idx);
     }
+
+    public List<String> getColumns() { return columns; }
 
     public HashMap<String, Object> getRecord(Integer idx) {
         HashMap<String, Object> allData = new HashMap<>();
