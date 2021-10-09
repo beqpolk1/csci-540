@@ -18,7 +18,7 @@ public class Environment {
     {
         disk = new DiskHead();
         database = newDatabase;
-        rootDir = "homework_1\\database\\" + database + "\\";
+        rootDir = "database\\" + database + "\\";
 
         blockMap = new JsonParser().parse(openReader(rootDir + "meta\\blockMap.meta")).getAsJsonObject();
     }
