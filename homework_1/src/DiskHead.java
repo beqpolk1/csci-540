@@ -6,12 +6,12 @@ import java.util.Scanner;
 
 public class DiskHead
 {
-    private Integer seeks, scans;
+    private Long seeks, scans;
     private String curAddr;
 
     public DiskHead() {
-        seeks = 0;
-        scans = 0;
+        seeks = 0L;
+        scans = 0L;
         curAddr = "";
     }
 
@@ -37,12 +37,16 @@ public class DiskHead
             recordsRaw.add(inFile.nextLine());
         }
 
+        scans++;
         curAddr = block.getNext();
         return recordsRaw;
     }
 
     public void reset() {
-        seeks = 0;
-        scans = 0;
+        seeks = 0L;
+        scans = 0L;
     }
+
+    public Long getSeeks() { return seeks; }
+    public Long getScans() { return scans; }
 }
