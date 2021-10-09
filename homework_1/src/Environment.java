@@ -27,8 +27,12 @@ public class Environment {
 
     public String getDatabase() { return database; }
 
+    public JsonObject getTableMeta(String theTab) {
+        return new JsonParser().parse(openReader(rootDir + "meta\\" + theTab + ".meta")).getAsJsonObject();
+    }
+
     public List<String> getColumnsForTable(String theTab) {
-        JsonObject tableMeta = new JsonParser().parse(openReader(rootDir + "meta\\" + theTab + ".meta")).getAsJsonObject();
+        JsonObject tableMeta = getTableMeta(theTab);
         JsonArray colList = tableMeta.get("columns").getAsJsonArray();
 
         List<String> types = new ArrayList<>();
@@ -39,7 +43,7 @@ public class Environment {
     }
 
     public List<String> getTypesForTable(String theTab) {
-        JsonObject tableMeta = new JsonParser().parse(openReader(rootDir + "meta\\" + theTab + ".meta")).getAsJsonObject();
+        JsonObject tableMeta = getTableMeta(theTab);
         JsonArray colList = tableMeta.get("columns").getAsJsonArray();
 
         List<String> types = new ArrayList<>();
@@ -50,7 +54,7 @@ public class Environment {
     }
 
     public String getTableStart(String theTab) {
-        JsonObject tableMeta = new JsonParser().parse(openReader(rootDir + "meta\\" + theTab + ".meta")).getAsJsonObject();
+        JsonObject tableMeta = getTableMeta(theTab);
         return tableMeta.get("first_block").getAsString();
     }
 

@@ -1,13 +1,22 @@
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class TestDBQueries {
     public static void selectAllFromPerson(Environment env) {
         checkEnv(env);
+        env.getDisk().reset();
+        Long ops = 0L;
 
         String myTable = "person";
+        Queue<QueryAction> queryActions = new LinkedList<>();
+        queryActions.add(new LinearScan(env.getTableMeta(myTable)));
+        QueryCost estCost = CostEstimator.estimateCost(queryActions);
+
         List<String> tableCols = env.getColumnsForTable(myTable);
         List<String> colTypes = env.getTypesForTable(myTable);
         ExternalMem curBlock = env.getBlock(env.getTableStart(myTable));
+        ops++;
 
         while (curBlock != null) {
             ResultSet blockResults = DataReader.readMem(curBlock, env.getDisk(), tableCols, colTypes);
@@ -16,6 +25,48 @@ public class TestDBQueries {
         }
 
         System.out.println("Done reading " + myTable);
+
+        QueryCost trueCost = new QueryCost();
+        trueCost.setOps(ops);
+        trueCost.setSeeks(env.getDisk().getSeeks());
+        trueCost.setScans(env.getDisk().getScans());
+
+        System.out.println("Est. cost: " + estCost.toString());
+        System.out.println("True cost: " + trueCost.toString());
+    }
+
+    public static void selectAllFromPersonFilterAge(Environment env) {
+        checkEnv(env);
+        env.getDisk().reset();
+        Long ops = 0L;
+
+        String myTable = "person";
+        Integer ageFilter = 25;
+
+        Queue<QueryAction> queryActions = new LinkedList<>();
+        queryActions.add(new LinearScanFilter(env.getTableMeta(myTable)));
+        QueryCost estCost = CostEstimator.estimateCost(queryActions);
+
+        List<String> tableCols = env.getColumnsForTable(myTable);
+        List<String> colTypes = env.getTypesForTable(myTable);
+        ExternalMem curBlock = env.getBlock(env.getTableStart(myTable));
+        ops++;
+
+        while (curBlock != null) {
+            ResultSet blockResults = DataReader.readMem(curBlock, env.getDisk(), tableCols, colTypes);
+            output(blockResults);
+            curBlock = env.getBlock(curBlock.getNext());
+        }
+
+        System.out.println("Done reading " + myTable);
+
+        QueryCost trueCost = new QueryCost();
+        trueCost.setOps(ops);
+        trueCost.setSeeks(env.getDisk().getSeeks());
+        trueCost.setScans(env.getDisk().getScans());
+
+        System.out.println("Est. cost: " + estCost.toString());
+        System.out.println("True cost: " + trueCost.toString());
     }
 
     private static void output(ResultSet results)
@@ -34,12 +85,7 @@ public class TestDBQueries {
 
         for (Integer i = 0; i < results.getNumTuples(); i++) {
             Tuple curTuple = results.get(i);
-            System.out.print("|");
-
-            for (Integer j = 0; j < columns.size(); j++) {
-                System.out.print(rPad(curTuple.getField(j).toString(), maxColSize) + "|");
-            }
-            System.out.print(System.lineSeparator());
+            System.out.println(curTuple.toString());
         }
         System.out.println();
     }

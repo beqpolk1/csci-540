@@ -12,4 +12,17 @@ public class ListTuple implements Tuple{
     {
         return values.get(field);
     }
+
+    public String toString(Integer maxColSize) {
+        String ret = "|";
+
+        for (Object curVal : values) {
+            String str = curVal.toString();
+            if (str.length() > maxColSize) { str = str.substring(0, 26) + "..."; }
+            ret = ret + (String.format("%-" + maxColSize + "s", str) + "|");
+        }
+        return ret;
+    }
+
+    public String toString() { return toString(20); }
 }
