@@ -1,3 +1,4 @@
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -19,7 +20,9 @@ public class TestDBQueries {
         ops++;
 
         while (curBlock != null) {
-            ResultSet blockResults = DataReader.readMem(curBlock, env.getDisk(), tableCols, colTypes);
+            Collection<Tuple> blockContents = DataReader.readMem(curBlock, env.getDisk(), colTypes);
+            ListResultSet blockResults = new ListResultSet(tableCols, colTypes, blockContents);
+
             output(blockResults);
             curBlock = env.getBlock(curBlock.getNext());
         }
@@ -35,7 +38,7 @@ public class TestDBQueries {
         System.out.println("True cost: " + trueCost.toString());
     }
 
-    public static void selectAllFromPersonFilterAge(Environment env) {
+    /*public static void selectAllFromPersonFilterAge(Environment env) {
         checkEnv(env);
         env.getDisk().reset();
         Long ops = 0L;
@@ -67,7 +70,7 @@ public class TestDBQueries {
 
         System.out.println("Est. cost: " + estCost.toString());
         System.out.println("True cost: " + trueCost.toString());
-    }
+    }*/
 
     private static void output(ResultSet results)
     {

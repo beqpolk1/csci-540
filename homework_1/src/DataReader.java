@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class DataReader {
-    public static ResultSet readMem(ExternalMem block, DiskHead disk, List<String> tableCols, List<String> colTypes)
+    public static Collection<Tuple> readMem(ExternalMem block, DiskHead disk, List<String> colTypes)
     {
         List<String> rawData = disk.fetchMemContents(block);
 
@@ -14,8 +15,7 @@ public class DataReader {
             tuples.add(newTuple);
         }
 
-        ResultSet blockRecords = new ListResultSet(tableCols, colTypes, tuples);
-        return blockRecords;
+        return tuples;
     }
 
     private static Tuple buildTuple(String[] fieldVals, List<String> types){

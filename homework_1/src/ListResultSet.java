@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -6,8 +7,8 @@ public class ListResultSet implements ResultSet{
     private List<String> columns, types;
     private List<Tuple> tuples;
 
-    public ListResultSet(List<String> newColumns, List<String> newTypes, List<Tuple> newTuples){
-        tuples = newTuples;
+    public ListResultSet(List<String> newColumns, List<String> newTypes, Collection<Tuple> newTuples){
+        tuples = (List<Tuple>) newTuples;
         columns = newColumns;
         types = newTypes;
     }
