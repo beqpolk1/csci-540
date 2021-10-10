@@ -4,5 +4,6 @@ public class Main {
         Environment env = new Environment("test_db");
         TestDBQueries.selectAllFromPerson(env);
         TestDBQueries.selectAllFromPersonFilterAge(env);
+        TestDBQueries.selectAllFromHairColor(env);
     }
 }

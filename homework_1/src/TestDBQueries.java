@@ -67,6 +67,37 @@ public class TestDBQueries {
             curBlock = env.getBlock(curBlock.getNext());
         }
 
+        System.out.println("Done reading person table with filter on age");
+
+        QueryCost trueCost = new QueryCost(env.getDisk().getSeeks(), env.getDisk().getScans(), ops);
+
+        System.out.println("Est. cost: " + estCost.toString());
+        System.out.println("True cost: " + trueCost.toString());
+    }
+
+    //select all tuples/records from the person relation
+    public static void selectAllFromHairColor(Environment env) {
+        checkEnv(env);
+        env.getDisk().reset();
+        Long ops = 0L;
+
+        String myTable = "hair_color";
+        Queue<QueryAction> queryActions = new LinkedList<>();
+        queryActions.add(new LinearScan(env.getTableMeta(myTable)));
+        QueryCost estCost = CostEstimator.estimateCost(queryActions);
+
+        List<String> tableCols = env.getColumnsForTable(myTable);
+        List<String> colTypes = env.getTypesForTable(myTable);
+        ExternalMem curBlock = env.getBlock(env.getTableStart(myTable));
+
+        while (curBlock != null) {
+            Collection<Tuple> blockContents = DataReader.readMem(curBlock, env.getDisk(), colTypes);
+            ListResultSet blockResults = new ListResultSet(tableCols, colTypes, blockContents);
+
+            output(blockResults);
+            curBlock = env.getBlock(curBlock.getNext());
+        }
+
         System.out.println("Done reading " + myTable);
 
         QueryCost trueCost = new QueryCost(env.getDisk().getSeeks(), env.getDisk().getScans(), ops);
@@ -75,8 +106,7 @@ public class TestDBQueries {
         System.out.println("True cost: " + trueCost.toString());
     }
 
-    private static void output(ResultSet results)
-    {
+    private static void output(ResultSet results) {
         int maxColSize = ListTuple.maxColSize;
         //System.out.println(results.toString());
         List<String> columns = results.getColumns();
