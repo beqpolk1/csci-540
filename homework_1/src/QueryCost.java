@@ -8,6 +8,13 @@ public class QueryCost {
         ops = 0L;
     }
 
+    public QueryCost(Long newSeeks, Long newScans, Long newOps)
+    {
+        seeks = newSeeks;
+        scans = newScans;
+        ops = newOps;
+    }
+
     public void addCost(QueryCost otherCost) {
         seeks += otherCost.getSeeks();
         scans += otherCost.getScans();

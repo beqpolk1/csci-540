@@ -38,7 +38,7 @@ public class DiskHead
         }
 
         scans++;
-        curAddr = block.getNext();
+        curAddr = (block.getNext() != null ? block.getNext() : "");
         return recordsRaw;
     }
 

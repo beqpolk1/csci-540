@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListTuple implements Tuple{
+    public static final int maxColSize = 20;
     private List<Object> values;
 
     public ListTuple(List<Object> newValues){

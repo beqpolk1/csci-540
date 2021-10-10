@@ -1,9 +1,7 @@
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class TestDBQueries {
+    //select all tuples/records from the person relation
     public static void selectAllFromPerson(Environment env) {
         checkEnv(env);
         env.getDisk().reset();
@@ -17,7 +15,6 @@ public class TestDBQueries {
         List<String> tableCols = env.getColumnsForTable(myTable);
         List<String> colTypes = env.getTypesForTable(myTable);
         ExternalMem curBlock = env.getBlock(env.getTableStart(myTable));
-        ops++;
 
         while (curBlock != null) {
             Collection<Tuple> blockContents = DataReader.readMem(curBlock, env.getDisk(), colTypes);
@@ -29,21 +26,20 @@ public class TestDBQueries {
 
         System.out.println("Done reading " + myTable);
 
-        QueryCost trueCost = new QueryCost();
-        trueCost.setOps(ops);
-        trueCost.setSeeks(env.getDisk().getSeeks());
-        trueCost.setScans(env.getDisk().getScans());
+        QueryCost trueCost = new QueryCost(env.getDisk().getSeeks(), env.getDisk().getScans(), ops);
 
         System.out.println("Est. cost: " + estCost.toString());
         System.out.println("True cost: " + trueCost.toString());
     }
 
-    /*public static void selectAllFromPersonFilterAge(Environment env) {
+    //select all tuples/records from the person relation where age >= 25
+    public static void selectAllFromPersonFilterAge(Environment env) {
         checkEnv(env);
         env.getDisk().reset();
         Long ops = 0L;
 
         String myTable = "person";
+        String filterCol = "age";
         Integer ageFilter = 25;
 
         Queue<QueryAction> queryActions = new LinkedList<>();
@@ -51,30 +47,37 @@ public class TestDBQueries {
         QueryCost estCost = CostEstimator.estimateCost(queryActions);
 
         List<String> tableCols = env.getColumnsForTable(myTable);
+        Integer filterIndex = tableCols.indexOf(filterCol);
         List<String> colTypes = env.getTypesForTable(myTable);
         ExternalMem curBlock = env.getBlock(env.getTableStart(myTable));
-        ops++;
 
         while (curBlock != null) {
-            ResultSet blockResults = DataReader.readMem(curBlock, env.getDisk(), tableCols, colTypes);
+            Collection<Tuple> blockContents = DataReader.readMem(curBlock, env.getDisk(), colTypes);
+            Collection<Tuple> filteredResults = new ArrayList<>();
+
+            for (Tuple curTuple : blockContents) {
+                ops++;
+                if (!(curTuple.getField(filterIndex) instanceof Integer)) throw new IllegalArgumentException();
+                Integer comp = (Integer) curTuple.getField(filterIndex);
+                if (comp >= ageFilter) filteredResults.add(curTuple);
+            }
+
+            ListResultSet blockResults = new ListResultSet(tableCols, colTypes, filteredResults);
             output(blockResults);
             curBlock = env.getBlock(curBlock.getNext());
         }
 
         System.out.println("Done reading " + myTable);
 
-        QueryCost trueCost = new QueryCost();
-        trueCost.setOps(ops);
-        trueCost.setSeeks(env.getDisk().getSeeks());
-        trueCost.setScans(env.getDisk().getScans());
+        QueryCost trueCost = new QueryCost(env.getDisk().getSeeks(), env.getDisk().getScans(), ops);
 
         System.out.println("Est. cost: " + estCost.toString());
         System.out.println("True cost: " + trueCost.toString());
-    }*/
+    }
 
     private static void output(ResultSet results)
     {
-        int maxColSize = 20;
+        int maxColSize = ListTuple.maxColSize;
         //System.out.println(results.toString());
         List<String> columns = results.getColumns();
         System.out.print("|");
