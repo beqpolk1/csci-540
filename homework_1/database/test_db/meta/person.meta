@@ -4,7 +4,8 @@
 		{"name": "id", "type": "int"},
 		{"name": "first_name", "type": "string"},
 		{"name": "last_name", "type": "string"},
-		{"name": "age", "type": "int"}
+		{"name": "age", "type": "int"},
+		{"name": "hair_color", "type": "int"}
 	],
 	"block_count": 2,
 	"blocks": ["0x01", "0x02"],
