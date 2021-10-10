@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class ListTuple implements Tuple{
@@ -14,6 +14,8 @@ public class ListTuple implements Tuple{
         return values.get(field);
     }
 
+    public Collection<Object> getAllFields() { return values; }
+
     public String toString(Integer maxColSize) {
         String ret = "|";
 
@@ -25,5 +27,5 @@ public class ListTuple implements Tuple{
         return ret;
     }
 
-    public String toString() { return toString(20); }
+    public String toString() { return toString(maxColSize); }
 }

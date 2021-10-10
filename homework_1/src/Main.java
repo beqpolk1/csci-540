@@ -5,5 +5,6 @@ public class Main {
         TestDBQueries.selectAllFromPerson(env);
         TestDBQueries.selectAllFromPersonFilterAge(env);
         TestDBQueries.selectAllFromHairColor(env);
+        TestDBQueries.nestedLoopJoin(env);
     }
 }

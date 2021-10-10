@@ -75,7 +75,7 @@ public class TestDBQueries {
         System.out.println("True cost: " + trueCost.toString());
     }
 
-    //select all tuples/records from the person relation
+    //select all tuples/records from the hair color relation
     public static void selectAllFromHairColor(Environment env) {
         checkEnv(env);
         env.getDisk().reset();
@@ -106,6 +106,73 @@ public class TestDBQueries {
         System.out.println("True cost: " + trueCost.toString());
     }
 
+    //select all tuples/records from the person relation and join to include hair_color data
+    public static void nestedLoopJoin(Environment env) {
+        checkEnv(env);
+        env.getDisk().reset();
+        Long ops = 0L;
+
+        String table1 = "person", table2 = "hair_color";
+
+        Queue<QueryAction> queryActions = new LinkedList<>();
+        queryActions.add(new FullJoinNestedLoop(env.getTableMeta(table1), env.getTableMeta(table2)));
+        QueryCost estCost = CostEstimator.estimateCost(queryActions);
+
+        List<String> table1Cols = env.getColumnsForTable(table1), table2Cols = env.getColumnsForTable(table2);
+        List<String> col1Types = env.getTypesForTable(table1), col2Types = env.getTypesForTable(table1);
+
+        String joinField1 = "hair_color", joinField2 = "id";
+        Integer joinField1Index = table1Cols.indexOf(joinField1), joinField2Index =table2Cols.indexOf(joinField2);
+
+        List<String> resultCols = env.getColumnsForTable(table1), resultTypes = env.getTypesForTable(table1);
+        for (int i = 0; i <= table2Cols.size() - 1; i++) {
+            if (!(table2Cols.get(i).equals("id"))) {
+                resultCols.add(table2Cols.get(i));
+                resultTypes.add(col2Types.get(i));
+            }
+        }
+
+        ExternalMem curBlock1 = env.getBlock(env.getTableStart(table1));
+        while (curBlock1 != null) {
+            Collection<Tuple> tab1Block = DataReader.readMem(curBlock1, env.getDisk(), col1Types);
+            Collection<Tuple> joinedContents = new ArrayList<>();
+
+            for (Tuple curTuple1 : tab1Block) {
+                ExternalMem curBlock2 = env.getBlock(env.getTableStart(table2));
+
+                while (curBlock2 != null) {
+                    Collection<Tuple> tab2Block = DataReader.readMem(curBlock2, env.getDisk(), col2Types);
+
+                    for (Tuple curTuple2 : tab2Block) {
+                        if (curTuple1.getField(joinField1Index).equals(curTuple2.getField(joinField2Index))) {
+                            List<Object> joined = (List) curTuple1.getAllFields();
+
+                            for (int i = 0; i <= table2Cols.size() - 1; i++) {
+                                ops++;
+                                if (!(table2Cols.get(i).equals("id"))) joined.add(curTuple2.getField(i));
+                            }
+                            joinedContents.add(new ListTuple(joined));
+                        }
+                    }
+
+                    curBlock2 = env.getBlock(curBlock2.getNext());
+                }
+            }
+
+            ListResultSet joinedResults = new ListResultSet(resultCols, resultTypes, joinedContents);
+            output(joinedResults);
+
+            curBlock1 = env.getBlock(curBlock1.getNext());
+        }
+
+        System.out.println("Done joining " + table1 + " and " + table2);
+
+        QueryCost trueCost = new QueryCost(env.getDisk().getSeeks(), env.getDisk().getScans(), ops);
+
+        System.out.println("Est. cost: " + estCost.toString());
+        System.out.println("True cost: " + trueCost.toString());
+    }
+
     private static void output(ResultSet results) {
         int maxColSize = ListTuple.maxColSize;
         //System.out.println(results.toString());
@@ -116,7 +183,7 @@ public class TestDBQueries {
         }
 
         System.out.print(System.lineSeparator());
-        for (int i = 1; i <= (20 * columns.size()) + columns.size(); i++) System.out.print('-');
+        for (int i = 1; i <= (maxColSize * columns.size()) + columns.size() + 1; i++) System.out.print('-');
         System.out.print(System.lineSeparator());
 
         for (Integer i = 0; i < results.getNumTuples(); i++) {
