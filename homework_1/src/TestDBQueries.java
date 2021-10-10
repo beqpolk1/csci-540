@@ -194,7 +194,7 @@ public class TestDBQueries {
     }
 
     private static String rPad(String str, int length) {
-        if (str.length() > length) { str = str.substring(0, 26) + "..."; }
+        if (str.length() > length) { str = str.substring(0, length - 3) + "..."; }
         return String.format("%-" + length + "s", str);
     }
 
