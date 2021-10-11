@@ -13,8 +13,8 @@ public class BTree<T extends Comparable> {
         return root.search(value);
     }
 
-    public void addValue(T value) {
-        BNode<T> addResult = root.search(value).addValue(value);
+    public void addValue(T value, Integer addr) {
+        BNode<T> addResult = root.search(value).addValue(value, addr);
         if (!(addResult.isLeaf())) root = addResult;
     }
 
@@ -28,7 +28,7 @@ public class BTree<T extends Comparable> {
 
         if (node.isLeaf()) {
             String output = "LEAF: ";
-            for (int i = 0; i < size - 1; i++) { if (node.getVal(i) != null) output += node.getVal(i) + ", "; }
+            for (int i = 0; i < size - 1; i++) { if (node.getVal(i) != null) output += node.getVal(i) + "[" + node.getAddr(i) + "], "; }
             System.out.println(prefix + output);
         }
         else {

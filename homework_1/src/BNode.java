@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class BNode<T extends Comparable> {
     T[] values;
     Class<T> tClass;
-    String[] addresses;
+    Integer[] addresses;
     BNode[] pointers;
     Boolean isLeaf;
     BNode<T> parent, resetLeft, resetRight;
@@ -14,7 +14,8 @@ public class BNode<T extends Comparable> {
         this.tClass = tClass;
         pointers = new BNode[size];
         values = (T[]) Array.newInstance(tClass, size - 1);
-        addresses = new String[size - 1];
+        addresses = new Integer[size - 1];
+        for (int i = 0; i < size - 1; i++) addresses[i] = 0;
         isLeaf = true;
         numVals = 0;
         this.parent = parent;
@@ -24,11 +25,17 @@ public class BNode<T extends Comparable> {
         this(tClass, size, null);
     }
 
-    public BNode<T> addValue(T value) {
+    public BNode<T> addValue(T value, Integer addr) {
+        if (isLeaf && getIndexOf(value) >= 0) { //handling duplicate keys
+            addresses[getIndexOf(value)] += addr;
+            return this;
+        }
+
         int insertIndex = getLessThanIdx(value);
 
         if (values[insertIndex] == null) { //base case: adding a value to a node and the spot it belongs is already empty
             values[insertIndex] = value;
+            if (isLeaf) addresses[insertIndex] = addr;
             numVals++;
             return this;
         }
@@ -38,10 +45,12 @@ public class BNode<T extends Comparable> {
 
             while (nullIndex > insertIndex) {
                 values[nullIndex] = values[nullIndex - 1];
+                if (isLeaf) addresses[nullIndex] = addresses[nullIndex - 1];
                 nullIndex--;
             }
 
             values[insertIndex] = value;
+            if (isLeaf) addresses[insertIndex] = addr;
             numVals++;
             return this;
         }
@@ -61,12 +70,12 @@ public class BNode<T extends Comparable> {
 
             for (int i = 0; i <= values.length - 1; i++) {
                 if (insertIndex == i) {
-                    if (newLeft.getNumVals() < median) { newLeft.addValue(value); }
-                    else { newRight.addValue(value); }
+                    if (newLeft.getNumVals() < median) { newLeft.addValue(value, addr); }
+                    else { newRight.addValue(value, addr); }
                 }
 
-                if (newLeft.getNumVals() < median) { newLeft.addValue(values[i]); }
-                else { newRight.addValue(values[i]); }
+                if (newLeft.getNumVals() < median) { newLeft.addValue(values[i], addresses[i]); }
+                else { newRight.addValue(values[i], addresses[i]); }
             }
 
             //push the divider up to the parent node
@@ -97,7 +106,7 @@ public class BNode<T extends Comparable> {
                 //set pointers accordingly
                 pointers[insertIndex] = newLeft;
                 pointers[insertIndex + 1] = newRight;
-                addValue(value); //add the value to this node
+                addValue(value, 1); //add the value to this node
             }
             else if (numVals < values.length) { //next case: value will go into an occupied space in this node, but there is still room
                 //when we add the new value, the existing values will get shuffled around
@@ -110,14 +119,14 @@ public class BNode<T extends Comparable> {
                     nullIndex--;
                 }
 
-                addValue(value);//add the value
+                addValue(value, 1);//add the value
                 //set the pointers accordingly
                 pointers[insertIndex] = newLeft;
                 pointers[insertIndex + 1] = newRight;
             }
             else { //complex case: this node will also end up being split because we pushed to a full one
                 //start by adding the value; track the new root for future reference
-                BNode<T> newPar = addValue(value);
+                BNode<T> newPar = addValue(value, 1);
 
                 //resetLeft and resetRight will hold the values that this node got split into after adding the new value
                 if (resetLeft != null && resetRight != null) {
@@ -130,19 +139,82 @@ public class BNode<T extends Comparable> {
                     assignList.add(newRight);
                     for (int i = 0; i <= pointers.length - 1; i++) {
                         //skip the pointer that pushed this value
-                        if (pointers[i] != null && pointers[i].getIndexOf(value) < 0) assignList.add(pointers[i]);
+                        if (pointers[i] != null && !(
+                                pointers[i].getIndexOf(value) >= 0
+                                || (pointers[i].getFirstVal().compareTo(value) < 0 && pointers[i].getMaxVal().compareTo(value) > 0)
+                                )
+                        ) assignList.add(pointers[i]);
                     }
 
                     //assign pointers
                     while (assignList.size() > 0) {
                         BNode<T> toAssign = getSmallestNode(assignList);
-                        if (resetLeft.getPointer(0) == null) resetLeft.setPointer(0, toAssign);
+                        boolean assigned = false;
+
+                        //attempt to assign to left node
+                        for (int i = 0; i < pointers.length - 1; i++) {
+                            if (resetLeft.getVal(i) != null) {
+                                if (toAssign.getMaxVal().compareTo(resetLeft.getVal(i)) < 0 && resetLeft.getPointer(i) == null) {
+                                    resetLeft.setPointer(i, toAssign);
+                                    assigned = true;
+                                    break;
+                                }
+                            }
+                            else {
+                                if (toAssign.getFirstVal().compareTo(resetLeft.getVal(i - 1)) >= 0 && resetLeft.getPointer(i) == null) {
+                                    resetLeft.setPointer(i, toAssign);
+                                    assigned = true;
+                                }
+                                break;
+                            }
+                        }
+
+                        //check if we should assign to last of left node
+                        if (!assigned && resetLeft.getVal(values.length - 1) != null) {
+                            if (toAssign.getFirstVal().compareTo(resetLeft.getVal(values.length - 1)) >= 0 && resetLeft.getPointer(pointers.length - 1) == null) {
+                                resetLeft.setPointer(pointers.length - 1, toAssign);
+                                assigned = true;
+                            }
+                        }
+
+                        if (!assigned) {
+                            //attempt to assign to right node
+                            for (int i = 0; i < pointers.length - 1; i++) {
+                                if (resetRight.getVal(i) != null) {
+                                    if (toAssign.getMaxVal().compareTo(resetRight.getVal(i)) < 0 && resetRight.getPointer(i) == null) {
+                                        resetRight.setPointer(i, toAssign);
+                                        assigned = true;
+                                        break;
+                                    }
+                                } else {
+                                    if (toAssign.getFirstVal().compareTo(resetRight.getVal(i - 1)) >= 0 && resetRight.getPointer(i) == null) {
+                                        resetRight.setPointer(i, toAssign);
+                                        assigned = true;
+                                    }
+                                    break;
+                                }
+                            }
+
+                            //check if we should assign to last of right node
+                            if (!assigned && resetRight.getVal(values.length - 1) != null) {
+                                if (toAssign.getFirstVal().compareTo(resetRight.getVal(values.length - 1)) >= 0 && resetRight.getPointer(pointers.length - 1) == null) {
+                                    resetRight.setPointer(pointers.length - 1, toAssign);
+                                    assigned = true;
+                                }
+                            }
+                        }
+                        if (!assigned)
+                            throw new IllegalStateException("This shouldn't happen");
+                        else
+                            assignList.remove(toAssign);
+
+                        /*if (resetLeft.getPointer(0) == null) resetLeft.setPointer(0, toAssign);
                         else if (resetLeft.getPointer(1) == null) resetLeft.setPointer(1, toAssign);
                         else if (resetLeft.getPointer(2) == null) resetLeft.setPointer(2, toAssign);
                         else if (resetRight.getPointer(1) == null) resetRight.setPointer(1, toAssign);
                         else if (resetRight.getPointer(2) == null) resetRight.setPointer(2, toAssign);
                         else throw new IllegalStateException("This shouldn't happen");
-                        assignList.remove(toAssign);
+                        c*/
                     }
                 }
                 else {
@@ -185,6 +257,8 @@ public class BNode<T extends Comparable> {
     public Boolean isLeaf() { return isLeaf; }
     public void setParent(BNode<T> newPar) { parent = newPar; }
     public BNode<T> getParent() { return parent; }
+
+    public Integer getAddr(Integer i) { return addresses[i]; }
 
     private BNode<T> getSmallestNode(ArrayList<BNode<T>> searchList) {
         BNode<T> smallest = searchList.get(0);
