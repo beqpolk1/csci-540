@@ -7,15 +7,22 @@ public class Main {
     }
 
     public static void testBTree() {
-        BTree<Integer> myTree = new BTree<>(3, 0);
+        BTree<Integer> myTree = new BTree<>(4, 0);
 
         Random rand = new Random();
-        for (int i = 12; i >= 0; i--) {
+        for (int i = 0; i <= 8; i++) {
             //myTree.addValue(rand.nextInt(20));
             myTree.addValue(i);
         }
+        myTree.checkTree();
+
+        myTree.addValue(5);
+        myTree.checkTree();
+        myTree.addValue(5);
+        myTree.checkTree();
 
         System.out.println("done");
+        myTree.checkTree();
     }
 
     public static void runTestDBQueries() {
