@@ -125,105 +125,90 @@ public class BNode<T extends Comparable> {
                 pointers[insertIndex + 1] = newRight;
             }
             else { //complex case: this node will also end up being split because we pushed to a full one
-                //start by adding the value; track the new root for future reference
-                BNode<T> newPar = addValue(value, 1);
+                //start by adding the value
+                addValue(value, 1);
 
                 //resetLeft and resetRight will hold the values that this node got split into after adding the new value
-                if (resetLeft != null && resetRight != null) {
-                    //re-assign new left, new right, and existing pointers to pointers of resetLeft and resetRight appropriately
-                    //(resetLeft and resetRight are already appropriately linked to a parent)
-                    //skip the pointer that got split though (i.e. the one that pushed the value that got us here)
 
-                    ArrayList<BNode<T>> assignList = new ArrayList<>();
-                    assignList.add(newLeft);
-                    assignList.add(newRight);
-                    for (int i = 0; i <= pointers.length - 1; i++) {
-                        //skip the pointer that pushed this value
-                        if (pointers[i] != null && !(
-                                pointers[i].getIndexOf(value) >= 0
-                                || (pointers[i].getFirstVal().compareTo(value) < 0 && pointers[i].getMaxVal().compareTo(value) > 0)
-                                )
-                        ) assignList.add(pointers[i]);
+                //re-assign new left, new right, and existing pointers to pointers of resetLeft and resetRight appropriately
+                //(resetLeft and resetRight are already appropriately linked to a parent)
+                //skip the pointer that got split though (i.e. the one that pushed the value that got us here)
+
+                ArrayList<BNode<T>> assignList = new ArrayList<>();
+                assignList.add(newLeft);
+                assignList.add(newRight);
+                for (int i = 0; i <= pointers.length - 1; i++) {
+                    //skip the pointer that pushed this value
+                    if (pointers[i] != null && !(
+                            pointers[i].getIndexOf(value) >= 0
+                            || (pointers[i].getFirstVal().compareTo(value) < 0 && pointers[i].getMaxVal().compareTo(value) > 0)
+                            )
+                    ) assignList.add(pointers[i]);
+                }
+
+                //assign pointers
+                while (assignList.size() > 0) {
+                    BNode<T> toAssign = getSmallestNode(assignList);
+                    boolean assigned = false;
+
+                    //attempt to assign to left node
+                    for (int i = 0; i < pointers.length - 1; i++) {
+                        if (resetLeft.getVal(i) != null) {
+                            if (toAssign.getMaxVal().compareTo(resetLeft.getVal(i)) < 0 && resetLeft.getPointer(i) == null) {
+                                resetLeft.setPointer(i, toAssign);
+                                assigned = true;
+                                break;
+                            }
+                        }
+                        else {
+                            if (toAssign.getFirstVal().compareTo(resetLeft.getVal(i - 1)) >= 0 && resetLeft.getPointer(i) == null) {
+                                resetLeft.setPointer(i, toAssign);
+                                assigned = true;
+                            }
+                            break;
+                        }
                     }
 
-                    //assign pointers
-                    while (assignList.size() > 0) {
-                        BNode<T> toAssign = getSmallestNode(assignList);
-                        boolean assigned = false;
+                    //check if we should assign to last of left node
+                    if (!assigned && resetLeft.getVal(values.length - 1) != null) {
+                        if (toAssign.getFirstVal().compareTo(resetLeft.getVal(values.length - 1)) >= 0 && resetLeft.getPointer(pointers.length - 1) == null) {
+                            resetLeft.setPointer(pointers.length - 1, toAssign);
+                            assigned = true;
+                        }
+                    }
 
-                        //attempt to assign to left node
+                    if (!assigned) {
+                        //attempt to assign to right node
                         for (int i = 0; i < pointers.length - 1; i++) {
-                            if (resetLeft.getVal(i) != null) {
-                                if (toAssign.getMaxVal().compareTo(resetLeft.getVal(i)) < 0 && resetLeft.getPointer(i) == null) {
-                                    resetLeft.setPointer(i, toAssign);
+                            if (resetRight.getVal(i) != null) {
+                                if (toAssign.getMaxVal().compareTo(resetRight.getVal(i)) < 0 && resetRight.getPointer(i) == null) {
+                                    resetRight.setPointer(i, toAssign);
                                     assigned = true;
                                     break;
                                 }
-                            }
-                            else {
-                                if (toAssign.getFirstVal().compareTo(resetLeft.getVal(i - 1)) >= 0 && resetLeft.getPointer(i) == null) {
-                                    resetLeft.setPointer(i, toAssign);
+                            } else {
+                                if (toAssign.getFirstVal().compareTo(resetRight.getVal(i - 1)) >= 0 && resetRight.getPointer(i) == null) {
+                                    resetRight.setPointer(i, toAssign);
                                     assigned = true;
                                 }
                                 break;
                             }
                         }
 
-                        //check if we should assign to last of left node
-                        if (!assigned && resetLeft.getVal(values.length - 1) != null) {
-                            if (toAssign.getFirstVal().compareTo(resetLeft.getVal(values.length - 1)) >= 0 && resetLeft.getPointer(pointers.length - 1) == null) {
-                                resetLeft.setPointer(pointers.length - 1, toAssign);
+                        //check if we should assign to last of right node
+                        if (!assigned && resetRight.getVal(values.length - 1) != null) {
+                            if (toAssign.getFirstVal().compareTo(resetRight.getVal(values.length - 1)) >= 0 && resetRight.getPointer(pointers.length - 1) == null) {
+                                resetRight.setPointer(pointers.length - 1, toAssign);
                                 assigned = true;
                             }
                         }
-
-                        if (!assigned) {
-                            //attempt to assign to right node
-                            for (int i = 0; i < pointers.length - 1; i++) {
-                                if (resetRight.getVal(i) != null) {
-                                    if (toAssign.getMaxVal().compareTo(resetRight.getVal(i)) < 0 && resetRight.getPointer(i) == null) {
-                                        resetRight.setPointer(i, toAssign);
-                                        assigned = true;
-                                        break;
-                                    }
-                                } else {
-                                    if (toAssign.getFirstVal().compareTo(resetRight.getVal(i - 1)) >= 0 && resetRight.getPointer(i) == null) {
-                                        resetRight.setPointer(i, toAssign);
-                                        assigned = true;
-                                    }
-                                    break;
-                                }
-                            }
-
-                            //check if we should assign to last of right node
-                            if (!assigned && resetRight.getVal(values.length - 1) != null) {
-                                if (toAssign.getFirstVal().compareTo(resetRight.getVal(values.length - 1)) >= 0 && resetRight.getPointer(pointers.length - 1) == null) {
-                                    resetRight.setPointer(pointers.length - 1, toAssign);
-                                    assigned = true;
-                                }
-                            }
-                        }
-                        if (!assigned)
-                            throw new IllegalStateException("This shouldn't happen");
-                        else
-                            assignList.remove(toAssign);
-
-                        /*if (resetLeft.getPointer(0) == null) resetLeft.setPointer(0, toAssign);
-                        else if (resetLeft.getPointer(1) == null) resetLeft.setPointer(1, toAssign);
-                        else if (resetLeft.getPointer(2) == null) resetLeft.setPointer(2, toAssign);
-                        else if (resetRight.getPointer(1) == null) resetRight.setPointer(1, toAssign);
-                        else if (resetRight.getPointer(2) == null) resetRight.setPointer(2, toAssign);
-                        else throw new IllegalStateException("This shouldn't happen");
-                        c*/
                     }
-                }
-                else {
-                    int newIndex = newPar.getIndexOf(value);
-                    newPar.setPointer(newIndex, newLeft);
-                    newPar.setPointer(newIndex + 1, newRight);
+                    if (!assigned)
+                        throw new IllegalStateException("This shouldn't happen");
+                    else
+                        assignList.remove(toAssign);
                 }
             }
-
         }
     }
 

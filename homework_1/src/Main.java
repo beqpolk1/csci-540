@@ -42,6 +42,18 @@ public class Main {
         }
         myTree.checkTree();
 
+        System.out.println(System.lineSeparator() + "=========BIG RANDOM TEST=========");
+        //big random test
+        Integer[] tally = new Integer[200];
+        for (int i = 0; i <= tally.length - 1; i++) tally[i] = 0;
+        myTree = new BTree<>(4, 0);
+        for (int i =0; i <= 1000; i++) {
+            Integer newVal = rand.nextInt(200);
+            tally[newVal]++;
+            myTree.addValue(newVal, 1);
+        }
+        myTree.checkTree(tally);
+
         System.out.println("done");
     }
 

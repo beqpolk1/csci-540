@@ -18,9 +18,10 @@ public class BTree<T extends Comparable> {
         if (!(addResult.isLeaf())) root = addResult;
     }
 
-    public void checkTree() { checkTree(0, root); }
+    public void checkTree(Integer[] tally) { checkTree(0, root, tally);}
+    public void checkTree() { checkTree(0, root, null); }
 
-    private void checkTree(int level, BNode<T> node) {
+    private void checkTree(int level, BNode<T> node, Integer[] tally) {
         String prefix = (level > 0 ? String.format("%-" + (level * 2) + "s", "") : "");
         System.out.println(prefix + "Checking node");
 
@@ -28,7 +29,12 @@ public class BTree<T extends Comparable> {
 
         if (node.isLeaf()) {
             String output = "LEAF: ";
-            for (int i = 0; i < size - 1; i++) { if (node.getVal(i) != null) output += node.getVal(i) + "[" + node.getAddr(i) + "], "; }
+            for (int i = 0; i < size - 1; i++) {
+                if (node.getVal(i) != null) {
+                    if (tally != null && !tally[(Integer) node.getVal(i)].equals(node.getAddr(i))) System.out.println("****ERROR COUNTING " + node.getVal(i) + "****");
+                    output += node.getVal(i) + "[" + node.getAddr(i) + "], ";
+                }
+            }
             System.out.println(prefix + output);
         }
         else {
@@ -42,7 +48,7 @@ public class BTree<T extends Comparable> {
                     if (node.getPointer(i) != null && node.getVal(i).compareTo(node.getPointer(i).getMaxVal()) < 0) {
                         System.out.println("****ERROR****");
                     }
-                    if (node.getPointer(i) != null) checkTree(level + 1, node.getPointer(i));
+                    if (node.getPointer(i) != null) checkTree(level + 1, node.getPointer(i), tally);
                 } else {
                     String output = "(final) => ";
                     if (node.getPointer(i) != null)
@@ -52,7 +58,7 @@ public class BTree<T extends Comparable> {
                     if (node.getVal(i - 1).compareTo(node.getPointer(i).getFirstVal()) > 0) {
                         System.out.println("****ERROR****");
                     }
-                    if (node.getPointer(i) != null) checkTree(level + 1, node.getPointer(i));
+                    if (node.getPointer(i) != null) checkTree(level + 1, node.getPointer(i), tally);
                     break;
                 }
             }
