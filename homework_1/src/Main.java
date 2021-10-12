@@ -73,5 +73,8 @@ public class Main {
         Environment env = new Environment("test_db");
         env.buildIndex("person", "id");
         TestDBQueries.selectAllFromPersonUsePrimaryIndex(env);
+
+        env.buildIndex("person", "age");
+        TestDBQueries.selectAllFromPersonUseSecondIndex(env);
     }
 }

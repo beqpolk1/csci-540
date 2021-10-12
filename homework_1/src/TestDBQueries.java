@@ -217,8 +217,10 @@ public class TestDBQueries {
                                 filteredResults.add(blockContents.get(Integer.parseInt(recAddr) - 1));
                             }
                             else {
-                                ListResultSet results = new ListResultSet(tableCols, colTypes, filteredResults);
-                                output(results);
+                                if (filteredResults.size() > 0) {
+                                    ListResultSet results = new ListResultSet(tableCols, colTypes, filteredResults);
+                                    output(results);
+                                }
                                 ExternalMem curBlock = env.getBlock(blockAddr);
                                 blockContents = (List<Tuple>) DataReader.readMem(curBlock, env.getDisk(), colTypes);
                                 lastBlock = blockAddr;
@@ -237,6 +239,79 @@ public class TestDBQueries {
         }
 
         System.out.println("Done reading person table with filter on ID using index");
+
+        QueryCost trueCost = new QueryCost(env.getDisk().getSeeks(), env.getDisk().getScans(), ops);
+
+        System.out.println("Est. cost: " + estCost.toString());
+        System.out.println("True cost: " + trueCost.toString());
+    }
+
+    //select all tuples/records from the person relation where the id is >= 7, using the index
+    public static void selectAllFromPersonUseSecondIndex(Environment env) {
+        checkEnv(env);
+        env.getDisk().reset();
+        Long ops = 0L;
+
+        String myTable = "person";
+        String filterCol = "age";
+        Integer ageFilter = 25;
+
+        Queue<QueryAction> queryActions = new LinkedList<>();
+        queryActions.add(new SecondIndexScanFilter(env.getTableMeta(myTable), 4));
+        QueryCost estCost = CostEstimator.estimateCost(queryActions);
+
+        List<String> tableCols = env.getColumnsForTable(myTable);
+        List<String> colTypes = env.getTypesForTable(myTable);
+
+        BNode curNode = env.getIndex(myTable, filterCol).getStartNode(ageFilter);
+        ops = (long) curNode.getSearchOps();
+
+        String lastBlock = null;
+        List<Tuple> blockContents = null;
+        while (curNode != null) {
+            for (int i = 0; i < curNode.getSize() - 1; i++) {
+                Collection<Tuple> filteredResults = new ArrayList<>();
+                if (curNode.getVal(i) != null) {
+                    if (curNode.getVal(i).compareTo(ageFilter) >= 0) {
+                        ops++;
+                        ArrayList<String> addr = curNode.getAddr(i);
+
+                        for (String curAddr : addr) {
+                            String blockAddr = curAddr.substring(0, curAddr.indexOf("."));
+                            String recAddr = curAddr.substring(curAddr.indexOf(".") + 1);
+
+                            if (lastBlock == null) {
+                                ExternalMem curBlock = env.getBlock(blockAddr);
+                                blockContents = (List<Tuple>) DataReader.readMem(curBlock, env.getDisk(), colTypes);
+                                lastBlock = blockAddr;
+                                filteredResults.add(blockContents.get(Integer.parseInt(recAddr) - 1));
+                            }
+                            else if (lastBlock.equals(blockAddr)) {
+                                filteredResults.add(blockContents.get(Integer.parseInt(recAddr) - 1));
+                            }
+                            else {
+                                if (filteredResults.size() > 0) {
+                                    ListResultSet results = new ListResultSet(tableCols, colTypes, filteredResults);
+                                    output(results);
+                                }
+                                ExternalMem curBlock = env.getBlock(blockAddr);
+                                blockContents = (List<Tuple>) DataReader.readMem(curBlock, env.getDisk(), colTypes);
+                                lastBlock = blockAddr;
+                                filteredResults.add(blockContents.get(Integer.parseInt(recAddr) - 1));
+                            }
+                        }
+                    }
+                }
+
+                if (filteredResults.size() > 0) {
+                    ListResultSet results = new ListResultSet(tableCols, colTypes, filteredResults);
+                    output(results);
+                }
+            }
+            curNode = curNode.getNextLeaf();
+        }
+
+        System.out.println("Done reading person table with filter on Age using index");
 
         QueryCost trueCost = new QueryCost(env.getDisk().getSeeks(), env.getDisk().getScans(), ops);
 
