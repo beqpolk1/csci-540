@@ -3,8 +3,8 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        runTestDBQueries();
-        //runTestDBIndexQueries();
+        //runTestDBQueries();
+        runTestDBIndexQueries();
     }
 
     public static void testBTree() {
@@ -78,5 +78,9 @@ public class Main {
 
         env.buildIndex("person", "age");
         TestDBQueries.selectAllFromPersonUseSecondIndex(env);
+
+        env.buildIndex("food", "id");
+        TestDBQueries.indexedNestedLoopJoin(env);
+        TestDBQueries.nestedLoopJoin2(env); //same query, different algo, for comparison
     }
 }
