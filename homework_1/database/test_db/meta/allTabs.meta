@@ -1,0 +1,3 @@
+{
+	"tables": ["person", "hair_color", "food"]
+}

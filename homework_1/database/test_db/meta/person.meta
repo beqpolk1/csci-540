@@ -1,0 +1,15 @@
+{
+	"table_name": "person",
+	"columns": [
+		{"name": "id", "type": "int"},
+		{"name": "first_name", "type": "string"},
+		{"name": "last_name", "type": "string"},
+		{"name": "age", "type": "int"},
+		{"name": "hair_color", "type": "int"},
+		{"name": "fav_food", "type": "int"}
+	],
+	"block_count": 2,
+	"blocks": ["0x01", "0x02"],
+	"first_block": "0x01",
+	"record_count": 10
+}
