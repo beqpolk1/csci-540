@@ -12,14 +12,15 @@ public class BTree<T extends Comparable> {
     }
 
     public BNode<T> search(T value) {
-        return root.search(value);
+        root.resetSearchOps();
+        return root.search(value, 0);
     }
 
     public void addValue(T value, String addr) {
         ArrayList<String> addrList = new ArrayList<>();
         addrList.add(addr);
 
-        BNode<T> addResult = root.search(value).addValue(value, addrList);
+        BNode<T> addResult = root.search(value, 0).addValue(value, addrList);
         if (!(addResult.isLeaf())) root = addResult;
     }
 

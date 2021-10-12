@@ -184,26 +184,28 @@ public class TestDBQueries {
         Integer idFilter = 7;
 
         Queue<QueryAction> queryActions = new LinkedList<>();
-        queryActions.add(new LinearScanFilter(env.getTableMeta(myTable)));
+        queryActions.add(new PrimaryIndexScanFilter(env.getTableMeta(myTable), 4));
         QueryCost estCost = CostEstimator.estimateCost(queryActions);
 
         List<String> tableCols = env.getColumnsForTable(myTable);
         List<String> colTypes = env.getTypesForTable(myTable);
 
         BNode curNode = env.getIndex(myTable, filterCol).getStartNode(idFilter);
+        ops = (long) curNode.getSearchOps();
 
+        String lastBlock = null;
+        List<Tuple> blockContents = null;
         while (curNode != null) {
             for (int i = 0; i < curNode.getSize() - 1; i++) {
                 Collection<Tuple> filteredResults = new ArrayList<>();
                 if (curNode.getVal(i) != null) {
                     if (curNode.getVal(i).compareTo(idFilter) >= 0) {
+                        ops++;
                         ArrayList<String> addr = curNode.getAddr(i);
-                        String lastBlock = null;
 
                         for (String curAddr : addr) {
                             String blockAddr = curAddr.substring(0, curAddr.indexOf("."));
                             String recAddr = curAddr.substring(curAddr.indexOf(".") + 1);
-                            List<Tuple> blockContents = null;
 
                             if (lastBlock == null) {
                                 ExternalMem curBlock = env.getBlock(blockAddr);
@@ -233,6 +235,13 @@ public class TestDBQueries {
             }
             curNode = curNode.getNextLeaf();
         }
+
+        System.out.println("Done reading person table with filter on ID using index");
+
+        QueryCost trueCost = new QueryCost(env.getDisk().getSeeks(), env.getDisk().getScans(), ops);
+
+        System.out.println("Est. cost: " + estCost.toString());
+        System.out.println("True cost: " + trueCost.toString());
     }
 
     private static void output(ResultSet results) {

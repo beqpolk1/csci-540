@@ -8,7 +8,7 @@ public class BNode<T extends Comparable> {
     BNode[] pointers;
     Boolean isLeaf;
     BNode<T> parent, resetLeft, resetRight, nextLeaf, prevLeaf;
-    int numVals;
+    int numVals, searchOps;
 
     public BNode(Class<T> tClass, int size, BNode<T> parent){
         this.tClass = tClass;
@@ -239,14 +239,18 @@ public class BNode<T extends Comparable> {
         }
     }
 
-    public BNode<T> search(T value) {
+    public BNode<T> search(T value, int ops) {
+        searchOps = ops++;
         if (isLeaf) return this;
 
         int pointerIndex = getLessThanIdx(value);
         if (values[pointerIndex] != null && values[pointerIndex].compareTo(value) <= 0) pointerIndex++;
 
-        return pointers[pointerIndex].search(value);
+        return pointers[pointerIndex].search(value, searchOps);
     }
+
+    public void resetSearchOps() { searchOps = 0; }
+    public int getSearchOps() { return searchOps; }
 
     public BNode<T> getPointer(int index) { return pointers[index]; }
     public void setPointer(int index, BNode<T> newVal) {
