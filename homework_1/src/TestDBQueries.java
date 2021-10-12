@@ -174,7 +174,7 @@ public class TestDBQueries {
     }
 
     //select all tuples/records from the person relation where the id is >= 7, using the index
-    public static void selectAllFromPersonFilterIdIdx(Environment env) {
+    public static void selectAllFromPersonUsePrimaryIndex(Environment env) {
         checkEnv(env);
         env.getDisk().reset();
         Long ops = 0L;

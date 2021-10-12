@@ -72,6 +72,6 @@ public class Main {
     public static void runTestDBIndexQueries() {
         Environment env = new Environment("test_db");
         env.buildIndex("person", "id");
-        TestDBQueries.selectAllFromPersonFilterIdIdx(env);
+        TestDBQueries.selectAllFromPersonUsePrimaryIndex(env);
     }
 }
