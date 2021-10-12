@@ -64,4 +64,31 @@ public class BTree<T extends Comparable> {
             }
         }
     }
+
+    public void checkBPlus() {
+        BNode<T> curLeaf = findLeftmostLeaf(root);
+
+        while (curLeaf != null) {
+            String output = "[";
+            for (int i = 0; i < size - 1; i++) {
+                if (curLeaf.getVal(i) != null) output += curLeaf.getVal(i) + "-";
+                else break;
+            }
+
+            output = output.substring(0, output.length() - 1) + "]";
+            System.out.print(output + " => ");
+            curLeaf = curLeaf.getNextLeaf();
+        }
+        System.out.print(System.lineSeparator());
+    }
+
+    private BNode<T> findLeftmostLeaf(BNode<T> node) {
+        if (node.isLeaf()) return node;
+        else {
+            for (int i = 0; i <= size - 1; i++) {
+                if (node.getPointer(i) != null) return findLeftmostLeaf(node.getPointer(i));
+            }
+        }
+        return null;
+    }
 }

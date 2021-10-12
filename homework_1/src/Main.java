@@ -18,6 +18,7 @@ public class Main {
             if (i % 3 == 0) myTree.addValue(i, 1);
         }
         myTree.checkTree();
+        myTree.checkBPlus();
 
         System.out.println(System.lineSeparator() + "=========REVERSE SEQUENTIAL TEST=========");
         //reverse sequential test
@@ -28,6 +29,7 @@ public class Main {
             if (i % 3 == 0) myTree.addValue(i, 1);
         }
         myTree.checkTree();
+        myTree.checkBPlus();
 
         System.out.println(System.lineSeparator() + "=========RANDOM TEST=========");
         //random test
@@ -41,6 +43,7 @@ public class Main {
             if (newVal % 3 == 0) myTree.addValue(newVal, 1);
         }
         myTree.checkTree();
+        myTree.checkBPlus();
 
         System.out.println(System.lineSeparator() + "=========BIG RANDOM TEST=========");
         //big random test
@@ -53,6 +56,7 @@ public class Main {
             myTree.addValue(newVal, 1);
         }
         myTree.checkTree(tally);
+        myTree.checkBPlus();
 
         System.out.println("done");
     }

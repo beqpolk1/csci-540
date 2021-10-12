@@ -7,7 +7,7 @@ public class BNode<T extends Comparable> {
     Integer[] addresses;
     BNode[] pointers;
     Boolean isLeaf;
-    BNode<T> parent, resetLeft, resetRight;
+    BNode<T> parent, resetLeft, resetRight, nextLeaf, prevLeaf;
     int numVals;
 
     public BNode(Class<T> tClass, int size, BNode<T> parent){
@@ -19,6 +19,8 @@ public class BNode<T extends Comparable> {
         isLeaf = true;
         numVals = 0;
         this.parent = parent;
+        prevLeaf = null;
+        nextLeaf = null;
     }
 
     public BNode(Class<T> tClass, int size){
@@ -78,11 +80,36 @@ public class BNode<T extends Comparable> {
                 else { newRight.addValue(values[i], addresses[i]); }
             }
 
+            //set values for B+ functionality
+            newLeft.setNextLeaf(newRight);
+            newRight.setPrevLeaf(newLeft);
+            if (isLeaf){
+                if (prevLeaf != null) {
+                    newLeft.setPrevLeaf(prevLeaf);
+                    prevLeaf.setNextLeaf(newLeft);
+                }
+
+                if (nextLeaf != null) {
+                    newRight.setNextLeaf(nextLeaf);
+                    nextLeaf.setPrevLeaf(newRight);
+                }
+            }
+
             //push the divider up to the parent node
             addPar.pushUp(newRight.getFirstVal(), newLeft, newRight);
             //track the new nodes that this got split into (for later use in pushUp within the same node scope)
             resetLeft = newLeft;
             resetRight = newRight;
+
+            if (!newLeft.isLeaf()) {
+                newLeft.setNextLeaf(null);
+                newLeft.setPrevLeaf(null);
+            }
+
+            if (!newRight.isLeaf()) {
+                newRight.setNextLeaf(null);
+                newRight.setPrevLeaf(null);
+            }
 
             //always return the root
             BNode<T> newRoot = newLeft;
@@ -244,6 +271,11 @@ public class BNode<T extends Comparable> {
     public BNode<T> getParent() { return parent; }
 
     public Integer getAddr(Integer i) { return addresses[i]; }
+
+    public BNode<T> getNextLeaf() { return nextLeaf; }
+    public void setNextLeaf(BNode<T> newNext) { nextLeaf = newNext; }
+    public BNode<T> getPrevLeaf() { return prevLeaf; }
+    public void setPrevLeaf(BNode<T> newPrev) { prevLeaf = newPrev; }
 
     private BNode<T> getSmallestNode(ArrayList<BNode<T>> searchList) {
         BNode<T> smallest = searchList.get(0);
