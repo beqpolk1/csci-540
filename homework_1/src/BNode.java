@@ -277,6 +277,8 @@ public class BNode<T extends Comparable> {
     public BNode<T> getPrevLeaf() { return prevLeaf; }
     public void setPrevLeaf(BNode<T> newPrev) { prevLeaf = newPrev; }
 
+    public int getSize() { return pointers.length; }
+
     private BNode<T> getSmallestNode(ArrayList<BNode<T>> searchList) {
         BNode<T> smallest = searchList.get(0);
         for (int i = 1; i <= searchList.size() - 1; i++) {

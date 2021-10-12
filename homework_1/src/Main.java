@@ -3,7 +3,7 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        testBTree();
+        runTestDBIndexQueries();
     }
 
     public static void testBTree() {
@@ -67,5 +67,11 @@ public class Main {
         TestDBQueries.selectAllFromPersonFilterAge(env);
         TestDBQueries.selectAllFromHairColor(env);
         TestDBQueries.nestedLoopJoin(env);
+    }
+
+    public static void runTestDBIndexQueries() {
+        Environment env = new Environment("test_db");
+        env.buildIndex("person", "id");
+        TestDBQueries.selectAllFromPersonFilterIdIdx(env);
     }
 }

@@ -7,18 +7,21 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Environment {
     private DiskHead disk;
     private String database, rootDir;
-    JsonObject blockMap;
+    private HashMap<String, HashMap<String, Index>> indices;
+    private JsonObject blockMap;
 
     public Environment(String newDatabase)
     {
         disk = new DiskHead();
         database = newDatabase;
         rootDir = "database\\" + database + "\\";
+        indices = new HashMap<>();
 
         blockMap = new JsonParser().parse(openReader(rootDir + "meta\\blockMap.meta")).getAsJsonObject();
     }
@@ -68,6 +71,23 @@ public class Environment {
                 theBlock.get("prev").isJsonNull() ? null : theBlock.get("prev").getAsString(),
                 theBlock.get("next").isJsonNull()  ? null : theBlock.get("next").getAsString()
         );
+    }
+
+    public void buildIndex(String theTab, String theCol) {
+        List<String> tableCols = getColumnsForTable(theTab);
+        Integer filterIndex = tableCols.indexOf(theCol);
+        List<String> colTypes = getTypesForTable(theTab);
+
+        Index newIndex = null;
+        if (colTypes.get(filterIndex).equals("int")) newIndex = new Index<Integer>(theTab, theCol, this, 0);
+        else if (colTypes.get(filterIndex).equals("string")) newIndex = new Index<String>(theTab, theCol, this, "");
+
+        if (!(indices.containsKey(theTab))) { indices.put(theTab, new HashMap<>()); }
+        indices.get(theTab).put(theCol, newIndex);
+    }
+
+    public Index getIndex(String table, String col) {
+        return indices.get(table).get(col);
     }
 
     private Reader openReader(String theFile) {
