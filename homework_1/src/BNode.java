@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class BNode<T extends Comparable> {
     T[] values;
     Class<T> tClass;
-    Integer[] addresses;
+    ArrayList<String>[] addresses;
     BNode[] pointers;
     Boolean isLeaf;
     BNode<T> parent, resetLeft, resetRight, nextLeaf, prevLeaf;
@@ -14,8 +14,8 @@ public class BNode<T extends Comparable> {
         this.tClass = tClass;
         pointers = new BNode[size];
         values = (T[]) Array.newInstance(tClass, size - 1);
-        addresses = new Integer[size - 1];
-        for (int i = 0; i < size - 1; i++) addresses[i] = 0;
+        addresses = new ArrayList[size - 1];
+        for (int i = 0; i < size - 1; i++) addresses[i] = new ArrayList<>();
         isLeaf = true;
         numVals = 0;
         this.parent = parent;
@@ -27,9 +27,9 @@ public class BNode<T extends Comparable> {
         this(tClass, size, null);
     }
 
-    public BNode<T> addValue(T value, Integer addr) {
+    public BNode<T> addValue(T value, ArrayList<String> addr) {
         if (isLeaf && getIndexOf(value) >= 0) { //handling duplicate keys
-            addresses[getIndexOf(value)] += addr;
+            addresses[getIndexOf(value)].addAll(addr);
             return this;
         }
 
@@ -133,7 +133,7 @@ public class BNode<T extends Comparable> {
                 //set pointers accordingly
                 pointers[insertIndex] = newLeft;
                 pointers[insertIndex + 1] = newRight;
-                addValue(value, 1); //add the value to this node
+                addValue(value, new ArrayList<>()); //add the value to this node
             }
             else if (numVals < values.length) { //next case: value will go into an occupied space in this node, but there is still room
                 //when we add the new value, the existing values will get shuffled around
@@ -146,14 +146,14 @@ public class BNode<T extends Comparable> {
                     nullIndex--;
                 }
 
-                addValue(value, 1);//add the value
+                addValue(value, new ArrayList<>());//add the value
                 //set the pointers accordingly
                 pointers[insertIndex] = newLeft;
                 pointers[insertIndex + 1] = newRight;
             }
             else { //complex case: this node will also end up being split because we pushed to a full one
                 //start by adding the value
-                addValue(value, 1);
+                addValue(value, new ArrayList<>());
 
                 //resetLeft and resetRight will hold the values that this node got split into after adding the new value
 
@@ -270,7 +270,7 @@ public class BNode<T extends Comparable> {
     public void setParent(BNode<T> newPar) { parent = newPar; }
     public BNode<T> getParent() { return parent; }
 
-    public Integer getAddr(Integer i) { return addresses[i]; }
+    public ArrayList<String> getAddr(Integer i) { return addresses[i]; }
 
     public BNode<T> getNextLeaf() { return nextLeaf; }
     public void setNextLeaf(BNode<T> newNext) { nextLeaf = newNext; }

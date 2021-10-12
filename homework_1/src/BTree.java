@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class BTree<T extends Comparable> {
     BNode<T> root;
     Integer size;
@@ -13,8 +15,11 @@ public class BTree<T extends Comparable> {
         return root.search(value);
     }
 
-    public void addValue(T value, Integer addr) {
-        BNode<T> addResult = root.search(value).addValue(value, addr);
+    public void addValue(T value, String addr) {
+        ArrayList<String> addrList = new ArrayList<>();
+        addrList.add(addr);
+
+        BNode<T> addResult = root.search(value).addValue(value, addrList);
         if (!(addResult.isLeaf())) root = addResult;
     }
 
@@ -31,8 +36,8 @@ public class BTree<T extends Comparable> {
             String output = "LEAF: ";
             for (int i = 0; i < size - 1; i++) {
                 if (node.getVal(i) != null) {
-                    if (tally != null && !tally[(Integer) node.getVal(i)].equals(node.getAddr(i))) System.out.println("****ERROR COUNTING " + node.getVal(i) + "****");
-                    output += node.getVal(i) + "[" + node.getAddr(i) + "], ";
+                    if (tally != null && !tally[(Integer) node.getVal(i)].equals(node.getAddr(i).size())) System.out.println("****ERROR COUNTING " + node.getVal(i) + "****");
+                    output += node.getVal(i) + "[" + node.getAddr(i).size() + "], ";
                 }
             }
             System.out.println(prefix + output);

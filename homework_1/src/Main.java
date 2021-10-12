@@ -13,9 +13,9 @@ public class Main {
         //sequential test
         myTree = new BTree<>(4, 0);
         for (int i = 0; i <= 40; i++) {
-            myTree.addValue(i, 1);
-            if (i % 2 == 0) myTree.addValue(i, 1);
-            if (i % 3 == 0) myTree.addValue(i, 1);
+            myTree.addValue(i, "a");
+            if (i % 2 == 0) myTree.addValue(i, "a");
+            if (i % 3 == 0) myTree.addValue(i, "a");
         }
         myTree.checkTree();
         myTree.checkBPlus();
@@ -24,9 +24,9 @@ public class Main {
         //reverse sequential test
         myTree = new BTree<>(4, 0);
         for (int i = 40; i >= 0; i--) {
-            myTree.addValue(i, 1);
-            if (i % 2 == 0) myTree.addValue(i, 1);
-            if (i % 3 == 0) myTree.addValue(i, 1);
+            myTree.addValue(i, "a");
+            if (i % 2 == 0) myTree.addValue(i, "a");
+            if (i % 3 == 0) myTree.addValue(i, "a");
         }
         myTree.checkTree();
         myTree.checkBPlus();
@@ -38,9 +38,9 @@ public class Main {
         for (int i =0; i <= 50; i++) {
             Integer newVal = rand.nextInt(100);
             while (myTree.search(newVal).getIndexOf(newVal) >= 0) newVal = rand.nextInt(100);
-            myTree.addValue(newVal, 1);
-            if (newVal % 2 == 0) myTree.addValue(newVal, 1);
-            if (newVal % 3 == 0) myTree.addValue(newVal, 1);
+            myTree.addValue(newVal, "a");
+            if (newVal % 2 == 0) myTree.addValue(newVal, "a");
+            if (newVal % 3 == 0) myTree.addValue(newVal, "a");
         }
         myTree.checkTree();
         myTree.checkBPlus();
@@ -53,7 +53,7 @@ public class Main {
         for (int i =0; i <= 1000; i++) {
             Integer newVal = rand.nextInt(200);
             tally[newVal]++;
-            myTree.addValue(newVal, 1);
+            myTree.addValue(newVal, "a");
         }
         myTree.checkTree(tally);
         myTree.checkBPlus();
