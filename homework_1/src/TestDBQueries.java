@@ -388,6 +388,9 @@ public class TestDBQueries {
         System.out.println("True cost: " + trueCost.toString());
     }
 
+    //select all tuples/records from the person relation and join to include hair_color data
+    //use the indexed nested loop algorithm
+
     private static void output(ResultSet results) {
         int maxColSize = ListTuple.maxColSize;
         //System.out.println(results.toString());

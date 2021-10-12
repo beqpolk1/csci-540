@@ -1,0 +1,11 @@
+{
+	"table_name": "food",
+	"columns": [
+		{"name": "id", "type": "int"},
+		{"name": "food_name", "type": "string"}
+	],
+	"block_count": 2,
+	"blocks": ["0x04", "0x05"],
+	"first_block": "0x04",
+	"record_count": 6
+}
