@@ -184,7 +184,7 @@ public class TestDBQueries {
         Integer idFilter = 7;
 
         Queue<QueryAction> queryActions = new LinkedList<>();
-        queryActions.add(new PrimaryIndexScanFilter(env.getTableMeta(myTable), 4));
+        queryActions.add(new IndexScanFilter(env.getTableMeta(myTable), 4));
         QueryCost estCost = CostEstimator.estimateCost(queryActions);
 
         List<String> tableCols = env.getColumnsForTable(myTable);
@@ -257,7 +257,7 @@ public class TestDBQueries {
         Integer ageFilter = 25;
 
         Queue<QueryAction> queryActions = new LinkedList<>();
-        queryActions.add(new SecondIndexScanFilter(env.getTableMeta(myTable), 4));
+        queryActions.add(new IndexScanFilter(env.getTableMeta(myTable), 4));
         QueryCost estCost = CostEstimator.estimateCost(queryActions);
 
         List<String> tableCols = env.getColumnsForTable(myTable);

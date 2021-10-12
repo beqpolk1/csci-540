@@ -1,10 +1,10 @@
 import com.google.gson.JsonObject;
 
-public class SecondIndexScanFilter implements QueryAction {
+public class IndexScanFilter implements QueryAction {
     private JsonObject tableMeta;
     private int indexSize;
 
-    public SecondIndexScanFilter(JsonObject table, int indexSize) {
+    public IndexScanFilter(JsonObject table, int indexSize) {
         tableMeta = table;
         this.indexSize = indexSize;
     }
