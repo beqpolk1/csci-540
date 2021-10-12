@@ -173,7 +173,7 @@ public class TestDBQueries {
         System.out.println("True cost: " + trueCost.toString());
     }
 
-    //select all tuples/records from the person relation where the id is >= 5, using the index
+    //select all tuples/records from the person relation where the id is >= 7, using the index
     public static void selectAllFromPersonFilterIdIdx(Environment env) {
         checkEnv(env);
         env.getDisk().reset();
@@ -181,58 +181,58 @@ public class TestDBQueries {
 
         String myTable = "person";
         String filterCol = "id";
-        Integer idFilter = 5;
+        Integer idFilter = 7;
 
         Queue<QueryAction> queryActions = new LinkedList<>();
         queryActions.add(new LinearScanFilter(env.getTableMeta(myTable)));
         QueryCost estCost = CostEstimator.estimateCost(queryActions);
 
-        /*List<String> tableCols = env.getColumnsForTable(myTable);
-        Integer filterIndex = tableCols.indexOf(filterCol);
+        List<String> tableCols = env.getColumnsForTable(myTable);
         List<String> colTypes = env.getTypesForTable(myTable);
-        ExternalMem curBlock = env.getBlock(env.getTableStart(myTable));*/
 
         BNode curNode = env.getIndex(myTable, filterCol).getStartNode(idFilter);
 
         while (curNode != null) {
             for (int i = 0; i < curNode.getSize() - 1; i++) {
+                Collection<Tuple> filteredResults = new ArrayList<>();
                 if (curNode.getVal(i) != null) {
                     if (curNode.getVal(i).compareTo(idFilter) >= 0) {
                         ArrayList<String> addr = curNode.getAddr(i);
+                        String lastBlock = null;
 
                         for (String curAddr : addr) {
                             String blockAddr = curAddr.substring(0, curAddr.indexOf("."));
                             String recAddr = curAddr.substring(curAddr.indexOf(".") + 1);
-                            System.out.println(blockAddr + " and " + recAddr);
+                            List<Tuple> blockContents = null;
+
+                            if (lastBlock == null) {
+                                ExternalMem curBlock = env.getBlock(blockAddr);
+                                blockContents = (List<Tuple>) DataReader.readMem(curBlock, env.getDisk(), colTypes);
+                                lastBlock = blockAddr;
+                                filteredResults.add(blockContents.get(Integer.parseInt(recAddr) - 1));
+                            }
+                            else if (lastBlock.equals(blockAddr)) {
+                                filteredResults.add(blockContents.get(Integer.parseInt(recAddr) - 1));
+                            }
+                            else {
+                                ListResultSet results = new ListResultSet(tableCols, colTypes, filteredResults);
+                                output(results);
+                                ExternalMem curBlock = env.getBlock(blockAddr);
+                                blockContents = (List<Tuple>) DataReader.readMem(curBlock, env.getDisk(), colTypes);
+                                lastBlock = blockAddr;
+                                filteredResults.add(blockContents.get(Integer.parseInt(recAddr) - 1));
+                            }
                         }
                     }
+                }
+
+                if (filteredResults.size() > 0) {
+                    ListResultSet results = new ListResultSet(tableCols, colTypes, filteredResults);
+                    output(results);
                 }
             }
             curNode = curNode.getNextLeaf();
         }
-
-        /*while (curBlock != null) {
-            Collection<Tuple> blockContents = DataReader.readMem(curBlock, env.getDisk(), colTypes);
-            Collection<Tuple> filteredResults = new ArrayList<>();
-
-            for (Tuple curTuple : blockContents) {
-                ops++;
-                if (!(curTuple.getField(filterIndex) instanceof Integer)) throw new IllegalArgumentException();
-                Integer comp = (Integer) curTuple.getField(filterIndex);
-                if (comp >= ageFilter) filteredResults.add(curTuple);
-            }
-
-            ListResultSet blockResults = new ListResultSet(tableCols, colTypes, filteredResults);
-            output(blockResults);
-            curBlock = env.getBlock(curBlock.getNext());
-        }
-
-        System.out.println("Done reading person table with filter on age");
-
-        QueryCost trueCost = new QueryCost(env.getDisk().getSeeks(), env.getDisk().getScans(), ops);
-
-        System.out.println("Est. cost: " + estCost.toString());
-        System.out.println("True cost: " + trueCost.toString());*/
     }
 
     private static void output(ResultSet results) {
