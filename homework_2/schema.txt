@@ -1,0 +1,29 @@
+Database: food_data
+
+Key: food_code
+
+Column families:
+
+-display_name (Display_Name):<value>
+
+-portion:
+	-default (Portion_Default):<value>
+	-amount (Portion_Amount):<value>
+	-factor (Factor):<value>
+	-increment (Increment):<value>
+	-multiplier (Multiplier):<value>
+-type:
+	-grains (Grains):<value>
+	-vegetables (Vegetables):<value>
+	-fruits (Fruits):<value>
+	-milk (Milk):<value>
+	-meats (Meats):<value>
+	-soy (Soy):<value>
+	-oils (Oils):<value>
+-nutrition:
+	-solid_fats (Solid_Fats):<value>
+	-added_sugars (Added_Sugars):<value>
+	-alcohol (Alcohol):<value>
+	-calories (Calories):<value>
+	-saturated_fats (Saturated_Fats):<value>
+
