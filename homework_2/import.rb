@@ -1,7 +1,5 @@
 include Java
 
-require 'time'
-
 import 'javax.xml.stream.XMLStreamConstants'
 import 'org.apache.hadoop.hbase.client.HTable'
 import 'org.apache.hadoop.hbase.client.Put'
@@ -11,17 +9,15 @@ def jbytes(*args)
   args.map { |arg| arg.to_s.to_java_bytes }
 end
 
-
-
 factory = javax.xml.stream.XMLInputFactory.newInstance
-https://www.ruby-forum.com/t/how-to-pass-file-contents-in-ruby-as-inputstream-to-java/239773
-reader = factory.createXMLStreamReader(java.io.DataInputStream.new(java.io.ByteArrayInputStream.new(IO.read("/mnt/Food_Display_Table.xml").to_java.bytes)));
+reader = factory.createXMLStreamReader(java.io.FileInputStream.new("/mnt/Food_Display_Table.xml"))
 
 document = nil
 buffer = nil
 food_code = nil
 count = 0
 
+print "Starting...\n"
 table = HTable.new(@hbase.configuration, 'food_data')
 table.setAutoFlush(false)
 
@@ -29,7 +25,7 @@ while reader.has_next
   case reader.next
   when XMLStreamConstants::START_ELEMENT
 	case reader.local_name
-	when 'food_display_row' then document = {}
+	when 'Food_Display_Row' then document = {}
 	else buffer = []
 	end
   when XMLStreamConstants::CHARACTERS
@@ -41,9 +37,9 @@ while reader.has_next
 	when 'Display_Name' then
 	  document['display_name'] = buffer.join
 	when 'Portion_Default' then
-	  document['portion:portion_default'] = buffer.join
+	  document['portion:default'] = buffer.join
 	when 'Portion_Amount' then 
-	  document['portion:portion_amount'] = buffer.join
+	  document['portion:amount'] = buffer.join
 	when 'Factor' then
 	  document['portion:factor'] = buffer.join
 	when 'Increment' then
@@ -75,13 +71,30 @@ while reader.has_next
 	when 'Saturated_Fats' then
 	  document['nutrition:saturated_fats'] = buffer.join
 	when 'Food_Display_Row'
-	  key = document['food_code'].to_java_bytes
-	  ts = (Time.parse document['timestamp']).to_i
+	  key = food_code.to_java_bytes
 
-	  p = Put.new(key, ts)
+	  print "Adding " + document['display_name'] + "(" + food_code + ")...\n"
+	  p = Put.new(key)
+	  
 	  p.add(*jbytes("display_name", "", document['display_name']))
 	  p.add(*jbytes("portion", "default", document['portion:default']))
+	  p.add(*jbytes("portion", "amount", document['portion:amount']))
+	  p.add(*jbytes("portion", "factor", document['portion:factor']))
+	  p.add(*jbytes("portion", "increment", document['portion:increment']))
+	  p.add(*jbytes("portion", "multiplier", document['portion:multiplier']))
 	  p.add(*jbytes("type", "grains", document['type:grains']))
+	  p.add(*jbytes("type", "vegetables", document['type:vegetables']))
+	  p.add(*jbytes("type", "fruits", document['type:fruits']))
+	  p.add(*jbytes("type", "milk", document['type:milk']))
+	  p.add(*jbytes("type", "meats", document['type:meats']))
+	  p.add(*jbytes("type", "soy", document['type:soy']))
+	  p.add(*jbytes("type", "oils", document['type:oils']))
+	  p.add(*jbytes("nutrition", "solid_fats", document['nutrition:solid_fats']))
+	  p.add(*jbytes("nutrition", "added_sugars", document['nutrition:added_sugars']))
+	  p.add(*jbytes("nutrition", "alcohol", document['nutrition:alcohol']))
+	  p.add(*jbytes("nutrition", "calories", document['nutrition:calories']))
+	  p.add(*jbytes("nutrition", "saturated_fats", document['nutrition:saturated_fats']))
+	  
 	  table.put(p)
 
 	  count += 1
@@ -94,4 +107,5 @@ while reader.has_next
 end
 
 table.flushCommits()
+print "Done loading data\n"
 exit
