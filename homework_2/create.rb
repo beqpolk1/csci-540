@@ -11,9 +11,6 @@ conf = HBaseConfiguration.create
 admin = HBaseAdmin.new(conf)
 
 tableDescriptor = HTableDescriptor.new(TableName.valueOf("food_data"))
-tableDescriptor.addFamily(HColumnDescriptor.new("display_name"))
-tableDescriptor.addFamily(HColumnDescriptor.new("portion"))
-tableDescriptor.addFamily(HColumnDescriptor.new("type"))
 tableDescriptor.addFamily(HColumnDescriptor.new("nutrition"))
 
 admin.createTable(tableDescriptor)
