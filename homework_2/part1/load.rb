@@ -11,11 +11,12 @@ def jbytes(*args)
 end
 
 factory = javax.xml.stream.XMLInputFactory.newInstance
-reader = factory.createXMLStreamReader(java.io.FileInputStream.new("/mnt/Food_Display_Table.xml"))
+reader = factory.createXMLStreamReader(java.io.FileInputStream.new("/mnt/dataset/Food_Display_Table.xml"))
 
 document = nil
 buffer = nil
 display_name = nil
+portion_name = nil
 count = 0
 
 print "Starting...\n"
@@ -37,6 +38,8 @@ while reader.has_next
 #	  food_code = buffer.join
 	when 'Display_Name' then
 	  display_name = buffer.join
+	when 'Portion_Display_Name' then
+	  portion_name = buffer.join
 #	when 'Portion_Default' then
 #	  document['portion:default'] = buffer.join
 #	when 'Portion_Amount' then 
@@ -72,9 +75,10 @@ while reader.has_next
 	when 'Saturated_Fats' then
 	  document['nutrition:saturated_fats'] = buffer.join
 	when 'Food_Display_Row'
-	  key = display_name.to_java_bytes
+	  full_name = display_name + " [" + portion_name + "]"
+	  key = full_name.to_java_bytes
 
-	  print "Adding " + display_name + "...\n"
+	  print "Adding " + full_name + "...\n"
 	  p = Put.new(key)
 	  
 #	  p.add(*jbytes("display_name", "", document['display_name']))
