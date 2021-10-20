@@ -1,10 +1,8 @@
 Database: food_data
 
-Key: food_code
+Key: Display_Name + " [" + Portion_Display_Name + "]"
 
 Column families:
-
--display_name (Display_Name):<value>
 
 -portion:
 	-default (Portion_Default):<value>
@@ -26,4 +24,8 @@ Column families:
 	-alcohol (Alcohol):<value>
 	-calories (Calories):<value>
 	-saturated_fats (Saturated_Fats):<value>
+
+
+
+https://catalog.data.gov/dataset/delta-food-outlets-study
 
