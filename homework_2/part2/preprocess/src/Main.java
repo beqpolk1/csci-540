@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
@@ -50,75 +51,75 @@ public class Main {
     }
 
     private static String[] extractFoods(String[] fieldList) {
-        ArrayList<String> foods = new ArrayList<>();
+        HashMap<String, Integer> foods = new HashMap<>();
 
-        if (fieldList[3].equals("1")) foods.add("skim milk");
-        if (fieldList[4].equals("1")) foods.add("1% milk");
-        if (fieldList[5].equals("1")) foods.add("2% milk");
-        if (fieldList[6].equals("1")) foods.add("whole milk");
+        if (fieldList[3].equals("1")) foods.put("skim milk", 1);
+        if (fieldList[4].equals("1")) foods.put("1% milk", 1);
+        if (fieldList[5].equals("1")) foods.put("2% milk", 1);
+        if (fieldList[6].equals("1")) foods.put("whole milk", 1);
 
-        if (fieldList[15].equals("1")) foods.add("banana");
-        if (fieldList[16].equals("1")) foods.add("apple");
-        if (fieldList[17].equals("1")) foods.add("orange");
-        if (fieldList[18].equals("1")) foods.add("grape");
-        if (fieldList[19].equals("1")) foods.add("cantaloupe");
-        if (fieldList[20].equals("1")) foods.add("peach");
-        if (fieldList[21].equals("1")) foods.add("strawberry");
-        if (fieldList[22].equals("1")) foods.add("honey dew melon");
-        if (fieldList[23].equals("1")) foods.add("watermelon");
-        if (fieldList[24].equals("1")) foods.add("pear");
+        if (fieldList[15].equals("1")) foods.put("banana", 1);
+        if (fieldList[16].equals("1")) foods.put("apple", 1);
+        if (fieldList[17].equals("1")) foods.put("orange", 1);
+        if (fieldList[18].equals("1")) foods.put("grape", 1);
+        if (fieldList[19].equals("1")) foods.put("cantaloupe", 1);
+        if (fieldList[20].equals("1")) foods.put("peach", 1);
+        if (fieldList[21].equals("1")) foods.put("strawberry", 1);
+        if (fieldList[22].equals("1")) foods.put("honey dew melon", 1);
+        if (fieldList[23].equals("1")) foods.put("watermelon", 1);
+        if (fieldList[24].equals("1")) foods.put("pear", 1);
 
-        if (fieldList[86].equals("1")) foods.add("carrot");
-        if (fieldList[87].equals("1")) foods.add("tomato");
-        if (fieldList[88].equals("1")) foods.add("sweet potato");
-        if (fieldList[89].equals("1")) foods.add("broccoli");
-        if (fieldList[90].equals("1")) foods.add("lettuce");
-        if (fieldList[91].equals("1")) foods.add("corn");
-        if (fieldList[92].equals("1")) foods.add("celery");
-        if (fieldList[93].equals("1")) foods.add("cucumber");
-        if (fieldList[94].equals("1")) foods.add("cabbage");
-        if (fieldList[95].equals("1")) foods.add("cauliflower");
+        if (fieldList[86].equals("1")) foods.put("carrot", 1);
+        if (fieldList[87].equals("1")) foods.put("tomato", 1);
+        if (fieldList[88].equals("1")) foods.put("sweet potato", 1);
+        if (fieldList[89].equals("1")) foods.put("broccoli", 1);
+        if (fieldList[90].equals("1")) foods.put("lettuce", 1);
+        if (fieldList[91].equals("1")) foods.put("corn", 1);
+        if (fieldList[92].equals("1")) foods.put("celery", 1);
+        if (fieldList[93].equals("1")) foods.put("cucumber", 1);
+        if (fieldList[94].equals("1")) foods.put("cabbage", 1);
+        if (fieldList[95].equals("1")) foods.put("cauliflower", 1);
 
-        if (fieldList[155].equals("1")) foods.add("ground beef (95% lean)");
-        if (fieldList[156].equals("1")) foods.add("ground beef (90% lean)");
-        if (fieldList[157].equals("1")) foods.add("ground beef (85% lean)");
-        if (fieldList[158].equals("1")) foods.add("ground beef (80% lean)");
-        if (fieldList[158].equals("1")) foods.add("ground beef (75% lean, regular)");
+        if (fieldList[155].equals("1")) foods.put("ground beef (95% lean)", 1);
+        if (fieldList[156].equals("1")) foods.put("ground beef (90% lean)", 1);
+        if (fieldList[157].equals("1")) foods.put("ground beef (85% lean)", 1);
+        if (fieldList[158].equals("1")) foods.put("ground beef (80% lean)", 1);
+        if (fieldList[158].equals("1")) foods.put("ground beef (75% lean, regular)", 1);
 
-        if (fieldList[172].equals("1")) foods.add("hot dog");
-        if (fieldList[173].equals("1")) foods.add("hot dog");
-        if (fieldList[174].equals("1")) foods.add("low fat hot dog");
-        if (fieldList[175].equals("1")) foods.add("hot dog");
+        if (fieldList[172].equals("1")) foods.put("hot dog", 1);
+        if (fieldList[173].equals("1")) foods.put("hot dog", 1);
+        if (fieldList[174].equals("1")) foods.put("low fat hot dog", 1);
+        if (fieldList[175].equals("1")) foods.put("hot dog", 1);
 
-        if (fieldList[205].equals("1")) foods.add("frozen meal");
-        if (fieldList[206].equals("1")) foods.add("frozen meal");
-        if (fieldList[207].equals("1")) foods.add("frozen meal");
-        if (fieldList[208].equals("1")) foods.add("frozen meal");
+        if (fieldList[205].equals("1")) foods.put("frozen meal", 1);
+        if (fieldList[206].equals("1")) foods.put("frozen meal", 1);
+        if (fieldList[207].equals("1")) foods.put("frozen meal", 1);
+        if (fieldList[208].equals("1")) foods.put("frozen meal", 1);
 
-        if (fieldList[271].equals("1")) foods.add("bagel");
-        if (fieldList[272].equals("1")) foods.add("english muffin");
-        if (fieldList[273].equals("1")) foods.add("muffin");
-        if (fieldList[274].equals("1")) foods.add("muffin");
-        if (fieldList[275].equals("1")) foods.add("danish");
+        if (fieldList[271].equals("1")) foods.put("bagel", 1);
+        if (fieldList[272].equals("1")) foods.put("english muffin", 1);
+        if (fieldList[273].equals("1")) foods.put("muffin", 1);
+        if (fieldList[274].equals("1")) foods.put("muffin", 1);
+        if (fieldList[275].equals("1")) foods.put("danish", 1);
 
-        if (fieldList[303].equals("1")) foods.add("soft drink, diet");
-        if (fieldList[304].equals("1")) foods.add("soft drink, diet");
-        if (fieldList[305].equals("1")) foods.add("soft drink, regular");
-        if (fieldList[306].equals("1")) foods.add("soft drink, regular");
-        if (fieldList[308].equals("1")) foods.add("100% juice");
-        if (fieldList[309].equals("1")) foods.add("juice");
+        if (fieldList[303].equals("1")) foods.put("soft drink, diet", 1);
+        if (fieldList[304].equals("1")) foods.put("soft drink, diet", 1);
+        if (fieldList[305].equals("1")) foods.put("soft drink, regular", 1);
+        if (fieldList[306].equals("1")) foods.put("soft drink, regular", 1);
+        if (fieldList[308].equals("1")) foods.put("100% juice", 1);
+        if (fieldList[309].equals("1")) foods.put("juice", 1);
 
-        if (fieldList[335].equals("1")) foods.add("whole wheat bread");
-        if (fieldList[336].equals("1")) foods.add("white bread");
+        if (fieldList[335].equals("1")) foods.put("whole wheat bread", 1);
+        if (fieldList[336].equals("1")) foods.put("white bread", 1);
 
-        if (fieldList[347].equals("1")) foods.add("chips");
-        if (fieldList[348].equals("1")) foods.add("chips");
+        if (fieldList[347].equals("1")) foods.put("chips", 1);
+        if (fieldList[348].equals("1")) foods.put("chips", 1);
 
-        if (fieldList[359].equals("1")) foods.add("cereal");
-        if (fieldList[360].equals("1")) foods.add("cereal");
+        if (fieldList[359].equals("1")) foods.put("cereal", 1);
+        if (fieldList[360].equals("1")) foods.put("cereal", 1);
 
         String[] a = new String[0];
-        return foods.toArray(a);
+        return foods.keySet().toArray(a);
     }
 
     //helper function to parse a csv line that contains literals enclosed in quotes ("")
