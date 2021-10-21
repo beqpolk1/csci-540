@@ -1,0 +1,953 @@
+File Name,Variable Name,Brief Description,Variable Type,Variable Length,Values,Required ,Null Value
+Dataset One NEMS-C,ID_date,Date of interview,Date,255,month/day/year,Yes,No
+Dataset One NEMS-C,Q1,Store ID,Varchar,255,c001-c091,Yes,No
+Dataset One NEMS-C,Q2,Number of cash registers,Integer,255,1-6,No,Yes
+Dataset One NEMS-C,Q3,Sell gas,Integer,255,"1=yes, 2=no",No,Yes
+Dataset One NEMS-C,Q4,Sell prepared hot food,Integer,255,"1=yes, 2=no",No,Yes
+Dataset One NEMS-C,Q5_1,Available skim milk,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q5_2,Available 1% milk,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q5_3,Available 2% milk,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q5_4,Available whole milk,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q5_5,Available milk none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q6a,Price lowest fat milk 1/2 gallon,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q6b,Price lowest fat milk gallon,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q6c,Price whole milk 1/2 gallon,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q6d,Price whole milk gallon,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q7,Milk brand,Integer,255,"1=store, 2=other",No,Yes
+Dataset One NEMS-C,Q7a,Specify other milk brand,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q8,Shelf space milk,Integer,255,"1=less than 25%, 2=25% to 49%, 3=50% to 74%, 4=at least 75%",No,Yes
+Dataset One NEMS-C,Q9_1,Available fresh fruit banana,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q9_2,Available fresh fruit apple,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q9_3,Available fresh fruit orange,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q9_4,Available fresh fruit grape,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q9_5,Available fresh fruit cantaloupe,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q9_6,Available fresh fruit peach,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q9_7,Available fresh fruit strawberry,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q9_8,Available fresh fruit honey dew melon,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q9_9,Available fresh fruit watermelon,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q9_10,Available fresh fruit pear,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q9_11,Available fresh fruit other,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q9_12,Available fresh fruit none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q10a,Quality banana,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q10b,Quantity banana,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q11a,Unit banana,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q11b,Price banana,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q12,Comments banana,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q13a,Quality apple,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q13b,Quantity apple,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q14a,Unit apple,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q14b,Price apple,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q15,Comments apple,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q16,Type apple,Integer,255,"1=red delicious, 2=other",No,Yes
+Dataset One NEMS-C,Q16a,Specify other type apple,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q17a,Quality orange,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q17b,Quantity orange,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q18a,Unit orange,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q18b,Price orange,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q19,Comments orange,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q20,Type orange,Integer,255,"1=navel, 2=other",No,Yes
+Dataset One NEMS-C,Q20a,Specify other type orange,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q21a,Quality grape,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q21b,Quantity grape,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q22a,Unit grape,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q22b,Price grape,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q23,Comments grape,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q24,Type grape,Integer,255,"1=red seedless, 2=other",No,Yes
+Dataset One NEMS-C,Q24a,Specify other type grape,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q25a,Quality cantaloupe,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q25b,Quantity cantaloupe,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q26a,Unit cantaloupe,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q26b,Price cantaloupe,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q27,Comments cantaloupe,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q28a,Quality peach,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q28b,Quantity peach,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q29a,Unit peach,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q29b,Price peach,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q30,Comments peach,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q31a,Quality strawberry,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q31b,Quantity strawberry,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q32a,Unit strawberry,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q32b,Price strawberry,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q33,Comments strawberry,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q34a,Quality honey dew melon,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q34b,Quantity honey dew melon,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q35a,Unit honey dew melon,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q35b,Price honey dew melon,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q36,Comments honey dew melon,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q37a,Quality watermelon,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q37b,Quantity watermelon,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q38a,Unit watermelon,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q38b,Price watermelon,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q39,Comments watermelon,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q40,Type watermelon,Integer,255,"1=seedless, 2=other",No,Yes
+Dataset One NEMS-C,Q40a,Specify other type watermelon,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q41a,Quality pear,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q41b,Quantity pear,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q42a,Unit pear,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q42b,Price pear,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q43,Comments pear,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q44,Type pear,Integer,255,"1=Anjou, 2=other",No,Yes
+Dataset One NEMS-C,Q44a,Specify other type pear,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q44b,Specify other type fresh fruit,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q45_1,Available fresh vegetable carrot,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q45_2,Available fresh vegetable tomato,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q45_3,Available fresh vegetable sweet potato,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q45_4,Available fresh vegetable broccoli,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q45_5,Available fresh vegetable lettuce,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q45_6,Available fresh vegetable corn,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q45_7,Available fresh vegetable celery,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q45_8,Available fresh vegetable cucumber,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q45_9,Available fresh vegetable cabbage,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q45_10,Available fresh vegetable cauliflower,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q45_11,Available fresh vegetable other type vegetable,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q45_12,Available fresh vegetable none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q46a,Quality carrot,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q46b,Quantity carrot,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q47a,Unit carrot,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q47b,Price carrot,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q48,Comments carrot,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q49a,Quality tomato,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q49b,Quantity tomato,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q50a,Unit tomato,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q50b,Price tomato,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q51,Comments tomato,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q52,Type tomato,Integer,255,"1=beefsteak, 2=other",No,Yes
+Dataset One NEMS-C,Q52a,Specify other type tomato,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q53a,Quality sweet potato,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q53b,Quantity sweet potato,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q54a,Unit sweet potato,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q54b,Price sweet potato,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q55,Comments sweet potato,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q56a,Quality broccoli,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q56b,Quantity broccoli,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q57a,Unit broccoli,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q57b,Price broccoli,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q58,Comments broccoli,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q59a,Quality lettuce,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q59b,Quantity lettuce,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q60a,Unit lettuce,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q60b,Price lettuce,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q61,Comments lettuce,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q62,Type lettuce,Integer,255,"1=iceberg (head), 2=other",No,Yes
+Dataset One NEMS-C,Q62a,Specify other type lettuce,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q63a,Quality corn,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q63b,Quantity corn,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q64a,Unit corn,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q64b,Price corn,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q65,Comments corn,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q66a,Quality celery,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q66b,Quantity celery,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q67a,Unit celery,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q67b,Price celery,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q68,Comments celery,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q69a,Quality cucumber,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q69b,Quantity cucumber,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q70a,Unit cucumber,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q70b,Price cucumber,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q71,Comments cucumber,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q72,Type cucumber,Integer,255,"1=regular, 2=other",No,Yes
+Dataset One NEMS-C,Q72a,Specify other type cucumber,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q73a,Quality cabbage,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q73b,Quantity cabbage,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q74a,Unit cabbage,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q74b,Price cabbage,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q75,Comments cabbage,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q76,Type cabbage,Integer,255,"1=green (head), 2=other",No,Yes
+Dataset One NEMS-C,Q76a,Specify other type cabbage,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q77a,Quality cauliflower,Integer,255,"1=good, 2=bad",No,Yes
+Dataset One NEMS-C,Q77b,Quantity cauliflower,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q78a,Unit cauliflower,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset One NEMS-C,Q78b,Price cauliflower,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q79,Comments cauliflower,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q79a,Specify other fresh vegetables,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q80_1,Available frozen fruit strawberries without added sugar,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q80_2,Available frozen fruit other without added sugar,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q80_3,Available frozen vegetable spinach without sauce,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q80_4,Available frozen vegetable other without sauce,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q80_5,Available frozen fruit and vegetables none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q80a,Price/package frozen strawberries,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q80b,Oz/package frozen strawberries,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q81,Comments frozen strawberries,Text,255,Character,No,Yes
+Dataset One NEMS-C,Q81a,Frozen fruit number available,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q81b,Price/package other frozen fruit,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q81c,Oz/package other frozen fruit,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q82,Comments other frozen fruit,Text,255,Character,No,Yes
+Dataset One NEMS-C,Q82a,Frozen fruit number available,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q82b,Price/package frozen spinach,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q82c,Oz/package frozen spinach,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q83,Comments frozen spinach,Text,255,Character,No,Yes
+Dataset One NEMS-C,Q83a,Frozen vegetables number available,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q83b,Price/package other frozen vegetable,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q83c,Oz/package other frozen vegetable,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q84,Comments other frozen vegetable,Text,255,Character,No,Yes
+Dataset One NEMS-C,Q84a,Frozen vegetables number available,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q85_1,Available canned fruit pineapple in juice/water,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q85_2,Available canned fruit other in juice/water,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q85_3,Available canned vegetable green beans in water without sauce,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q85_4,Available canned vegetable other in water without sauce,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q85_5,Available canned fruit & vegetables none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q85a,Price/can pineapple,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q85b,Oz/can pineapple,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q86,Comments pineapple,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q86a,Canned fruit number available,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q86b,Price/can other canned fruit,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q86c,Oz/can other canned fruit,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q87,Comments other canned fruit,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q87a,Canned fruit number available,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q87b,Price/can canned green beans,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q87c,Oz/can canned green beans,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q88,Comments canned green beans,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q88a,Canned vegetables number available,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q88b,Canned vegetables low sodium number available,Integer,255,?0,No,Yes
+Dataset One NEMS-C,Q88c,Price/can other canned vegetable,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q88d,Oz/can other canned vegetable,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q89,Comments other canned vegetable,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q89a,Canned vegetables number available,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q89b,Canned vegetables low sodium number available,Integer,255,?0,No,Yes
+Dataset One NEMS-C,Q90_1,Available beef 4%-7% fat,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q90_2,Available beef 10% fat,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q90_3,Available beef 15% fat,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q90_4,Available beef 20%-30% fat,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q90_5,Available beef none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q90a,Price/LB beef 4%-7% fat,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q90b,% fat beef 4%-7% fat,Integer,255,4-7,No,Yes
+Dataset One NEMS-C,Q91,Comments beef 4%-7% fat,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q91a,Price/LB beef 10% fat,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q91b,% fat beef 10% fat,Integer,255,10,No,Yes
+Dataset One NEMS-C,Q92,Comments beef 10% fat,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q92a,Price/LB beef 15% fat,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q92b,% fat beef 15% fat,Integer,255,15,No,Yes
+Dataset One NEMS-C,Q93,Comments beef 15% fat,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q93a,Price/LB beef 20%-30% fat,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q93b,% fat beef 20%-30% fat,Integer,255,20-27,No,Yes
+Dataset One NEMS-C,Q94,Comments beef 20%-30% fat,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q95_1,Available hot dogs fat free,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q95_2,Available hot dogs low fat,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q95_3,Available hot dogs regular fat,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q95_4,Available hot dogs none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q96a,Brand fat free hot dogs,Integer,255,"1=Ball Park, 2=Oscar Meyer, 3=other",No,Yes
+Dataset One NEMS-C,Q96b,Price/package fat free hot dogs,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q96c,Oz/package fat free hot dogs,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q96d,Hot dogs/package fat free hot dogs,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q96e,Fat (g)/serving fat free hot dogs,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q96f,Kcal/serving fat free hot dogs,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q96g,Sodium/serving fat free hot dogs,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q97,Comments fat free hot dogs,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q98a,Brand low fat hot dog,Integer,255,"1=Ball Park, 2=Oscar Meyer, 3=other",No,Yes
+Dataset One NEMS-C,Q98b,Price/package low fat hot dog,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q98c,Oz/package low fat hot dog,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q98d,Hot dogs/package low fat hot dog,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q98e,Fat (g)/serving low fat hot dog,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q98f,Kcal/serving low fat hot dog,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q98g,Sodium/serving low fat hot dog,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q99,Comments low fat hot dog,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q100a,Brand regular fat hot dog,Integer,255,"1=Ball Park, 2=Oscar Meyer, 3=other",No,Yes
+Dataset One NEMS-C,Q100b,Price/package regular fat hot dog,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q100c,Oz/package regular fat hot dog,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q100d,Hot dogs/package regular fat hot dog,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q100e,Fat (g)/serving regular fat hot dog,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q100f,Kcal/serving regular fat hot dog,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q100g,Sodium/serving regular fat hot dog,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q101,Comments regular fat hot dog,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q102_1,Available frozen dinners reduced fat,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q102_2,Available frozen dinners regular ,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q102_3,Available frozen dinners none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q103,Shelf Space (reduced fat/regular) frozen dinners,Integer,255,"1=less than 25%, 2=25% to 49%, 3=50% to 74%, 4=at least 75%",No,Yes
+Dataset One NEMS-C,Q104a,Brand reduced fat lasagna,Integer,255,"1=Lean Cuisine, 2=Healthy Choice, 3=Smart Ones, 4=other",No,Yes
+Dataset One NEMS-C,Q104b,Price reduced fat lasagna,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q104c,Oz reduced fat lasagna,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q104d,Fat grams reduced fat lasagna,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q104e,Kcal reduced fat lasagna,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q105,Comments reduced fat lasagna,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q106a,Brand reduced fat roasted turkey breast,Integer,255,"1=Lean Cuisine, 2=Healthy Choice, 3=Smart Ones, 4=other",No,Yes
+Dataset One NEMS-C,Q106b,Price reduced fat roasted turkey breast,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q106c,Oz reduced fat roasted turkey breast,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q106d,Fat grams reduced fat roasted turkey breast,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q106e,Kcal reduced fat roasted turkey breast,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q107,Comments reduced fat roasted turkey breast,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q108a,Brand reduced fat meatloaf,Integer,255,"1=Lean Cuisine, 2=Healthy Choice, 3=Smart Ones, 4=other",No,Yes
+Dataset One NEMS-C,Q108b,Price reduced fat meatloaf,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q108c,Oz reduced fat meatloaf,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q108d,Fat grams reduced fat meatloaf,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q108e,Kcal reduced fat meatloaf,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q109,Comments reduced fat meatloaf,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q110a,Brand regular lasagna,Integer,255,"1=Stouffers, 2=Banquet, 3=Swanson, 4=other",No,Yes
+Dataset One NEMS-C,Q110b,Price regular lasagna,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q110c,Oz regular lasagna,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q110d,Fat grams regular lasagna,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q110e,Kcal regular lasagna,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q111,Comments regular lasagna,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q112a,Brand regular roasted turkey breast,Integer,255,"1=Stouffers, 2=Banquet, 3=Swanson, 4=other",No,Yes
+Dataset One NEMS-C,Q112b,Price regular roasted turkey breast,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q112c,Oz regular roasted turkey breast,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q112d,Fat grams regular roasted turkey breast,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q112e,Kcal regular roasted turkey breast,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q113,Comments regular fat roasted turkey breast,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q114a,Brand regular meatloaf,Integer,255,"1=Stouffers, 2=Banquet, 3=Swanson, 4=other",No,Yes
+Dataset One NEMS-C,Q114b,Price regular meatloaf,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q114c,Oz regular meatloaf,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q114d,Fat grams regular meatloaf,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q114e,Kcal regular meatloaf,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q115,Comments regular meatloaf,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q116_1,Available baked goods bagel,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q116_2,Available baked goods English muffin,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q116_3,Available baked goods low fat muffin,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q116_4,Available baked goods regular muffin,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q116_5,Available baked goods Danish,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q116_6,Available baked goods none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q116a,Price bagel,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q116b,Amt/pkg bagel,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q116c,Fat (g)/serv bagel,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q116d,Kcal/serv bagel,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q117,Comments bagel,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q117a,Price English muffin,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q117b,Amt/pkg English muffin,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q117c,Fat (g)/serv English muffin,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q117d,Kcal/serv English muffin,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q118,Comments English muffin,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q118a,Price low fat muffin,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q118b,Amt/pkg low fat muffin,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q118c,Fat (g)/serv low fat muffin,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q118d,Kcal/serv low fat muffin,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q119a,Number of types low fat muffin,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q120,Comments low fat muffin,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q120a,Price regular muffin,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q120b,Amt/pkg regular muffin,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q120c,Fat (g)/serv regular muffin,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q120d,Kcal/serv regular muffin,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q121,Comments regular muffin,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q121a,Price Danish,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q121b,Amt/pkg Danish,Integer,255,?1,No,Yes
+Dataset One NEMS-C,Q121c,Fat (g)/serv Danish,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q121d,Kcal/serv Danish,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q122,Comments Danish,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q123_1,Available beverages Diet Coke,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q123_2,Available beverages other diet soda,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q123_3,Available beverages Coke,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q123_4,Available beverages other regular soda,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q123_5,Available beverages water unflavored,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q123_6,Available beverages juice 100%,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q123_7,Available beverages juice drink,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q123_8,Available beverages none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q123a,12 pack (12 oz) price Diet Coke,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q123b,Other pack size price Diet Coke,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q124,Comments Diet Coke,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q124a,12 pack (12 oz) price other diet soda,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q124b,Other pack size price other diet soda,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q125,Comments other diet soda,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q125a,12 pack (12 oz) price Coke,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q125b,Other pack size price Coke,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q126,Comments Coke,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q126a,12 pack (12 oz) price other nondiet soda,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q126b,Other pack size price other nondiet soda,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q127,Comments other nondiet soda,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q128a,Brand water,Integer,255,"1=Dasani, 2=Aquafina, 3=Ozark, 4=other",No,Yes
+Dataset One NEMS-C,Q128b,24 pack (16.9 oz) price water,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q128c,Other pack size price water,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q129,Comments water,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q130a,Brand juice 100%,Integer,255,"1=Minute Maid, 2=Tropicana, 3=other",No,Yes
+Dataset One NEMS-C,Q130b,Price juice 100%,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q130c,Oz juice 100%,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q131,Comments juice 100%,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q132a,Brand juice drink,Integer,255,"1=Minute Maid, 2=Tropicana, 3=other",No,Yes
+Dataset One NEMS-C,Q132b,Price juice drink,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q132c,Oz juice drink,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q133,Comments juice drink,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q134_1,Available bread whole wheat,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q134_2,Available bread white,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q134_3,Available bread none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q135a,Brand whole wheat bread,Integer,255,"1=Nature's Own, 2=Sarah Lee, 3=other",No,Yes
+Dataset One NEMS-C,Q135b,Price whole wheat bread,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q135c,Oz whole wheat bread,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q136a,# of types whole wheat bread,Integer,255,"1=1, 2=2, 3=3, 4=4, 5=5 or more",No,Yes
+Dataset One NEMS-C,Q137,Comments whole wheat bread,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q138a,Brand white bread,Integer,255,"1=Nature's Own, 2=Sarah Lee, 3=other",No,Yes
+Dataset One NEMS-C,Q138b,Price white bread,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q138c,Oz white bread,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q139,Comments white bread,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q140_1,Available chips low fat,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q140_2,Available chips regular,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q140_3,Available chips none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q141a,Brand low fat chips,Integer,255,"1=Lays, 2=Ruffles, 3=other",No,Yes
+Dataset One NEMS-C,Q141b,Price low fat chips,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q141c,Oz  low fat chips,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q142a,# of types low fat chips,Integer,255,"1=1, 2=2, 3=3, 4=4, 5=5 or more",No,Yes
+Dataset One NEMS-C,Q143,Comments low fat chips,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q144a,Brand,Integer,255,"1=Lays, 2=Ruffles, 3=other",No,Yes
+Dataset One NEMS-C,Q144b,Price,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q144c,Oz,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q145,Comments,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q146_1,Available 100 calorie snacks cookies or bars,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q146_2,"Available 100 calorie snacks chips, pretzels or crackers",Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q146_3,Available 100 calorie snacks nuts,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q146_4,Available 100 calorie snacks fruit,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q146_5,Available 100 calorie snacks none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q147,# of types 100 calorie snacks,Integer,255,"1=1, 2=2, 3=3, 4=4, 5=5, 6=6 or more",No,Yes
+Dataset One NEMS-C,Q148_1,Available cereal lower sugar,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q148_2,Available cereal regular,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q148_3,Available cereal none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset One NEMS-C,Q149a,Type (plain) lower sugar cereal,Integer,255,"1=Cheerios, 2=Corn Flakes, 3=other",No,Yes
+Dataset One NEMS-C,Q149b,Price lower sugar cereal,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q149c,Oz lower sugar cereal,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q150a,# of types lower sugar cereal,Integer,255,"1=1, 2=2, 3=3 or more",No,Yes
+Dataset One NEMS-C,Q151,Comments lower sugar cereal,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,Q152a,Type (flavored) regular cereal,Integer,255,"1=Cheerios, 2=Frosted Flakes, 3=other",No,Yes
+Dataset One NEMS-C,Q152b,Price regular cereal,Numeric,255,Currency ($),No,Yes
+Dataset One NEMS-C,Q152c,Oz regular cereal,Numeric,255,?1,No,Yes
+Dataset One NEMS-C,Q153,Comments regular cereal,Text,255,unlimited,No,Yes
+Dataset One NEMS-C,milk_score,Milk score,Integer,255,-1-5,No,Yes
+Dataset One NEMS-C,fv_score,Fresh fruit and vegetable score,Integer,255,0-12,No,Yes
+Dataset One NEMS-C,frozcanfv_score,Frozen and canned fruit and vegetable score,Integer,255,0-4,No,Yes
+Dataset One NEMS-C,meat_score,Meat score,Integer,255,-2-8,No,Yes
+Dataset One NEMS-C,frozdin_score,Frozen dinner score,Integer,255,-1-4,No,Yes
+Dataset One NEMS-C,bgood_score,Baked goods score,Integer,255,-1-4,No,Yes
+Dataset One NEMS-C,bev_score,Beverage score,Integer,255,-1-6,No,Yes
+Dataset One NEMS-C,bread_score,Whole wheat bread score,Integer,255,-1-5,No,Yes
+Dataset One NEMS-C,chip_score,Baked chips score,Integer,255,-1-6,No,Yes
+Dataset One NEMS-C,cereal_score,Cereal score,Integer,255,-1-5,No,Yes
+Dataset One NEMS-C,avail_score,Availability score,Integer,255,0-31,No,Yes
+Dataset One NEMS-C,price_score,Price score,Integer,255,-9-20,No,Yes
+Dataset One NEMS-C,qual_score,Quality score,Integer,255,0-6,No,Yes
+Dataset One NEMS-C,total_score,"Total summary score (sum of all individual food scores or sum of availability, price and quality scores)",Integer,255,-9-57,No,Yes
+Dataset One NEMS-C,subtype,Subclassification,Varchar,255,"CS=corner store, DS=dollar store, GS=gas station, PH=pharmacy",No,Yes
+,,,,,,,
+Dataset Two NEMS-G,ID_date,Date of interview,Date,255,month/day/year,Yes,No
+Dataset Two NEMS-G,Q1,Store ID,Varchar,255,g001-g014,Yes,No
+Dataset Two NEMS-G,Q2,Number of cash registers,Integer,255,4-36,No,Yes
+Dataset Two NEMS-G,Q3_1,Available skim milk,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q3_2,Available 1% milk,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q3_3,Available 2% milk,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q3_4,Available whole milk,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q3_5,Available milk none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q4a,Price lowest fat milk 1/2 gallon,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q4b,Price lowest fat milk gallon,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q4c,Price whole milk 1/2 gallon,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q4d,Price whole milk gallon,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q5,Milk brand,Integer,255,"1=store, 2=other",No,Yes
+Dataset Two NEMS-G,Q5a,Specify other milk brand,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q6,Shelf space milk,Integer,255,"1=less than 25%, 2=25% to 49%, 3=50% to 74%, 4=at least 75%",No,Yes
+Dataset Two NEMS-G,Q7_1,Available fresh fruit banana,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q7_2,Available fresh fruit apple,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q7_3,Available fresh fruit orange,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q7_4,Available fresh fruit grape,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q7_5,Available fresh fruit cantaloupe,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q7_6,Available fresh fruit peach,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q7_7,Available fresh fruit strawberry,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q7_8,Available fresh fruit honey dew melon,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q7_9,Available fresh fruit watermelon,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q7_10,Available fresh fruit pear,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q7_11,Available fresh fruit none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q8a,Quality banana,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q8b,Quantity banana,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q9a,Unit banana,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q9b,Price banana,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q10,Comments banana,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q11a,Quality apple,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q11b,Quantity apple,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q12a,Unit apple,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q12b,Price apple,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q13,Comments apple,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q14,Type apple,Integer,255,"1=red delicious, 2=other",No,Yes
+Dataset Two NEMS-G,Q14a,Specify other type apple,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q15a,Quality orange,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q15b,Quantity orange,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q16a,Unit orange,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q16b,Price orange,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q17,Comments orange,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q18,Type orange,Integer,255,"1=navel, 2=other",No,Yes
+Dataset Two NEMS-G,Q18a,Specify other type orange,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q19a,Quality grape,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q19b,Quantity grape,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q20a,Unit grape,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q20b,Price grape,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q21,Comments grape,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q22,Type grape,Integer,255,"1=red seedless, 2=other",No,Yes
+Dataset Two NEMS-G,Q22a,Specify other type grape,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q23a,Quality cantaloupe,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q23b,Quantity cantaloupe,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q24a,Unit cantaloupe,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q24b,Price cantaloupe,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q25,Comments cantaloupe,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q26a,Quality peach,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q26b,Quantity peach,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q27a,Unit peach,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q27b,Price peach,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q28,Comments peach,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q29a,Quality strawberry,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q29b,Quantity strawberry,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q30a,Unit strawberry,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q30b,Price strawberry,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q31,Comments strawberry,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q32a,Quality honey dew melon,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q32b,Quantity honey dew melon,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q33a,Unit honey dew melon,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q33b,Price honey dew melon,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q34,Comments honey dew melon,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q35a,Quality watermelon,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q35b,Quantity watermelon,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q36a,Unit watermelon,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q36b,Price watermelon,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q37,Comments watermelon,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q38,Type watermelon,Integer,255,"1=seedless, 2=other",No,Yes
+Dataset Two NEMS-G,Q38a,Specify other type watermelon,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q39a,Quality pear,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q39b,Quantity pear,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q40a,Unit pear,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q40b,Price pear,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q41,Comments pear,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q42,Type pear,Integer,255,"1=Anjou, 2=other",No,Yes
+Dataset Two NEMS-G,Q42a,Specify other type pear,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q43_1,Available fresh vegetable carrot,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q43_2,Available fresh vegetable tomato,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q43_3,Available fresh vegetable sweet potato,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q43_4,Available fresh vegetable broccoli,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q43_5,Available fresh vegetable lettuce,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q43_6,Available fresh vegetable corn,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q43_7,Available fresh vegetable celery,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q43_8,Available fresh vegetable cucumber,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q43_9,Available fresh vegetable cabbage,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q43_10,Available fresh vegetable cauliflower,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q43_11,Available fresh vegetable none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q44a,Quality carrot,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q44b,Quantity carrot,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q45a,Unit carrot,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q45b,Price carrot,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q46,Comments carrot,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q47a,Quality tomato,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q47b,Quantity tomato,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q48a,Unit tomato,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q48b,Price tomato,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q49,Comments tomato,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q50,Type tomato,Integer,255,"1=beefsteak, 2=other",No,Yes
+Dataset Two NEMS-G,Q50a,Specify other type tomato,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q51a,Quality sweet potato,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q51b,Quantity  sweet potato,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q52a,Unit sweet potato,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q52b,Price sweet potato,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q53,Comments sweet potato,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q54a,Quality broccoli,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q54b,Quantity broccoli,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q55a,Unit broccoli,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q55b,Price broccoli,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q56,Comments broccoli,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q57a,Quality lettuce,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q57b,Quantity lettuce,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q58a,Unit lettuce,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q58b,Price lettuce,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q59,Comments lettuce,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q60,Type lettuce,Integer,255,"1=iceberg (head), 2=other",No,Yes
+Dataset Two NEMS-G,Q60a,Specify other type lettuce,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q61a,Quality corn,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q61b,Quantity corn,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q62a,Unit corn,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q62b,Price corn,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q63,Comments corn,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q64a,Quality celery,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q64b,Quantity celery,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q65a,Unit celery,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q65b,Price celery,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q66,Comments celery,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q67a,Quality cucumber,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q67b,Quantity cucumber,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q68a,Unit cucumber,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q68b,Price cucumber,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q69,Comments cucumber,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q70,Type cucumber,Integer,255,"1=regular, 2=other",No,Yes
+Dataset Two NEMS-G,Q70a,Specify other type cucumber,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q71a,Quality cabbage,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q71b,Quantity cabbage,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q72a,Unit cabbage,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q72b,Price cabbage,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q73,Comments cabbage,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q74,Type cabbage,Integer,255,"1=green (head), 2=other",No,Yes
+Dataset Two NEMS-G,Q74a,Specify other type cabbage,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q75a,Quality cauliflower,Integer,255,"1=good, 2=bad",No,Yes
+Dataset Two NEMS-G,Q75b,Quantity cauliflower,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q76a,Unit cauliflower,Integer,255,"1=piece, 2=pound",No,Yes
+Dataset Two NEMS-G,Q76b,Price cauliflower,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q77,Comments cauliflower,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q78_1,Available beef 4%-7% fat,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q78_2,Available beef 10% fat,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q78_3,Available beef 15% fat,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q78_4,Available beef 20%-30% fat,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q78_5,Available beef none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q78a,Price/LB beef 4%-7% fat,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q78b,% fat beef 4%-7% fat,Integer,255,Numeric,No,Yes
+Dataset Two NEMS-G,Q79,Comments beef 4%-7% fat,Integer,255,4-7,No,Yes
+Dataset Two NEMS-G,Q79a,Price/LB beef 10% fat,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q79b,% fat beef 10% fat,Integer,255,10,No,Yes
+Dataset Two NEMS-G,Q80,Comments beef 10% fat,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q80a,Price/LB beef 15% fat,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q80b,% fat beef 15% fat,Integer,255,15,No,Yes
+Dataset Two NEMS-G,Q81,Comments beef 15% fat,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q81a,Price/LB beef 20%-30% fat,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q81b,% fat beef 20%-30% fat,Integer,255,20-27,No,Yes
+Dataset Two NEMS-G,Q82,Comments beef 20%-30% fat,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q83_1,Available hot dogs Ball Park fat free,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q83_2,Available hot dogs Ball Park regular,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q83_3,Available hot dogs other brand low fat,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q83_4,Available hot dogs other brand regular,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q83_5,Available hot dogs none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q83a,Price/package Ball Park fat free hot dogs,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q83b,Oz/package Ball Park fat free hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q83c,Hot dogs/package Ball Park fat free hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q83d,Fat (g)/serving Ball Park fat free hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q83e,Kcal/serving Ball Park fat free hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q83f,Sodium/serving Ball Park fat free hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q84,Comments Ball Park fat free hot dogs,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q84a,Price/package Ball Park regular hot dogs,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q84b,Oz/package Ball Park regular hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q84c,Hot dogs/package Ball Park regular hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q84d,Fat (g)/serving Ball Park regular hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q84e,Kcal/serving Ball Park regular hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q84f,Sodium/serving Ball Park regular hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q85,Comments Ball Park regular hot dogs,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q85a,Price/package other low fat hot dogs,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q85b,Oz/package other low fat hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q85c,Hot dogs/package other low fat hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q85d,Fat (g)/serving other low fat hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q85e,Kcal/serving other low fat hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q85f,Sodium/serving other low fat hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q86,Comments other low fat hot dogs,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q86a,Price/package other regular hot dogs,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q86b,Oz/package other regular hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q86c,Hot dogs/package other regular hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q86d,Fat (g)/serving other regular hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q86e,Kcal/serving other regular hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q86f,Sodium/serving other regular hot dogs,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q87,Comments other regular hot dogs,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q88_1,Available frozen dinners Lean Cuisine,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q88_2,Available frozen dinners Stouffers,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q88_3,Available frozen dinners other brand reduced fat,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q88_4,Available frozen dinners other brand regular,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q88_5,Available frozen dinners none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q89,Shelf Space (reduced fat/regular) frozen dinners,Integer,255,"1=less than 25%, 2=25% to 49%, 3=50% to 74%, 4=at least 75%",No,Yes
+Dataset Two NEMS-G,Q89a,Price Lean Cuisine lasagna,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q89b,Oz Lean Cuisine lasagna,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q89c,Fat grams Lean Cuisine lasagna,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q89d,Kcal Lean Cuisine lasagna,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q90,Comments Lean Cuisine lasagna,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q90a,Price Lean Cuisine roasted turkey breast,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q90b,Oz Lean Cuisine roasted turkey breast,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q90c,Fat grams Lean Cuisine roasted turkey breast,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q90d,Kcal Lean Cuisine roasted turkey breast,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q91,Comments Lean Cuisine roasted turkey breast,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q91a,Price Lean Cuisine meatloaf,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q91b,Oz Lean Cuisine meatloaf,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q91c,Fat grams Lean Cuisine meatloaf,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q91d,Kcal Lean Cuisine meatloaf,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q92,Comments Lean Cuisine meatloaf,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q92a,Price Stouffers lasagna,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q92b,Oz Stouffers lasagna,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q92c,Fat grams Stouffers lasagna,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q92d,Kcal Stouffers lasagna,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q93,Comments Stouffers lasagna,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q93a,Price Stouffers roasted turkey breast,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q93b,Oz Stouffers roasted turkey breast,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q93c,Fat grams Stouffers roasted turkey breast,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q93d,Kcal Stouffers roasted turkey breast,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q94,Comments Stouffers roasted turkey breast,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q94a,Price Stouffers meatloaf,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q94b,Oz Stouffers meatloaf,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q94c,Fat grams Stouffers meatloaf,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q94d,Kcal Stouffers meatloaf,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q95,Comments Stouffers meatloaf,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q95a,Price other reduced fat lasagna,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q95b,Oz other reduced fat lasagna,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q95c,Fat grams other reduced fat lasagna,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q95d,Kcal other reduced fat lasagna,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q96,Comments other reduced fat lasagna,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q96a,Price other reduced fat roasted turkey breast,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q96b,Oz other reduced fat roasted turkey breast,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q96c,Fat grams other reduced fat roasted turkey breast,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q96d,Kcal other reduced fat roasted turkey breast,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q97,Comments other reduced fat roasted turkey breast,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q97a,Price other reduced fat meatloaf,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q97b,Oz other reduced fat meatloaf,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q97c,Fat grams other reduced fat meatloaf,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q97d,Kcal other reduced fat meatloaf,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q98,Comments other reduced fat meatloaf,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q98a,Price other regular lasagna,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q98b,Oz regular lasagna,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q98c,Fat grams regular lasagna,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q98d,Kcal regular lasagna,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q99,Comments regular lasagna,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q99a,Price other regular roasted turkey breast,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q99b,Oz other regular roasted turkey breast,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q99c,Fat grams other regular roasted turkey breast,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q99d,Kcal other regular roasted turkey breast,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q100,Comments other regular roasted turkey breast,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q100a,Price other regular meatloaf,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q100b,Oz other regular meatloaf,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q100c,Fat grams other regular meatloaf,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q100d,Kcal other regular meatloaf,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q101,Comments other regular meatloaf,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q10_1,Available baked goods bagel,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q102_2,Available baked goods English muffin,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q102_3,Available baked goods low fat muffin,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q102_4,Available baked goods regular muffin,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q102_5,Available baked goods Danish,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q102_6,Available baked goods none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q102a,Price bagel,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q102b,Amt/pkg bagel,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q102c,Fat (g)/serv bagel,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q102d,Kcal/serv bagel,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q103,Comments bagel,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q103a,Price English muffin,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q103b,Amt/pkg English muffin,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q103c,Fat (g)/serv English muffin,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q103d,Kcal/serv English muffin,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q104,Comments English muffin,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q104a,Price low fat muffin,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q104b,Amt/pkg low fat muffin,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q104c,Fat (g)/serv low fat muffin,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q104d,Kcal/serv low fat muffin,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q105a,Number of types low fat muffin,Integer,255,"1=1, 2=2, 3=3 or more",No,Yes
+Dataset Two NEMS-G,Q106,Comments low fat muffin,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q106a,Price regular muffin,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q106b,Amt/pkg regular muffin,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q106c,Fat (g)/serv regular muffin,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q106d,Kcal/serv regular muffin,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q107,Comments regular muffin,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q107a,Price Danish,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q107b,Amt/pkg Danish,Integer,255,?1,No,Yes
+Dataset Two NEMS-G,Q107c,Fat (g)/serv Danish,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q107d,Kcal/serv Danish,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q108,Comments Danish,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q109_1,Available beverages Diet Coke,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q109_2,Available beverages other diet soda,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q109_3,Available beverages Coke,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q109_4,Available beverages other regular soda,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q109_5,Available beverages water unflavored,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q109_6,Available beverages juice 100%,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q109_7,Available beverages juice drink,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q109_8,Available beverages none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q109a,12 pack (12 oz) price Diet Coke,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q109b,Other pack size price Diet Coke,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q110,Comments Diet Coke,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q110a,12 pack (12 oz) price other diet soda,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q110b,Other pack size price other diet soda,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q111,Comments other diet soda,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q111a,12 pack (12 oz) price Coke,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q111b,Other pack size price Coke,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q112,Comments Coke,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q112a,12 pack (12 oz) price other nondiet soda,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q112b,Other pack size price other nondiet soda,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q113,Comments other nondiet soda,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q114a,Brand water,Integer,255,"1=Dasani, 2=Aquafina, 3=Ozark, 4=other",No,Yes
+Dataset Two NEMS-G,Q114b,24 pack (16.9 oz) price water,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q114c,Other pack size price water,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q115,Comments water,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q116a,Brand juice 100%,Integer,255,"1=Minute Maid, 2=Tropicana, 3=other",No,Yes
+Dataset Two NEMS-G,Q116b,Price juice 100%,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q116c,Oz juice 100%,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q117,Comments juice 100%,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q118a,Brand juice drink,Integer,255,"1=Minute Maid, 2=Tropicana, 3=other",No,Yes
+Dataset Two NEMS-G,Q118b,Price juice drink,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q118c,Oz juice drink,Numeric,255,?1,No,Yes
+Dataset Two NEMS-G,Q119,Comments juice drink,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q120:1,Available bread whole wheat,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q120:2,Available bread white,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q120:3,Available bread none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q121a,Brand whole wheat bread,Integer,255,"1=Nature's Own, 2=Sarah Lee, 3=other",No,Yes
+Dataset Two NEMS-G,Q122a,Oz whole wheat bread,Integer,255,"1=20, 2=16, 3=other",No,Yes
+Dataset Two NEMS-G,Q122b,Price whole wheat bread,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q123a,# of types whole wheat bread,Integer,255,"1=1, 2=2, 3=3, 4=4, 5=5 or more",No,Yes
+Dataset Two NEMS-G,Q124,Comments whole wheat bread,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q125a,Brand white bread,Integer,255,"1=Nature's Own, 2=Sarah Lee, 3=other",No,Yes
+Dataset Two NEMS-G,Q126a,Oz white bread,Integer,255,"1=20, 2=16, 3=other",No,Yes
+Dataset Two NEMS-G,Q126b,Price white bread,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q127,Comments white bread,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q128_1,Available chips low fat,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q128_2,Available chips regular,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q128_3,Available chips none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q129a,Brand low fat chips,Integer,255,"1=Lays, 2=Ruffles, 3=other",No,Yes
+Dataset Two NEMS-G,Q130a,Oz low fat chips,Integer,255,"1=6.25, 2=13.5, 3=other",No,Yes
+Dataset Two NEMS-G,Q130b,Price low fat chips,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q131a,# of types low fat chips,Integer,255,"1=1, 2=2, 3=3, 4=4, 5=5 or more",No,Yes
+Dataset Two NEMS-G,Q132,Comments low fat chips,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q133a,Brand regular chips,Integer,255,"1=Lays, 2=Ruffles, 3=other",No,Yes
+Dataset Two NEMS-G,Q134a,Oz regular chips,Integer,255,"1=7.75, 2=9, 3=other",No,Yes
+Dataset Two NEMS-G,Q134b,Price regular chips,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q135,Comments regular chips,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q136_1,Available cereal lower sugar,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q136_2,Available cereal regular,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q136_3,Available cereal none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Two NEMS-G,Q137a,Type (plain) lower sugar cereal,Integer,255,"1=Cheerios, 2=Corn Flakes, 3=other",No,Yes
+Dataset Two NEMS-G,Q138a,Oz lower sugar cereal,Integer,255,"1=12, 2=21, 3=other",No,Yes
+Dataset Two NEMS-G,Q138b,Price lower sugar cereal,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q139a,# of types lower sugar cereal,Integer,255,"1=1, 2=2, 3=3 or more",No,Yes
+Dataset Two NEMS-G,Q140,Comments lower sugar cereal,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,Q141a,Type (flavored) regular cereal,Integer,255,"1=Cheerios, 2=Frosted Flakes, 3=other",No,Yes
+Dataset Two NEMS-G,Q142a,Oz regular cereal,Integer,255,"1=12, 2=21, 3=other",No,Yes
+Dataset Two NEMS-G,Q142b,Price regular cereal,Numeric,255,Currency ($),No,Yes
+Dataset Two NEMS-G,Q143,Comments regular cereal,Text,255,unlimited,No,Yes
+Dataset Two NEMS-G,milk_score,Milk score,Integer,255,-1-5,No,Yes
+Dataset Two NEMS-G,fv_score,Fresh fruit and vegetable score,Integer,255,0-12,No,Yes
+Dataset Two NEMS-G,meat_score,Meat score,Integer,255,-2-10,No,Yes
+Dataset Two NEMS-G,frozdin_score,Frozen dinner score,Integer,255,-1-5,No,Yes
+Dataset Two NEMS-G,bgood_score,Baked goods score,Integer,255,-1-4,No,Yes
+Dataset Two NEMS-G,bev_score,Beverage score,Integer,255,-2-6,No,Yes
+Dataset Two NEMS-G,bread_score,Whole wheat bread score,Integer,255,-1-5,No,Yes
+Dataset Two NEMS-G,chip_score,Baked chips score,Integer,255,-1-5,No,Yes
+Dataset Two NEMS-G,cereal_score,Cereal score,Integer,255,-1-5,No,Yes
+Dataset Two NEMS-G,avail_score,Availability score,Integer,255,0-31,No,Yes
+Dataset Two NEMS-G,price_score,Price score,Integer,255,-10-20,No,Yes
+Dataset Two NEMS-G,qual_score,Quality score,Integer,255,0-6,No,Yes
+Dataset Two NEMS-G,total_score,"Total summary score (sum of all individual food scores or sum of availablity, price and quality scores)",Integer,255,-10-57,No,Yes
+,,,,,,,
+Dataset Three NEMS-R,ID_date,Date of interview,Date,255,month/day/year,Yes,No
+Dataset Three NEMS-R,Q1,Restaurant ID,Varchar,255,r001-r096,Yes,No
+Dataset Three NEMS-R,Q2_1,Data sources Internet,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q2_2,Data sources site visit,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q2_3,Data sources take-away menu,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q2_4,Data sources interview,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q3_1,Internet features menu,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q3_2,Internet features nutrition information,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q3_3,Internet features healthier items identified,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q3_4,Internet features other,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q3_5,Internet features none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q3a,Comments,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q3b,Web site,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q4_1,Site visit features take-away menu,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q4_2,Site visit features nutrition information posted,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q4_3,Site visit features other,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q4_4,Site visit features none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q4a,Comments for site,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q5_1,Take-away menu features nutrition information,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q5_2,Take-away menu features healthier items identified,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q5_3,Take-away menu features other,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q5_4,Take-away menu features none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q5a,Comments for take-away menu,Text,255,Character,No,Yes
+Dataset Three NEMS-R,Q6_1,Interview features menu options,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q6_2,Interview features price,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q6_3,Interview features other,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q6_4,Interview features none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q6a,Comments,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q7,Open 24 Hours,Integer,255,"1=yes, 2=no",No,Yes
+Dataset Three NEMS-R,Q8a_1,Sunday closed,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8a_2,Sunday breakfast hours,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8a_3,Sunday lunch hours,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8a_4,Sunday dinner hours,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8b_1,Monday closed,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8b_2,Monday breakfast hours,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8b_3,Monday lunch hours,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8b_4,Monday dinner hours,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8c_1,Thursday closed,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8c_2,Thursday breakfast hours,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8c_3,Thursday lunch hours,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8c_4,Thursday dinner hours,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8d_1,Friday closed,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8d_2,Friday breakfast hours,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8d_3,Friday lunch hours,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8d_4,Friday dinner hours,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8e_1,Saturday closed,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8e_2,Saturday breakfast hours,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8e_3,Saturday lunch hours,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q8e_4,Saturday dinner hours,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q9a,Closing time Sunday,Time military,255,hour:minutes,No,Yes
+Dataset Three NEMS-R,Q9b,Closing time Monday,Time military,255,hour:minutes,No,Yes
+Dataset Three NEMS-R,Q9c,Closing time Thursday,Time military,255,hour:minutes,No,Yes
+Dataset Three NEMS-R,Q9d,Closing time Friday,Time military,255,hour:minutes,No,Yes
+Dataset Three NEMS-R,Q9e,Closing time Saturday,Time military,255,hour:minutes,No,Yes
+Dataset Three NEMS-R,Q10_1,Access drive-thru window,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q10_2,Access onsite parking,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q10_3,Access neither,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q10a,Comments for access,Integer,255,Character,No,Yes
+Dataset Three NEMS-R,Q11,Size type,Integer,255,"1=seating capacity, 2=tables",No,Yes
+Dataset Three NEMS-R,Q12a,Number for seating capacity,Integer,255,0-85,No,Yes
+Dataset Three NEMS-R,Q12b,Number of tables,Integer,255,0-58,No,Yes
+Dataset Three NEMS-R,Q12c,Comments for size,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q13_1,Displays (signs or table tents) nutrition information,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q13_2,Displays (signs or table tents) healthy menu options highlighted,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q13_3,Displays (signs or table tents) healthy eating encouraged,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q13_4,Displays (signs or table tents) unhealthy eating encouraged,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q13_5,Displays (signs or table tents) overeating encouraged,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q13_6,Displays (signs or table tents) other,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q13_7,Displays (signs or table tents) none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q14a,Comments for nutrition information,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q14b,Comments for healthy menu options highlighted,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q14c,Comments for healthy eating encouraged,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q14d,Comments for unhealthy eating encouraged,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q14e,Comments for overeating encouraged,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q14f,Comments for other,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q15_1,Menu items salad bar,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q15_2,Menu items baked chips,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q15_3,Menu items whole wheat/whole grain bread,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q15_4,Menu items 100% fruit juice,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q15_5,Menu items milk (2% or lower),Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q15_6,Menu items diet soda,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q15_7,Menu items bottled water,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q15_8,Menu items other low calorie beverage,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q15_9,Menu items none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q15a,Comments for menu items,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q16a,Main dish number of total entrées,Integer,255,1-152,No,Yes
+Dataset Three NEMS-R,Q16b,Main dish number of healthier entrees,Integer,255,0-34,No,Yes
+Dataset Three NEMS-R,Q16c,Comments for main dish,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q17a,Main salad number of total entrées,Integer,255,0-45,No,Yes
+Dataset Three NEMS-R,Q17b,Main salad number of healthier entrées,Integer,255,0-12,No,Yes
+Dataset Three NEMS-R,Q17c,Comments for main salads,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q18a,Healthy fruits (no added sugar) total number of sides,Integer,255,0-4,No,Yes
+Dataset Three NEMS-R,Q18b,Healthy vegetables (non-fried and no sauce) total number of sides,Integer,255,0-11,No,Yes
+Dataset Three NEMS-R,Q19a,Comments for healthy fruits,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q19b,Comments for healthy vegetables,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q20_1,Menu facilitators and supports nutrition information,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q20_2,Menu facilitators and supports healthy entrées identified,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q20_3,Menu facilitators and supports reduced portion sizes offered,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q20_4,Menu facilitators and supports encourage healthy requests notations,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q20_5,Menu facilitators and supports children's menu,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q20_6,Menu facilitators and supports other,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q20_7,Menu facilitators and supports none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q20a,Comments for menu facilitators and supports,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q21_1,Menu barriers large portion sizes encouraged,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q21_2,Menu barriers discourage special requests notations,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q21_3,Menu barriers all-u-can-eat ,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q21_4,Menu barriers charge for shared entrée ,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q21_5,Menu barriers other,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q21_6,Menu barriers none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q21a,Comments for menu barriers,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q22a,Price sum of individual items compared to combo meal,Integer,255,"1=more, 2=same, 3= less, 4=NA",No,Yes
+Dataset Three NEMS-R,Q22b,Price healthier entrees compared to regular entrees,Integer,255,"1=more, 2=same, 3= less, 4=NA",No,Yes
+Dataset Three NEMS-R,Q22c,Price smaller portion compared to regular portion,Integer,255,"1=more, 2=same, 3= less, 4=NA",No,Yes
+Dataset Three NEMS-R,Q22d,Price other,Integer,255,"1=more, 2=same, 3= less, 4=NA",No,Yes
+Dataset Three NEMS-R,Q22e,Comments for price,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q23_1,Child menu age limit,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q23_2,Child menu healthier entrées,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q23_3,Child menu healthier side items,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q23_4,Child menu entrées with assigned healthier side,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q23_5,Child menu substitute healthier side for assigned side,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q23_6,Child menu unhealthy dessert automatically included,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q23_7,Child menu healthier dessert,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q23_8,Child menu 100% fruit juice,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q23_9,Child menu milk white and non-flavored,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q23_10,Child menu free refill on sugar-sweetened beverages,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q23_11,Child menu nutrition information,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q23_12,Child menu other healthy eating promotion,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q23_13,Child menu other unhealthy eating promotion,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q23_14,Child menu none,Integer,255,"0=not selected, 1=selected",No,Yes
+Dataset Three NEMS-R,Q24a,Child menu comments for age limit,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q24b,Child menu comments for healthier entrées,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q24c,Child menu comments for entrées with assigned healthier side,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q24d,Child menu comments for entrées with assigned healthier side,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q24e,Child menu comments for substitute healthier side for assigned side,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q24f,Child menu comments for unhealthy dessert automatically included,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q24g,Child menu comments for healthier dessert,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q24h,Child menu comments for 100% fruit juice,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q24i,Child menu comments for milk white and non-flavored,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q24j,Child menu  comments for free refill on sugar-sweetened beverages,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q24k,Child menu comments for nutrition information,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q24l,Child menu comments for other healthy eating promotion,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q24m,Child menu comments for other unhealthy eating promotion,Text,255,unlimited,No,Yes
+Dataset Three NEMS-R,Q16a_c,Corrected value for Q16a,Integer,255,1-152,No,Yes
+Dataset Three NEMS-R,Q16b_c,Corrected value for Q16b,Integer,255,0-40,No,Yes
+Dataset Three NEMS-R,Q17a_c,Corrected value for Q17a,Integer,255,0-45,No,Yes
+Dataset Three NEMS-R,Q17b_c,Corrected value for Q17b,Integer,255,0-16,No,Yes
+Dataset Three NEMS-R,onehealthy,Indicator variable for at least one healthy main entrée or main salad,Integer,255,"0=no, 1=yes",No,Yes
+Dataset Three NEMS-R,hopt_score,Healthy options score,Integer,255,0-13,No,Yes
+Dataset Three NEMS-R,facil_score,Facilitator score,Integer,255,0-10,No,Yes
+Dataset Three NEMS-R,barr_score,Barrier score,Integer,255,-7-0,No,Yes
+Dataset Three NEMS-R,child_score,Child menu score,Integer,255,-3-9,No,Yes
+Dataset Three NEMS-R,total_score,Total summary score (sum of all individual scores except child),Integer,255,-10 to 32,No,Yes
+Dataset Three NEMS-R,total_score_child,Total summary score (sum of all individual scores including child),Integer,255,-10 to 32,No,Yes
+Dataset Three NEMS-R,Type,Type of restaurant,Varchar,255,"FF=fast food, FS=full service",No,Yes
+Dataset Three NEMS-R,Subtype,Subclassification for fast food restaurants,Varchar,255,"PC=corner store, PD=grocery store with delicatessen, PG=gas station, RO=restaurant only",No,Yes
