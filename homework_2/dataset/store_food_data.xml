@@ -1,0 +1,449 @@
+<?xml version="1.0"?>
+<store_food_data>
+    <store>
+        <store_id>g001</store_id>
+        <food>sweet potato</food>
+        <food>low fat hot dog</food>
+        <food>cauliflower</food>
+        <food>cabbage</food>
+        <food>chips</food>
+        <food>ground beef (75% lean, regular)</food>
+        <food>cucumber</food>
+        <food>whole wheat bread</food>
+        <food>broccoli</food>
+        <food>white bread</food>
+        <food>tomato</food>
+        <food>frozen meal</food>
+        <food>1% milk</food>
+        <food>hot dog</food>
+        <food>apple</food>
+        <food>pear</food>
+        <food>celery</food>
+        <food>100% juice</food>
+        <food>banana</food>
+        <food>whole milk</food>
+        <food>strawberry</food>
+        <food>grape</food>
+        <food>juice</food>
+        <food>lettuce</food>
+        <food>muffin</food>
+        <food>orange</food>
+        <food>soft drink, diet</food>
+        <food>cereal</food>
+        <food>2% milk</food>
+        <food>ground beef (80% lean)</food>
+        <food>bagel</food>
+        <food>skim milk</food>
+        <food>cantaloupe</food>
+        <food>carrot</food>
+        <food>soft drink, regular</food>
+    </store>
+    <store>
+        <store_id>g002</store_id>
+        <food>sweet potato</food>
+        <food>low fat hot dog</food>
+        <food>cauliflower</food>
+        <food>cabbage</food>
+        <food>chips</food>
+        <food>ground beef (75% lean, regular)</food>
+        <food>corn</food>
+        <food>cucumber</food>
+        <food>whole wheat bread</food>
+        <food>broccoli</food>
+        <food>white bread</food>
+        <food>tomato</food>
+        <food>frozen meal</food>
+        <food>1% milk</food>
+        <food>hot dog</food>
+        <food>apple</food>
+        <food>pear</food>
+        <food>celery</food>
+        <food>watermelon</food>
+        <food>honey dew melon</food>
+        <food>100% juice</food>
+        <food>banana</food>
+        <food>whole milk</food>
+        <food>peach</food>
+        <food>strawberry</food>
+        <food>grape</food>
+        <food>juice</food>
+        <food>lettuce</food>
+        <food>muffin</food>
+        <food>orange</food>
+        <food>ground beef (90% lean)</food>
+        <food>soft drink, diet</food>
+        <food>cereal</food>
+        <food>2% milk</food>
+        <food>ground beef (85% lean)</food>
+        <food>ground beef (80% lean)</food>
+        <food>bagel</food>
+        <food>skim milk</food>
+        <food>cantaloupe</food>
+        <food>carrot</food>
+        <food>english muffin</food>
+        <food>soft drink, regular</food>
+    </store>
+    <store>
+        <store_id>g003</store_id>
+        <food>sweet potato</food>
+        <food>low fat hot dog</food>
+        <food>cauliflower</food>
+        <food>cabbage</food>
+        <food>chips</food>
+        <food>ground beef (75% lean, regular)</food>
+        <food>corn</food>
+        <food>cucumber</food>
+        <food>whole wheat bread</food>
+        <food>broccoli</food>
+        <food>white bread</food>
+        <food>tomato</food>
+        <food>frozen meal</food>
+        <food>1% milk</food>
+        <food>hot dog</food>
+        <food>apple</food>
+        <food>pear</food>
+        <food>celery</food>
+        <food>watermelon</food>
+        <food>honey dew melon</food>
+        <food>100% juice</food>
+        <food>banana</food>
+        <food>danish</food>
+        <food>whole milk</food>
+        <food>peach</food>
+        <food>strawberry</food>
+        <food>grape</food>
+        <food>juice</food>
+        <food>lettuce</food>
+        <food>muffin</food>
+        <food>orange</food>
+        <food>ground beef (90% lean)</food>
+        <food>soft drink, diet</food>
+        <food>cereal</food>
+        <food>2% milk</food>
+        <food>ground beef (85% lean)</food>
+        <food>ground beef (80% lean)</food>
+        <food>bagel</food>
+        <food>skim milk</food>
+        <food>cantaloupe</food>
+        <food>carrot</food>
+        <food>english muffin</food>
+        <food>soft drink, regular</food>
+    </store>
+    <store>
+        <store_id>g004</store_id>
+        <food>sweet potato</food>
+        <food>cauliflower</food>
+        <food>cabbage</food>
+        <food>chips</food>
+        <food>ground beef (75% lean, regular)</food>
+        <food>cucumber</food>
+        <food>whole wheat bread</food>
+        <food>broccoli</food>
+        <food>white bread</food>
+        <food>tomato</food>
+        <food>frozen meal</food>
+        <food>hot dog</food>
+        <food>apple</food>
+        <food>pear</food>
+        <food>celery</food>
+        <food>honey dew melon</food>
+        <food>100% juice</food>
+        <food>banana</food>
+        <food>whole milk</food>
+        <food>peach</food>
+        <food>strawberry</food>
+        <food>grape</food>
+        <food>juice</food>
+        <food>lettuce</food>
+        <food>orange</food>
+        <food>soft drink, diet</food>
+        <food>cereal</food>
+        <food>2% milk</food>
+        <food>ground beef (80% lean)</food>
+        <food>skim milk</food>
+        <food>cantaloupe</food>
+        <food>carrot</food>
+        <food>soft drink, regular</food>
+    </store>
+    <store>
+        <store_id>g005</store_id>
+        <food>sweet potato</food>
+        <food>low fat hot dog</food>
+        <food>cauliflower</food>
+        <food>cabbage</food>
+        <food>chips</food>
+        <food>ground beef (75% lean, regular)</food>
+        <food>cucumber</food>
+        <food>whole wheat bread</food>
+        <food>broccoli</food>
+        <food>white bread</food>
+        <food>tomato</food>
+        <food>frozen meal</food>
+        <food>hot dog</food>
+        <food>apple</food>
+        <food>pear</food>
+        <food>celery</food>
+        <food>100% juice</food>
+        <food>banana</food>
+        <food>whole milk</food>
+        <food>peach</food>
+        <food>strawberry</food>
+        <food>grape</food>
+        <food>juice</food>
+        <food>lettuce</food>
+        <food>muffin</food>
+        <food>orange</food>
+        <food>soft drink, diet</food>
+        <food>cereal</food>
+        <food>2% milk</food>
+        <food>ground beef (80% lean)</food>
+        <food>skim milk</food>
+        <food>cantaloupe</food>
+        <food>carrot</food>
+        <food>soft drink, regular</food>
+    </store>
+    <store>
+        <store_id>g007</store_id>
+        <food>sweet potato</food>
+        <food>low fat hot dog</food>
+        <food>cauliflower</food>
+        <food>cabbage</food>
+        <food>chips</food>
+        <food>ground beef (75% lean, regular)</food>
+        <food>cucumber</food>
+        <food>whole wheat bread</food>
+        <food>broccoli</food>
+        <food>white bread</food>
+        <food>tomato</food>
+        <food>frozen meal</food>
+        <food>1% milk</food>
+        <food>hot dog</food>
+        <food>apple</food>
+        <food>pear</food>
+        <food>celery</food>
+        <food>watermelon</food>
+        <food>100% juice</food>
+        <food>banana</food>
+        <food>whole milk</food>
+        <food>peach</food>
+        <food>strawberry</food>
+        <food>grape</food>
+        <food>juice</food>
+        <food>lettuce</food>
+        <food>muffin</food>
+        <food>orange</food>
+        <food>soft drink, diet</food>
+        <food>cereal</food>
+        <food>2% milk</food>
+        <food>ground beef (80% lean)</food>
+        <food>skim milk</food>
+        <food>cantaloupe</food>
+        <food>carrot</food>
+        <food>soft drink, regular</food>
+    </store>
+    <store>
+        <store_id>g008</store_id>
+        <food>sweet potato</food>
+        <food>low fat hot dog</food>
+        <food>cabbage</food>
+        <food>chips</food>
+        <food>ground beef (75% lean, regular)</food>
+        <food>cucumber</food>
+        <food>whole wheat bread</food>
+        <food>broccoli</food>
+        <food>white bread</food>
+        <food>tomato</food>
+        <food>frozen meal</food>
+        <food>hot dog</food>
+        <food>apple</food>
+        <food>celery</food>
+        <food>watermelon</food>
+        <food>100% juice</food>
+        <food>banana</food>
+        <food>whole milk</food>
+        <food>peach</food>
+        <food>strawberry</food>
+        <food>grape</food>
+        <food>juice</food>
+        <food>lettuce</food>
+        <food>muffin</food>
+        <food>orange</food>
+        <food>soft drink, diet</food>
+        <food>cereal</food>
+        <food>2% milk</food>
+        <food>ground beef (80% lean)</food>
+        <food>cantaloupe</food>
+        <food>carrot</food>
+        <food>soft drink, regular</food>
+    </store>
+    <store>
+        <store_id>g009</store_id>
+        <food>sweet potato</food>
+        <food>low fat hot dog</food>
+        <food>cauliflower</food>
+        <food>cabbage</food>
+        <food>chips</food>
+        <food>ground beef (95% lean)</food>
+        <food>ground beef (75% lean, regular)</food>
+        <food>cucumber</food>
+        <food>whole wheat bread</food>
+        <food>broccoli</food>
+        <food>white bread</food>
+        <food>tomato</food>
+        <food>frozen meal</food>
+        <food>hot dog</food>
+        <food>apple</food>
+        <food>pear</food>
+        <food>celery</food>
+        <food>watermelon</food>
+        <food>honey dew melon</food>
+        <food>100% juice</food>
+        <food>banana</food>
+        <food>whole milk</food>
+        <food>peach</food>
+        <food>strawberry</food>
+        <food>grape</food>
+        <food>juice</food>
+        <food>lettuce</food>
+        <food>muffin</food>
+        <food>orange</food>
+        <food>soft drink, diet</food>
+        <food>cereal</food>
+        <food>2% milk</food>
+        <food>ground beef (80% lean)</food>
+        <food>skim milk</food>
+        <food>cantaloupe</food>
+        <food>carrot</food>
+        <food>soft drink, regular</food>
+    </store>
+    <store>
+        <store_id>g010</store_id>
+        <food>sweet potato</food>
+        <food>low fat hot dog</food>
+        <food>cauliflower</food>
+        <food>cabbage</food>
+        <food>chips</food>
+        <food>ground beef (95% lean)</food>
+        <food>ground beef (75% lean, regular)</food>
+        <food>corn</food>
+        <food>cucumber</food>
+        <food>whole wheat bread</food>
+        <food>broccoli</food>
+        <food>white bread</food>
+        <food>tomato</food>
+        <food>frozen meal</food>
+        <food>1% milk</food>
+        <food>hot dog</food>
+        <food>apple</food>
+        <food>pear</food>
+        <food>celery</food>
+        <food>watermelon</food>
+        <food>honey dew melon</food>
+        <food>100% juice</food>
+        <food>banana</food>
+        <food>danish</food>
+        <food>whole milk</food>
+        <food>peach</food>
+        <food>strawberry</food>
+        <food>grape</food>
+        <food>juice</food>
+        <food>lettuce</food>
+        <food>muffin</food>
+        <food>orange</food>
+        <food>ground beef (90% lean)</food>
+        <food>soft drink, diet</food>
+        <food>cereal</food>
+        <food>2% milk</food>
+        <food>ground beef (85% lean)</food>
+        <food>ground beef (80% lean)</food>
+        <food>bagel</food>
+        <food>skim milk</food>
+        <food>cantaloupe</food>
+        <food>carrot</food>
+        <food>english muffin</food>
+        <food>soft drink, regular</food>
+    </store>
+    <store>
+        <store_id>g011</store_id>
+        <food>sweet potato</food>
+        <food>low fat hot dog</food>
+        <food>cauliflower</food>
+        <food>cabbage</food>
+        <food>chips</food>
+        <food>ground beef (95% lean)</food>
+        <food>ground beef (75% lean, regular)</food>
+        <food>corn</food>
+        <food>cucumber</food>
+        <food>whole wheat bread</food>
+        <food>broccoli</food>
+        <food>white bread</food>
+        <food>tomato</food>
+        <food>frozen meal</food>
+        <food>1% milk</food>
+        <food>hot dog</food>
+        <food>apple</food>
+        <food>pear</food>
+        <food>celery</food>
+        <food>watermelon</food>
+        <food>honey dew melon</food>
+        <food>100% juice</food>
+        <food>banana</food>
+        <food>danish</food>
+        <food>whole milk</food>
+        <food>peach</food>
+        <food>strawberry</food>
+        <food>grape</food>
+        <food>juice</food>
+        <food>lettuce</food>
+        <food>muffin</food>
+        <food>orange</food>
+        <food>ground beef (90% lean)</food>
+        <food>soft drink, diet</food>
+        <food>cereal</food>
+        <food>2% milk</food>
+        <food>ground beef (80% lean)</food>
+        <food>bagel</food>
+        <food>skim milk</food>
+        <food>cantaloupe</food>
+        <food>carrot</food>
+        <food>english muffin</food>
+        <food>soft drink, regular</food>
+    </store>
+    <store>
+        <store_id>g012</store_id>
+        <food>sweet potato</food>
+        <food>cabbage</food>
+        <food>chips</food>
+        <food>ground beef (75% lean, regular)</food>
+        <food>corn</food>
+        <food>cucumber</food>
+        <food>whole wheat bread</food>
+        <food>broccoli</food>
+        <food>white bread</food>
+        <food>tomato</food>
+        <food>frozen meal</food>
+        <food>hot dog</food>
+        <food>apple</food>
+        <food>pear</food>
+        <food>celery</food>
+        <food>watermelon</food>
+        <food>100% juice</food>
+        <food>banana</food>
+        <food>whole milk</food>
+        <food>peach</food>
+        <food>strawberry</food>
+        <food>grape</food>
+        <food>juice</food>
+        <food>lettuce</food>
+        <food>muffin</food>
+        <food>orange</food>
+        <food>soft drink, diet</food>
+        <food>cereal</food>
+        <food>2% milk</food>
+        <food>ground beef (80% lean)</food>
+        <food>skim milk</food>
+        <food>cantaloupe</food>
+        <food>carrot</food>
+        <food>soft drink, regular</food>
+    </store>
+</store_food_data>
