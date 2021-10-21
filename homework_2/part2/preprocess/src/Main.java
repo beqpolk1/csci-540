@@ -1,15 +1,18 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         processFile();
     }
 
-    private static void processFile() {
+    private static void processFile() throws IOException {
+        BufferedWriter outFile = new BufferedWriter(new FileWriter("store_food_data.xml", true));
+        outFile.write("<?xml version=\"1.0\"?>" + System.lineSeparator());
+        outFile.append("<store_food_data>" + System.lineSeparator());
+
         File file = new File("nems-g_data.csv");
         Scanner inFile = null;
         try {
@@ -27,9 +30,23 @@ public class Main {
             String[] availableFood = extractFoods(parseLine);
 
             //write out store id and foods to XML
-            System.out.println(storeId + ":");
-            for (int i = 0; i <= availableFood.length - 1; i++) System.out.println("   " + availableFood[i]);
+            System.out.println(storeId + ": " + availableFood.length);
+            outputXML(storeId, availableFood, outFile);
         }
+
+        outFile.append("</store_food_data>");
+        outFile.close();
+    }
+
+    private static void outputXML(String storeId, String[] foods, BufferedWriter outFile) throws IOException {
+        outFile.append("    <store>" + System.lineSeparator());
+        outFile.append("        <store_id>" + storeId + "</store_id>" + System.lineSeparator());
+
+        for (String curFood : foods) {
+            outFile.append("        <food>" + curFood + "</food>" + System.lineSeparator());
+        }
+
+        outFile.append("    </store>" + System.lineSeparator());
     }
 
     private static String[] extractFoods(String[] fieldList) {

@@ -37,6 +37,9 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../homework_2/part2/preprocess" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -66,14 +69,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1633970919873</updated>
+      <workItem from="1634791151947" duration="62000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1011" y="447" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1634013329327">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1011" y="447" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/3840.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1634013329327" />
+    <state x="1061" y="455" key="FileChooserDialogImpl" timestamp="1634791212589">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1061" y="455" key="FileChooserDialogImpl/3840.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1634791212589" />
     <state width="2517" height="400" key="GridCell.Tab.0.bottom" timestamp="1634017907239">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
