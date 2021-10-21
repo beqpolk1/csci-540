@@ -1,4 +1,5 @@
-#https://www.tutorialspoint.com/hbase/hbase_create_table.htm
+#The following sources were consulted during development of this script:
+#	https://www.tutorialspoint.com/hbase/hbase_create_table.htm
 include Java
 import 'org.apache.hadoop.hbase.client.HTable'
 import 'org.apache.hadoop.hbase.HBaseConfiguration'

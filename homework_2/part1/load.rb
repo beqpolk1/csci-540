@@ -1,4 +1,5 @@
-#adapted from Dave's notes
+#Script primarily adapted from Prof. David Millman's notes on HBase:
+#	https://github.com/msu/csci-540-fall2021/blob/master/notes/2021-10-06.md
 include Java
 
 import 'javax.xml.stream.XMLStreamConstants'

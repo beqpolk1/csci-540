@@ -1,8 +1,9 @@
-#https://docs.cloudera.com/documentation/enterprise/5-9-x/topics/admin_hbase_filtering.html
-#https://docs.cloudera.com/documentation/enterprise/5-9-x/topics/admin_hbase_scanning.html
-#https://biggists.wordpress.com/2016/10/22/filters-in-hbase-shell/
-#http://hbase.apache.org/1.2/apidocs/overview-summary.html
-#https://www.tutorialspoint.com/hbase/hbase_scan.htm
+#The following sources were consulted during development of this script:
+#	https://docs.cloudera.com/documentation/enterprise/5-9-x/topics/admin_hbase_filtering.html
+#	https://docs.cloudera.com/documentation/enterprise/5-9-x/topics/admin_hbase_scanning.html
+#	https://biggists.wordpress.com/2016/10/22/filters-in-hbase-shell/
+#	http://hbase.apache.org/1.2/apidocs/overview-summary.html
+#	https://www.tutorialspoint.com/hbase/hbase_scan.htm
 
 include Java
 import 'org.apache.hadoop.hbase.client.HTable'
@@ -35,3 +36,4 @@ while (result = scanner.next())
 end
 
 print "Query completed\n"
+exit
