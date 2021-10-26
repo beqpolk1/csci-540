@@ -1,0 +1,29 @@
+db.countries.insert([
+    {
+        _id : "us",
+        name : "United States",
+        exports : {
+            foods : [
+                { name : "bacon", tasty : true },
+                { name : "burgers" }
+            ]
+        }
+    }, {
+        _id : "ca",
+        name : "Canada",
+        exports : {
+            foods : [
+                { name : "bacon", tasty : false },
+                { name : "syrup", tasty : true }
+            ]
+        }
+    }, {
+        _id : "mx",
+        name : "Mexico",
+        exports : {
+            foods : [
+                { name : "salsa", tasty : true, condiment : true }
+            ]
+        }
+    }
+])

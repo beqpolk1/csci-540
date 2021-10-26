@@ -1,7 +1,7 @@
 version: "3.9"
 services:
 
-  postgres:
+  postgres_db:
     image: adv-db/postgres
     ports:
       - "5432:5432"
@@ -9,7 +9,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=password
   
-  pg_client:
+  postgres_client:
     image: adv-db/clients
     network_mode: "host"
     command: psql -h localhost -U postgres postgres
@@ -27,3 +27,16 @@ services:
       - "8080:8080"
     volumes:
       - "C:/Users/Ben/Repositories/csci-540/homework_2:/mnt"
+
+  mongo_db:
+    image: adv-db/mongo
+    network_mode: "host"
+    ports:
+      - "27017:27017"
+
+  mongo_client:
+    image: adv-db/clients
+    network_mode: "host"
+    volumes:
+      - "C:/Users/Ben/Repositories/csci-540:/mnt"
+    command: mongo my-advdb-database
