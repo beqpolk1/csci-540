@@ -48,54 +48,127 @@
 //  cuisine of 'American' and achieved a score more than 70 and located in the
 //  latitude less than -65.754168. Do NOT use $and operator
     
+	db.restaurants.find({
+	  "cuisine": { $ne: "American " },
+	  "grades.score": { $gt: 70 },
+	  "address.coord.0": { $lt: -65.754168 }
+	}).pretty()
+	
 //  9. Write a MongoDB query to find the restaurants which do not prepare any
 //  cuisine of 'American ' and achieved a grade point 'A' not belongs to the
 //  borough Brooklyn. The document must be displayed according to the cuisine in
 //  descending order
+
+	db.restaurants.find({
+	  "cuisine": { $ne: "American " },
+	  "grades.grade": "A",
+	  "borough": { $ne: "Brooklyn" }
+	}).sort( { cuisine: -1 } ).pretty()
     
 //  10. Write a MongoDB query to find the restaurant Id, name, borough and cuisine
 //  for those restaurants which contain 'Wil' as first 3 letters for its name.
     
+	db.restaurants.find({
+	  "name": { $regex: /^Wil/ }
+	},
+	{restaurant_id: 1, name: 1, borough: 1, cuisine: 1}).pretty()
+	
 //  11. Write a MongoDB query to find the restaurant Id, name, borough and cuisine
 //  for those restaurants which contain 'ces' as last three letters for its name.
     
+	db.restaurants.find({
+	  "name": { $regex: /ces$/ }
+	},
+	{restaurant_id: 1, name: 1, borough: 1, cuisine: 1}).pretty()
+	
 //  12. Write a MongoDB query to find the restaurant Id, name, borough and cuisine
 //  for those restaurants which contain 'Reg' as 3 letters somewhere in its name.
+
+	db.restaurants.find({
+	  "name": { $regex: /Reg/ }
+	},
+	{restaurant_id: 1, name: 1, borough: 1, cuisine: 1}).pretty()
     
 //  13. Write a MongoDB query to find the restaurants which belong to the borough
 //  Bronx and prepared either American or Chinese dish.
+
+    db.restaurants.find({
+	  "cuisine": { $in: ["American ", "Chinese"] }
+	}).pretty()
     
 //  14. Write a MongoDB query to find the restaurant Id, name, borough and cuisine
 //  for those restaurants which belong to the borough Staten Island or Queens or
 //  Bronx or Brooklyn.
+
+    db.restaurants.find({
+	  "borough": { $in: ["Staten Island", "Queens", "Bronx", "Brooklyn"] }
+	},
+	{restaurant_id: 1, name: 1, borough: 1, cuisine: 1}).pretty()
     
 //  15. Write a MongoDB query to find the restaurant Id, name, borough and cuisine
 //  for those restaurants which are not belonging to the borough Staten Island or
 //  Queens or Bronx or Brooklyn.
     
+	db.restaurants.find({
+	  "borough": { $nin: ["Staten Island", "Queens", "Bronx", "Brooklyn"] }
+	},
+	{restaurant_id: 1, name: 1, borough: 1, cuisine: 1}).pretty()
+	
 //  16. Write a MongoDB query to find the restaurant Id, name, borough and cuisine
 //  for those restaurants which achieved a score which is not more than ten.
 //  NOTE: you can answer as less than or equal, but writing try writing as
 //  "not-ing" "greater than 10" to get the feeling of nesting operators.
+
+	db.restaurants.find({
+	  "grades.score": { $not: { $gt: 10 } }
+	},
+	{restaurant_id: 1, name: 1, borough: 1, cuisine: 1}).pretty()
     
 //  17. Write a MongoDB query to find the restaurant Id, name, borough and cuisine
 //  for those restaurants whose name begins with 'Wil' or prepared dish except
 //  'American' and 'Chinese'.  Sort descending by name.
+	db.restaurants.find({
+	  $or: [
+	    { "name": /^Wil/ },
+		{ "cuisine": { $nin: ["American ", "Chinese"] } }
+	  ]
+	},
+	{restaurant_id: 1, name: 1, borough: 1, cuisine: 1}).sort( { name: -1 } ).pretty()
     
 //  18. Write a MongoDB query to find the restaurant Id, name, and grades for those
 //  restaurants which achieved a grade of "A" and scored 11 on an ISODate
 //  "2014-08-11T00:00:00Z".
+
+	db.restaurants.find({
+	  "grades": { $elemMatch: {
+        "grade": "A",
+        "score": 11,
+        "date": ISODate("2014-08-11T00:00:00Z")
+      }}
+	},
+	{restaurant_id: 1, name: 1, grades: 1}).pretty()
     
 //  19. Write a MongoDB query to find the restaurant Id, name and grades for those
 //  restaurants where the 2nd element of grades array contains a grade of "A" and
 //  score 9 on an ISODate "2014-08-11T00:00:00Z".
+
+	db.restaurants.find({
+	  "grades.1.grade": "A",
+      "grades.1.score": 9,
+      "grades.1.date": ISODate("2014-08-11T00:00:00Z")
+    },
+    {restaurant_id: 1, name: 1, grades: 1}).pretty()
     
 //  20. Write a MongoDB query to arrange the just the names (no ids) of the
 //  restaurants in ascending order.
     
+    db.restaurants.find( {}, {_id: 0, name: 1}).sort( { name: 1 } )
+	
 //  21. Write a MongoDB query to arranged the name of the cuisine in ascending order
 //  and for that same cuisine borough should be in descending order. Output name
 //  and borough.
+
+    db.restaurants.find( {}, {_id: 0, cuisine: 1, borough: 1}).sort( { cuisine: 1, borough: -1} )
     
 //  22. Write a MongoDB query to know whether all the addresses contains the street
 //  or not.
