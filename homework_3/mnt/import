@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+mongoimport --db my-advdb-database --collection restaurants --file /mnt/restaurants.json
