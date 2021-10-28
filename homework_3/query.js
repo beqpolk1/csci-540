@@ -172,21 +172,42 @@
     
 //  22. Write a MongoDB query to know whether all the addresses contains the street
 //  or not.
+
+	db.restaurants.find( { "address.street": { $exists: false } } ).count()
     
 //  23. Write a MongoDB query which will count the number of documents in the
 //  restaurants collection where the coord field value is Double.
     
+	db.restaurants.find( { "address.coord": { $type: "double" } } ).count()
+	
 //  24. Write a MongoDB query that counts the number of restaurants that have a score
 //  of 0 mod 7.  (E.g. 0, 7, 14, 21...)
+
+	db.restaurants.find( { "grades.score": { $mod: [7, 0] } }).count()
     
 //  25. Write a MongoDB query that gives the average score and output documents with
 //  the format `{ name: "xyz", borough: "abc", avgScore: x.y }`
     
+    db.restaurants.aggregate([ { $project: { _id: 0, name: "$name", borough: "$borough", avgScore: { $avg: "$grades.score" } } } ]).pretty()
+    
 //  26. Write a Mongo query that counts the number of restaurants with an "A" rating
 //  in Brooklyn.
+    
+    db.restaurants.find( { "grades.grade": "A", "borough": "Brooklyn" } ).count()
     
 //  27. Write a Mongo query that counts the number of restaurants with an "A" rating
 //  in each borough.  (You must use one query, not run the previous query once
 //  for each borough.)
     
+    db.restaurants.aggregate([ 
+      { $match: { "grades.grade": "A" } },
+      { $group: { _id: "$borough", count: { $sum: 1 } } }
+    ])
+    
 //  28. Write a Mongo query that displays the average score by cuisine type.
+
+    db.restaurants.aggregate([
+      { $project: { _id: 0, name: "$name", cuisine: "$cuisine", scoreSum: { $sum: "$grades.score" }, scoreCnt: { $size: "$grades" } } },
+      { $group: { _id: "$cuisine", allScores: { $sum: "$scoreSum" }, totCnt: { $sum: "$scoreCnt" } } },
+      { $project: { _id: 1, cuisine: "$cuisine", avgRating: { $divide: [ "$allScores", "$totCnt" ] } } }
+    ]).pretty()
