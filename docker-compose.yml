@@ -40,3 +40,10 @@ services:
     volumes:
       - "C:/Users/Ben/Repositories/csci-540:/mnt"
     command: mongo my-advdb-database
+    
+  mongo_hw3:
+    image: adv-db/clients
+    network_mode: "host"
+    volumes:
+      - "C:/Users/Ben/Repositories/csci-540/homework_3/mnt:/mnt"
+    command: bash /mnt/import
