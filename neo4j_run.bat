@@ -1,0 +1,1 @@
+docker run -p 7474:7474 -p 7687:7687 -v C:/Users/Ben/Repositories/csci-540:/mnt -e NEO4J_AUTH=none adv-db/neo4j
