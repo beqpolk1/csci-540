@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a6a0f923-0def-40dc-a208-2458d39f12ba" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:\Program Files\JetBrains\IntelliJ IDEA 2020.2\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="21tf8D7aYb5yJG4mtQyRZ7Ly7TJ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.32528734" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a6a0f923-0def-40dc-a208-2458d39f12ba" name="Default Changelist" comment="" />
+      <created>1638765143998</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1638765143998</updated>
+      <workItem from="1638765145166" duration="138000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="736" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1638765223745">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="736" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog/3840.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1638765223745" />
+    <state x="761" y="275" key="SettingsEditor" timestamp="1638765282970">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="761" y="275" key="SettingsEditor/3840.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1638765282970" />
+  </component>
+</project>
