@@ -1,0 +1,3 @@
+1:{"precip":false,"avg_temp":55,"wind_avg":7,"hi_temp":69,"precip_type":"none","cloud_cover":40.2,"lo_temp":42,"wind_gust":13}
+2:{"precip":true,"avg_temp":22,"wind_avg":10,"hi_temp":37,"precip_type":"snow","cloud_cover":89.0,"lo_temp":15,"wind_gust":20}
+3:{"precip":false,"avg_temp":73,"wind_avg":5,"hi_temp":87,"precip_type":"none","cloud_cover":2.7,"lo_temp":58,"wind_gust":8}

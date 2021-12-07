@@ -10,6 +10,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -26,10 +33,24 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.32528734" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RunManager">
+    <configuration name="TestJSONMaker" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="csci.project.knowledgeBase.utils.TestJSONMaker" />
+      <module name="knowledgeBase" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TestJSONMaker" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -39,7 +60,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1638765143998</updated>
-      <workItem from="1638765145166" duration="138000" />
+      <workItem from="1638765145166" duration="841000" />
+      <workItem from="1638844787987" duration="15150000" />
     </task>
     <servers />
   </component>
@@ -51,9 +73,45 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="736" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog/3840.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1638765223745" />
-    <state x="761" y="275" key="SettingsEditor" timestamp="1638765282970">
+    <state width="2517" height="492" key="GridCell.Tab.0.bottom" timestamp="1638867952872">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="761" y="275" key="SettingsEditor/3840.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1638765282970" />
+    <state width="2517" height="492" key="GridCell.Tab.0.bottom/3840.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1638867952872" />
+    <state width="2517" height="492" key="GridCell.Tab.0.center" timestamp="1638867952871">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.0.center/3840.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1638867952871" />
+    <state width="2517" height="492" key="GridCell.Tab.0.left" timestamp="1638867952871">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.0.left/3840.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1638867952871" />
+    <state width="2517" height="492" key="GridCell.Tab.0.right" timestamp="1638867952872">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.0.right/3840.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1638867952872" />
+    <state width="2517" height="492" key="GridCell.Tab.1.bottom" timestamp="1638867952872">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.bottom/3840.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1638867952872" />
+    <state width="2517" height="492" key="GridCell.Tab.1.center" timestamp="1638867952872">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.center/3840.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1638867952872" />
+    <state width="2517" height="492" key="GridCell.Tab.1.left" timestamp="1638867952872">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.left/3840.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1638867952872" />
+    <state width="2517" height="492" key="GridCell.Tab.1.right" timestamp="1638867952872">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.right/3840.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1638867952872" />
+    <state x="811" y="355" key="Maven.ArtifactSearchDialog" timestamp="1638845560873">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="811" y="355" key="Maven.ArtifactSearchDialog/3840.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1638845560873" />
+    <state x="761" y="275" key="SettingsEditor" timestamp="1638765335939">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="761" y="275" key="SettingsEditor/3840.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1638765335939" />
   </component>
 </project>

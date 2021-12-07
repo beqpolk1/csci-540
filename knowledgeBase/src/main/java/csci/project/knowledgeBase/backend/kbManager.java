@@ -1,4 +1,7 @@
 package csci.project.knowledgeBase.backend;
 
-public class kbManager {
+public class KbManager {
+    public static void main(String[] args) {
+
+    }
 }
