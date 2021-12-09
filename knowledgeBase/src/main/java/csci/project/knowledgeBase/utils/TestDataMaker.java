@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class TestDataMaker {
+private class TestDataMaker {
     public static List<HashMap<String, Object>> getCondData() {
         List<HashMap<String, Object>> ret = new ArrayList<>();
 
@@ -64,6 +64,14 @@ public class TestDataMaker {
         ret.add(newVals);
 
         newVals = new HashMap<>();
+        newVals.put("conditions", "{\"precip\":true,\"precip_type\":[\"rain\", \"snow\", \"mix\"]}");
+        newVals.put("type", "rain");
+        newVals.put("par_type", "jacket");
+        newVals.put("name", null);
+        newVals.put("id", idGen.getId());
+        ret.add(newVals);
+
+        newVals = new HashMap<>();
         newVals.put("conditions", "{\"precip\":true,\"precip_type\":[\"rain\", \"mix\"],\"hi_temp\":[90,50],\"lo_temp\":[60,35],\"avg_temp\":[80,40],\"wind_avg\":[20,0],\"wind_gust\":[40,0],\"cloud_cover\":[100,0]}");
         newVals.put("type", "rain");
         newVals.put("par_type", "jacket");
@@ -80,6 +88,14 @@ public class TestDataMaker {
         ret.add(newVals);
 
         newVals = new HashMap<>();
+        newVals.put("conditions", null);
+        newVals.put("type", "insulated");
+        newVals.put("par_type", "jacket");
+        newVals.put("name", null);
+        newVals.put("id", idGen.getId());
+        ret.add(newVals);
+
+        newVals = new HashMap<>();
         newVals.put("conditions", "{\"precip\":false,\"precip_type\":[\"none\"],\"hi_temp\":[65,35],\"lo_temp\":[50,20],\"avg_temp\":[60,30],\"wind_avg\":[20,0],\"wind_gust\":[30,0],\"cloud_cover\":[100,0]}");
         newVals.put("type", "insulated");
         newVals.put("par_type", "jacket");
@@ -91,6 +107,14 @@ public class TestDataMaker {
         newVals.put("conditions", null);
         newVals.put("type", "lighting");
         newVals.put("par_type", null);
+        newVals.put("name", null);
+        newVals.put("id", idGen.getId());
+        ret.add(newVals);
+
+        newVals = new HashMap<>();
+        newVals.put("conditions", null);
+        newVals.put("type", "headlamp");
+        newVals.put("par_type", "lighting");
         newVals.put("name", null);
         newVals.put("id", idGen.getId());
         ret.add(newVals);
@@ -115,6 +139,22 @@ public class TestDataMaker {
         newVals.put("conditions", null);
         newVals.put("type", "pack_sm");
         newVals.put("par_type", "backpack");
+        newVals.put("name", null);
+        newVals.put("id", idGen.getId());
+        ret.add(newVals);
+
+        newVals = new HashMap<>();
+        newVals.put("conditions", null);
+        newVals.put("type", "pack_med");
+        newVals.put("par_type", "backpack");
+        newVals.put("name", null);
+        newVals.put("id", idGen.getId());
+        ret.add(newVals);
+
+        newVals = new HashMap<>();
+        newVals.put("conditions", null);
+        newVals.put("type", "pack_sm");
+        newVals.put("par_type", "backpack");
         newVals.put("name", "Osprey Daylite");
         newVals.put("id", idGen.getId());
         ret.add(newVals);
@@ -131,6 +171,14 @@ public class TestDataMaker {
         newVals.put("conditions", null);
         newVals.put("type", "pole");
         newVals.put("par_type", null);
+        newVals.put("name", null);
+        newVals.put("id", idGen.getId());
+        ret.add(newVals);
+
+        newVals = new HashMap<>();
+        newVals.put("conditions", null);
+        newVals.put("type", "trek_pole");
+        newVals.put("par_type", "pole");
         newVals.put("name", null);
         newVals.put("id", idGen.getId());
         ret.add(newVals);

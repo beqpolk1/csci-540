@@ -1,6 +1,6 @@
 package csci.project.knowledgeBase.utils;
 
-public class IdGen {
+private class IdGen {
     Integer generator;
 
     public IdGen () { generator = Integer.MIN_VALUE; }
