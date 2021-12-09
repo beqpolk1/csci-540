@@ -1,0 +1,7 @@
+{
+	"entity_name": "gear",
+	"block_count": 3,
+	"blocks": ["0x03", "0x04", "0x05"],
+	"first_block": "0x03",
+	"record_count": 12
+}
