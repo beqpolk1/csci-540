@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-private class TestDataMaker {
+class TestDataMaker {
     public static List<HashMap<String, Object>> getCondData() {
         List<HashMap<String, Object>> ret = new ArrayList<>();
 

@@ -1,6 +1,6 @@
 package csci.project.knowledgeBase.backend;
 
-public interface ExternalMem {
+interface ExternalMem {
     public String getNext();
     public String getPrev();
     public String getLogiAddr();

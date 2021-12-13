@@ -1,6 +1,6 @@
 package csci.project.knowledgeBase.backend;
 
-public class Block implements ExternalMem {
+class Block implements ExternalMem {
     private String logiAddr, physAddr, prev, next;
 
     public Block(String newLogi, String newPhys, String newPrev, String newNext) {

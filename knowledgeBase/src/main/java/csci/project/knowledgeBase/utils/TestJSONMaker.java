@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class TestJSONMaker {
+public class TestJsonMaker {
     private static final String baseDir = "gen_test_data\\";
     private static IdGen idGen;
 

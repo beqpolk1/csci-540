@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class DiskHead
+class DiskHead
 {
     private Long seeks, scans;
     private String curAddr;
