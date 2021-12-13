@@ -7,8 +7,8 @@ import csci.project.knowledgeBase.requests.Request;
 public class KbClient {
     private KbRequester requester;
 
-    public KbClient(String knowledgeBaseName) {
-        requester = new KbRequester(new KbManager(knowledgeBaseName));
+    public KbClient(KbManager knowledgeBase) {
+        requester = new KbRequester(knowledgeBase);
     }
 
     public void makeRequest(Request request) {
