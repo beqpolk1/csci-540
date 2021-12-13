@@ -3,5 +3,7 @@
 	"0x02": {"physAddr": "data\\0x02.data", "prev": "0x01", "next": null},
 	"0x03": {"physAddr": "data\\0x03.data", "prev": null, "next": "0x04"},
 	"0x04": {"physAddr": "data\\0x04.data", "prev": "0x03", "next": "0x05"},
-	"0x05": {"physAddr": "data\\0x05.data", "prev": "0x05", "next": null}
+	"0x05": {"physAddr": "data\\0x05.data", "prev": "0x04", "next": "0x06"},
+    "0x06": {"physAddr": "data\\0x06.data", "prev": "0x05", "next": "0x07"},
+    "0x07": {"physAddr": "data\\0x07.data", "prev": "0x06", "next": null}
 }

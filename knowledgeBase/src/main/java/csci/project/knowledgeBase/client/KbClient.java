@@ -1,6 +1,5 @@
 package csci.project.knowledgeBase.client;
 
-import com.google.gson.JsonObject;
 import csci.project.knowledgeBase.backend.KbManager;
 import csci.project.knowledgeBase.requests.KbRequester;
 import csci.project.knowledgeBase.requests.Request;
