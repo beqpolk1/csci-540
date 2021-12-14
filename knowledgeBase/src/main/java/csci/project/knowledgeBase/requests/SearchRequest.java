@@ -11,7 +11,6 @@ public class SearchRequest extends ReadRequest {
         criteria = new ArrayList<>();
     }
 
-    public String getEntity () { return entity; }
     public void addCriteria (Criteria newCriteria) { criteria.add(newCriteria); }
     public List<Criteria> getCriteria() { return criteria; }
 }

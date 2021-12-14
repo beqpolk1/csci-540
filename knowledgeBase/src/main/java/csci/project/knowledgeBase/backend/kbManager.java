@@ -3,6 +3,7 @@ package csci.project.knowledgeBase.backend;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import csci.project.knowledgeBase.requests.GearQueryRequest;
 import csci.project.knowledgeBase.requests.SearchRequest;
 
 import java.io.FileNotFoundException;
@@ -48,6 +49,11 @@ public class KbManager {
         return ret;
     }
 
+    //inference, knowledge look-up
+    public JsonObject doQuery(GearQueryRequest query) {
+        return QueryEvaluator.doQuery(query, this);
+    }
+
     private ExternalMem getBlock(String logiAddr) {
         if (logiAddr == null) return null;
 
@@ -79,5 +85,32 @@ public class KbManager {
             e.printStackTrace();
         }
         return fileReader;
+    }
+
+    JsonObject getEntityByType(String entity, String typeName) {
+        SearchRequest search = new SearchRequest(entity);
+        search.addCriteria(
+            (checkObj) -> {
+                String typeFilter = typeName;
+                String checkVal = checkObj.get("type").getAsString();
+                if (checkVal.equals(typeFilter) && checkObj.get("name").isJsonNull()) return true;
+                else return false;
+            }
+        );
+
+        return doSearch(search).get(0).getAsJsonObject();
+    }
+
+    JsonObject getEntityById(String entity, Number id) {
+        SearchRequest search = new SearchRequest(entity);
+        search.addCriteria(
+            (checkObj) -> {
+                Number checkVal = checkObj.get("id").getAsNumber().intValue();
+                if (checkVal.equals(id)) return true;
+                else return false;
+            }
+        );
+
+        return doSearch(search).get(0).getAsJsonObject();
     }
 }

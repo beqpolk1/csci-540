@@ -3,6 +3,7 @@ package csci.project.knowledgeBase.testing;
 import com.google.gson.JsonObject;
 import csci.project.knowledgeBase.backend.KbManager;
 import csci.project.knowledgeBase.client.KbClient;
+import csci.project.knowledgeBase.requests.GearQueryRequest;
 import csci.project.knowledgeBase.requests.SearchRequest;
 
 public class DemoTest {
@@ -16,7 +17,7 @@ public class DemoTest {
     private static Agent makeAgent1() {
         Agent agent = new Agent();
 
-        //query to get a gear item with a specific ID
+        //search to get a gear item with a specific ID
         agent.addAction(
             (client) -> {
                 SearchRequest search = new SearchRequest("gear");
@@ -34,7 +35,7 @@ public class DemoTest {
             }
         );
 
-        //query to get gear items that are jackets that are "insulated" type or for conditions where precipitation = "true"
+        //search to get gear items that are jackets that are "insulated" type or for conditions where precipitation = "true"
         agent.addAction(
             (client) -> {
                 SearchRequest search = new SearchRequest("gear");
@@ -64,6 +65,14 @@ public class DemoTest {
 
                 client.makeRequest(search);
                 System.out.println(search.getResponse().toString());
+            }
+        );
+
+        agent.addAction(
+            (client) -> {
+                GearQueryRequest query = new GearQueryRequest(-2147483625, null);
+                client.makeRequest(query);
+                System.out.println(query.getResponse().toString());
             }
         );
 

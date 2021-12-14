@@ -26,6 +26,9 @@ public class KbRequester {
         if (read instanceof SearchRequest) {
             makeSearchRequest((SearchRequest) read);
         }
+        else if (read instanceof GearQueryRequest) {
+            makeQueryRequest((GearQueryRequest) read);
+        }
         else {
             JsonObject ret = new JsonObject();
             ret.addProperty("err", read.getClass().getSimpleName() + " is not a valid request type");
@@ -40,5 +43,10 @@ public class KbRequester {
         ret.addProperty("count", results.size());
         ret.add("results", results);
         search.setResponse(ret);
+    }
+
+    private void makeQueryRequest(GearQueryRequest query) {
+        JsonObject ret = knowledgeBase.doQuery(query);
+        query.setResponse(ret);
     }
 }
