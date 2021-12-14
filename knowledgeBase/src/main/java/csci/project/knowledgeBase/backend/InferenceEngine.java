@@ -3,17 +3,68 @@ package csci.project.knowledgeBase.backend;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import csci.project.knowledgeBase.requests.SearchRequest;
 
-import java.util.HashSet;
+import java.util.*;
 
 class InferenceEngine {
+    private static HashMap<String, Queue<String>> typeTree;
+
     public static JsonObject matchGearToConditions(JsonArray reqGearTypes, JsonObject conditions, KbManager knowledgeBase) {
         JsonObject reqGear = getCandidateGear(reqGearTypes.deepCopy(), knowledgeBase);
+        JsonArray adjTypes = adjustGearTypes(reqGearTypes);
+
+        reqGear = trimReqGear(adjTypes, reqGear);
+
         return reqGear;
     }
 
+    private static JsonObject trimReqGear(JsonArray reqGearTypes, JsonObject orig) {
+        JsonObject trimmed = new JsonObject();
+
+        for (int i = 0; i <= reqGearTypes.size() - 1; i++) {
+            trimmed.add(reqGearTypes.get(i).getAsString(), orig.get(reqGearTypes.get(i).getAsString()));
+        }
+
+        return trimmed;
+    }
+
+    private static JsonArray adjustGearTypes(JsonArray reqGearTypes) {
+        JsonArray trimTypes = new JsonArray();
+
+        //only keep a type if none of it's children were required types
+        for (int i = 0; i <= reqGearTypes.size() - 1; i++) {
+            if (!hasReqChild(reqGearTypes.get(i), reqGearTypes)) {
+                addAllTypeAndChildren(reqGearTypes.get(i).getAsString(), trimTypes);
+            }
+        }
+
+        return trimTypes;
+    }
+
+    private static Boolean hasReqChild(JsonElement checkType, JsonArray reqGearTypes) {
+        Queue<String> searchList = new LinkedList<>(typeTree.get(checkType.getAsString()));
+
+        while (!searchList.isEmpty()) {
+            String curType = searchList.poll();
+            searchList.addAll(typeTree.get(curType));
+            if (reqGearTypes.contains(new JsonPrimitive(curType))) return true;
+        }
+
+        return false;
+    }
+
+    private static void addAllTypeAndChildren(String type, JsonArray allGearTypes) {
+        allGearTypes.add(type);
+
+        for (String curType : typeTree.get(type)) {
+            addAllTypeAndChildren(curType, allGearTypes);
+        }
+    }
+
     private static JsonObject getCandidateGear(JsonArray typeArr, KbManager knowledgeBase) {
+        typeTree = new HashMap<>();
         HashSet<String> scanned = new HashSet<>();
         JsonObject candidates = new JsonObject();
 
@@ -22,6 +73,7 @@ class InferenceEngine {
 
             if (!scanned.contains(curElement.getAsString())) {
                 scanned.add(curElement.getAsString());
+                if (!typeTree.containsKey(curElement.getAsString())) typeTree.put(curElement.getAsString(), new LinkedList<>());
 
                 //search for all gear of this type
                 SearchRequest search = new SearchRequest("gear");
@@ -50,6 +102,7 @@ class InferenceEngine {
                 JsonArray childTypes = knowledgeBase.doSearch(search);
                 for (int i = 0; i <= childTypes.size() - 1; i++) {
                     typeArr.add(childTypes.get(i).getAsJsonObject().get("type").getAsString());
+                    typeTree.get(curElement.getAsString()).add(childTypes.get(i).getAsJsonObject().get("type").getAsString());
                 }
             }
 
