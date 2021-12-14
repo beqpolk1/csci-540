@@ -6,7 +6,21 @@ import csci.project.knowledgeBase.requests.GearQueryRequest;
 
 class QueryEvaluator {
     public static JsonObject doQuery(GearQueryRequest query, KbManager knowledgeBase) {
-        JsonObject activityObj = knowledgeBase.getEntityById("activity", query.getActivityId());
+        JsonObject activityObj;
+
+        if (query.getActivityId() != null) {
+            activityObj = knowledgeBase.getEntityById("activity", query.getActivityId());
+        }
+        else if (query.getActivityType() != null) {
+            activityObj = knowledgeBase.getEntityByType("activity", query.getActivityType());
+        }
+        else if (query.getActivityName() != null) {
+            activityObj = knowledgeBase.getEntityByName("activity", query.getActivityName());
+        }
+        else {
+            return new JsonObject();
+        }
+
         JsonArray reqGearTypes = getAllGearReq(activityObj, knowledgeBase, new JsonArray());
         JsonObject reqGear = InferenceEngine.getGearForActivity(reqGearTypes, knowledgeBase);
 
@@ -18,7 +32,14 @@ class QueryEvaluator {
     private static JsonArray getAllGearReq(JsonObject activity, KbManager knowledgeBase, JsonArray gearList) {
         gearList.addAll(activity.get("gear").getAsJsonArray());
 
-        if (activity.get("par_type").isJsonNull()) return gearList;
+        if (!activity.get("name").isJsonNull()) {
+            String actType = activity.get("type").getAsString();
+            JsonObject parActivity = knowledgeBase.getEntityByType("activity", actType);
+            return getAllGearReq(parActivity, knowledgeBase, gearList);
+        }
+        else if (activity.get("par_type").isJsonNull()) {
+            return gearList;
+        }
         else {
             String parentType = activity.get("par_type").getAsString();
             JsonObject parActivity = knowledgeBase.getEntityByType("activity", parentType);

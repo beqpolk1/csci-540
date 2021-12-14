@@ -16,6 +16,20 @@ public class GearQueryRequest extends ReadRequest {
         else conditions = new JsonObject();
     }
 
+    public GearQueryRequest(String newAct, String typeOrName, String conditionsString) {
+        super("gear");
+
+        if (typeOrName.equals("type")) {
+            activityType = newAct;
+        }
+        else if (typeOrName.equals("name")) {
+            activityName = newAct;
+        }
+
+        if (conditionsString != null) conditions = new JsonParser().parse(conditionsString).getAsJsonObject();
+        else conditions = new JsonObject();
+    }
+
     public String getActivityName() { return activityName; }
     public String getActivityType() { return activityType; }
     public Number getActivityId() { return activityId; }

@@ -84,7 +84,7 @@ public class DemoTest {
                 String conditions = "{\"precip\":false,\"avg_temp\":55,\"wind_avg\":7,\"hi_temp\":69,\"precip_type\":\"none\",\"cloud_cover\":40.2,\"lo_temp\":42,\"wind_gust\":13}";
                 System.out.println("Getting gear for hike_xlong activity");
                 System.out.println("    Conditions: " + conditions);
-                GearQueryRequest query = new GearQueryRequest(-2147483625, conditions);
+                GearQueryRequest query = new GearQueryRequest("hike_xlong", "type", conditions);
                 client.makeRequest(query);
                 System.out.println(query.getResponse().toString());
             }
@@ -96,22 +96,22 @@ public class DemoTest {
                 String conditions = "{\"precip\":true,\"avg_temp\":22,\"wind_avg\":10,\"hi_temp\":37,\"precip_type\":\"snow\",\"cloud_cover\":89.0,\"lo_temp\":15,\"wind_gust\":20}";
                 System.out.println("Getting gear for hike_xlong activity");
                 System.out.println("    Conditions: " + conditions);
-                GearQueryRequest query = new GearQueryRequest(-2147483625, conditions);
+                GearQueryRequest query = new GearQueryRequest("hike_xlong", "type", conditions);
                 client.makeRequest(query);
                 System.out.println(query.getResponse().toString());
             }
         );
 
-        //query to get gear recommendations for hike_xlong activity, condition set 3
+        //query to get gear recommendations for Bridger Ridge activity, condition set 3
         agent.addAction(
-                (client) -> {
-                    String conditions = "{\"precip\":false,\"avg_temp\":73,\"wind_avg\":5,\"hi_temp\":87,\"precip_type\":\"none\",\"cloud_cover\":2.7,\"lo_temp\":58,\"wind_gust\":8}";
-                    System.out.println("Getting gear for hike_xlong activity");
-                    System.out.println("    Conditions: " + conditions);
-                    GearQueryRequest query = new GearQueryRequest(-2147483625, conditions);
-                    client.makeRequest(query);
-                    System.out.println(query.getResponse().toString());
-                }
+            (client) -> {
+                String conditions = "{\"precip\":false,\"avg_temp\":73,\"wind_avg\":5,\"hi_temp\":87,\"precip_type\":\"none\",\"cloud_cover\":2.7,\"lo_temp\":58,\"wind_gust\":8}";
+                System.out.println("Getting gear for Bridger Ridge activity");
+                System.out.println("    Conditions: " + conditions);
+                GearQueryRequest query = new GearQueryRequest("Bridger Ridge", "name", conditions);
+                client.makeRequest(query);
+                System.out.println(query.getResponse().toString());
+            }
         );
 
         return agent;

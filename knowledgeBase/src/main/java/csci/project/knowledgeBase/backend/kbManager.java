@@ -105,8 +105,22 @@ public class KbManager {
         SearchRequest search = new SearchRequest(entity);
         search.addCriteria(
             (checkObj) -> {
-                Number checkVal = checkObj.get("id").getAsNumber().intValue();
+                Number checkVal = checkObj.get("id").getAsInt();
                 if (checkVal.equals(id)) return true;
+                else return false;
+            }
+        );
+
+        return doSearch(search).get(0).getAsJsonObject();
+    }
+
+    JsonObject getEntityByName(String entity, String name) {
+        SearchRequest search = new SearchRequest(entity);
+        search.addCriteria(
+            (checkObj) -> {
+                if (checkObj.get("name").isJsonNull()) return false;
+                String checkVal = checkObj.get("name").getAsString();
+                if (checkVal.equals(name)) return true;
                 else return false;
             }
         );
