@@ -96,7 +96,7 @@ class TestDataMaker {
         ret.add(newVals);
 
         newVals = new HashMap<>();
-        newVals.put("conditions", null);
+        newVals.put("conditions", "{\"lo_temp\":[50,-50],\"avg_temp\":[60, -50]}");
         newVals.put("type", "insulated_jacket");
         newVals.put("par_type", "jacket");
         newVals.put("name", null);
