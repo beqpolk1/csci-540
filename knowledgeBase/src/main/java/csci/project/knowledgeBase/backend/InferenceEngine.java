@@ -20,6 +20,7 @@ class InferenceEngine {
         return reqGear;
     }
 
+    //remove entries from the required gear object that aren't present in the required type array
     private static JsonObject trimReqGear(JsonArray reqGearTypes, JsonObject orig) {
         JsonObject trimmed = new JsonObject();
 
@@ -30,11 +31,13 @@ class InferenceEngine {
         return trimmed;
     }
 
+    //remove entries from the original array of required types that have child types required
+    //if keeping a required type, add all of its child types as required as well
     private static JsonArray adjustGearTypes(JsonArray reqGearTypes) {
         JsonArray trimTypes = new JsonArray();
 
-        //only keep a type if none of it's children were required types
         for (int i = 0; i <= reqGearTypes.size() - 1; i++) {
+            //only keep a type if none of it's children were a required type
             if (!hasReqChild(reqGearTypes.get(i), reqGearTypes)) {
                 addAllTypeAndChildren(reqGearTypes.get(i).getAsString(), trimTypes);
             }
@@ -98,8 +101,9 @@ class InferenceEngine {
                         else return false;
                     }
                 );
-
                 JsonArray childTypes = knowledgeBase.doSearch(search);
+
+                //add all child types the the array for processing, and build out the tree for internal use
                 for (int i = 0; i <= childTypes.size() - 1; i++) {
                     typeArr.add(childTypes.get(i).getAsJsonObject().get("type").getAsString());
                     typeTree.get(curElement.getAsString()).add(childTypes.get(i).getAsJsonObject().get("type").getAsString());

@@ -11,6 +11,7 @@ class QueryEvaluator {
         return InferenceEngine.matchGearToConditions(reqGearTypes, query.getConditions(), knowledgeBase);
     }
 
+    //recursively gather all required gear types for the activity and any parent activities
     private static JsonArray getAllGearReq(JsonObject activity, KbManager knowledgeBase, JsonArray gearList) {
         gearList.addAll(activity.get("gear").getAsJsonArray());
 
