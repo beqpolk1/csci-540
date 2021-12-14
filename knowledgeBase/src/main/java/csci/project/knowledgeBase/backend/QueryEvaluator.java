@@ -8,7 +8,10 @@ class QueryEvaluator {
     public static JsonObject doQuery(GearQueryRequest query, KbManager knowledgeBase) {
         JsonObject activityObj = knowledgeBase.getEntityById("activity", query.getActivityId());
         JsonArray reqGearTypes = getAllGearReq(activityObj, knowledgeBase, new JsonArray());
-        return InferenceEngine.matchGearToConditions(reqGearTypes, query.getConditions(), knowledgeBase);
+        JsonObject reqGear = InferenceEngine.getGearForActivity(reqGearTypes, knowledgeBase);
+
+        InferenceEngine.getBestMatchGear(reqGear, query.getConditions());
+        return reqGear;
     }
 
     //recursively gather all required gear types for the activity and any parent activities
