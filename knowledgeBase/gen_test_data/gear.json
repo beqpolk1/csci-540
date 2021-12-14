@@ -1,19 +1,19 @@
-1:{"par_type":null,"name":null,"id":-2147483648,"conditions":null,"type":"clothing"}
-2:{"par_type":"clothing","name":null,"id":-2147483647,"conditions":null,"type":"jacket"}
-3:{"par_type":"clothing","name":null,"id":-2147483646,"conditions":null,"type":"pants"}
-4:{"par_type":"jacket","name":null,"id":-2147483645,"conditions":{"precip":true,"precip_type":["rain","snow","mix"]},"type":"rain_jacket"}
-5:{"par_type":"jacket","name":"Marmot Precip","id":-2147483644,"conditions":{"precip":true,"precip_type":["rain","mix"],"hi_temp":[90,50],"lo_temp":[60,35],"avg_temp":[80,40],"wind_avg":[20,0],"wind_gust":[40,0],"cloud_cover":[100,0]},"type":"rain_jacket"}
-6:{"par_type":"jacket","name":"OR Foray","id":-2147483643,"conditions":{"precip":true,"precip_type":["rain","snow","mix"],"hi_temp":[80,25],"lo_temp":[60,15],"avg_temp":[75,20],"wind_avg":[30,0],"wind_gust":[50,0],"cloud_cover":[100,0]},"type":"rain_jacket"}
-7:{"par_type":"jacket","name":null,"id":-2147483642,"conditions":null,"type":"insulated_jacket"}
-8:{"par_type":"jacket","name":"NF Thermoball","id":-2147483641,"conditions":{"precip":false,"precip_type":["none"],"hi_temp":[65,35],"lo_temp":[50,20],"avg_temp":[60,30],"wind_avg":[20,0],"wind_gust":[30,0],"cloud_cover":[100,0]},"type":"insulated_jacket"}
-9:{"par_type":null,"name":null,"id":-2147483640,"conditions":null,"type":"lighting"}
-10:{"par_type":"lighting","name":null,"id":-2147483639,"conditions":null,"type":"headlamp"}
-11:{"par_type":"lighting","name":"BD Spot","id":-2147483638,"conditions":null,"type":"headlamp"}
-12:{"par_type":null,"name":null,"id":-2147483637,"conditions":null,"type":"backpack"}
-13:{"par_type":"backpack","name":null,"id":-2147483636,"conditions":null,"type":"backpack_sm"}
-14:{"par_type":"backpack","name":null,"id":-2147483635,"conditions":null,"type":"backpack_med"}
-15:{"par_type":"backpack","name":"Osprey Daylite","id":-2147483634,"conditions":null,"type":"backpack_sm"}
-16:{"par_type":"backpack","name":"Osprey Kestral","id":-2147483633,"conditions":null,"type":"backpack_med"}
-17:{"par_type":null,"name":null,"id":-2147483632,"conditions":null,"type":"pole"}
-18:{"par_type":"pole","name":null,"id":-2147483631,"conditions":null,"type":"trek_pole"}
-19:{"par_type":"pole","name":"BD Trail","id":-2147483630,"conditions":null,"type":"trek_pole"}
+0:{"par_type":null,"name":null,"id":-2147483648,"conditions":null,"type":"clothing"}
+1:{"par_type":"clothing","name":null,"id":-2147483647,"conditions":null,"type":"jacket"}
+2:{"par_type":"clothing","name":null,"id":-2147483646,"conditions":null,"type":"pants"}
+3:{"par_type":"jacket","name":null,"id":-2147483645,"conditions":{"precip":true,"precip_type":["rain","snow","mix"]},"type":"rain_jacket"}
+4:{"par_type":"jacket","name":"Marmot Precip","id":-2147483644,"conditions":{"precip":true,"precip_type":["rain","mix"],"hi_temp":[90,50],"lo_temp":[60,35],"avg_temp":[80,40],"wind_avg":[20,0],"wind_gust":[40,0],"cloud_cover":[100,0]},"type":"rain_jacket"}
+5:{"par_type":"jacket","name":"OR Foray","id":-2147483643,"conditions":{"precip":true,"precip_type":["rain","snow","mix"],"hi_temp":[80,25],"lo_temp":[60,15],"avg_temp":[75,20],"wind_avg":[30,0],"wind_gust":[50,0],"cloud_cover":[100,0]},"type":"rain_jacket"}
+6:{"par_type":"jacket","name":null,"id":-2147483642,"conditions":{"lo_temp":[50,-50],"avg_temp":[60,-50]},"type":"insulated_jacket"}
+7:{"par_type":"jacket","name":"NF Thermoball","id":-2147483641,"conditions":{"precip":false,"precip_type":["none"],"hi_temp":[65,35],"lo_temp":[50,20],"avg_temp":[60,30],"wind_avg":[20,0],"wind_gust":[30,0],"cloud_cover":[100,0]},"type":"insulated_jacket"}
+8:{"par_type":null,"name":null,"id":-2147483640,"conditions":null,"type":"lighting"}
+9:{"par_type":"lighting","name":null,"id":-2147483639,"conditions":null,"type":"headlamp"}
+10:{"par_type":"lighting","name":"BD Spot","id":-2147483638,"conditions":null,"type":"headlamp"}
+11:{"par_type":null,"name":null,"id":-2147483637,"conditions":null,"type":"backpack"}
+12:{"par_type":"backpack","name":null,"id":-2147483636,"conditions":null,"type":"backpack_sm"}
+13:{"par_type":"backpack","name":null,"id":-2147483635,"conditions":null,"type":"backpack_med"}
+14:{"par_type":"backpack","name":"Osprey Daylite","id":-2147483634,"conditions":null,"type":"backpack_sm"}
+15:{"par_type":"backpack","name":"Osprey Kestral","id":-2147483633,"conditions":null,"type":"backpack_med"}
+16:{"par_type":null,"name":null,"id":-2147483632,"conditions":null,"type":"pole"}
+17:{"par_type":"pole","name":null,"id":-2147483631,"conditions":null,"type":"trek_pole"}
+18:{"par_type":"pole","name":"BD Trail","id":-2147483630,"conditions":null,"type":"trek_pole"}

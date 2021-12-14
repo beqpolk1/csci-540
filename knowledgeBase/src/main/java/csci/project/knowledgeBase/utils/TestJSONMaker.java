@@ -9,13 +9,14 @@ import java.util.HashMap;
 
 public class TestJsonMaker {
     private static final String baseDir = "gen_test_data\\";
-    private static IdGen idGen;
+    private static IdGen system, internal;
 
     public static void main(String[] args) {
-        idGen = new IdGen();
+        system = new IdGen(0);
+        internal = new IdGen();
         writeConditions();
-        writeGear(idGen);
-        writeActivities(idGen);
+        writeGear(internal, system);
+        writeActivities(internal, system);
     }
 
     private static void writeConditions() {
@@ -41,18 +42,16 @@ public class TestJsonMaker {
         System.out.println("Wrote conditions");
     }
 
-    private static void writeGear(IdGen idGen) {
+    private static void writeGear(IdGen internalIds, IdGen systemIds) {
         String fileName = "gear.json";
 
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(baseDir + fileName));
 
-            int cnt = 0;
-            for (HashMap<String, Object> newVal : TestDataMaker.getGearData(idGen)) {
-                cnt++;
+            for (HashMap<String, Object> newVal : TestDataMaker.getGearData(internalIds)) {
                 JsonObject gearObj = makeGearObj(newVal);
                 System.out.println(gearObj.toString());
-                writer.write(cnt + ":" + gearObj.toString() + System.lineSeparator());
+                writer.write(systemIds.getId() + ":" + gearObj.toString() + System.lineSeparator());
             }
 
             writer.close();
@@ -64,18 +63,16 @@ public class TestJsonMaker {
         System.out.println("Wrote gear");
     }
 
-    private static void writeActivities(IdGen idGen) {
+    private static void writeActivities(IdGen internalIds, IdGen systemIds) {
         String fileName = "activities.json";
 
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(baseDir + fileName));
 
-            int cnt = 0;
-            for (HashMap<String, Object> newVal : TestDataMaker.getActivityData(idGen)) {
-                cnt++;
+            for (HashMap<String, Object> newVal : TestDataMaker.getActivityData(internalIds)) {
                 JsonObject activityObj = makeActivityObj(newVal);
                 System.out.println(activityObj.toString());
-                writer.write(cnt + ":" + activityObj.toString() + System.lineSeparator());
+                writer.write(systemIds.getId() + ":" + activityObj.toString() + System.lineSeparator());
             }
 
             writer.close();
