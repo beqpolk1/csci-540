@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchRequest extends ReadRequest {
-    private String entity;
     private List<Criteria> criteria;
 
     public SearchRequest(String newEntity) {
-        entity = newEntity;
+        super(newEntity);
         criteria = new ArrayList<>();
     }
 

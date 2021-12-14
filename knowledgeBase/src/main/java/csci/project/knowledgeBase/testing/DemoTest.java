@@ -40,26 +40,26 @@ public class DemoTest {
                 SearchRequest search = new SearchRequest("gear");
 
                 search.addCriteria(
-                        (checkObj) -> {
-                            String parTypeFilter = "jacket";
+                    (checkObj) -> {
+                        String parTypeFilter = "jacket";
 
-                            if (!checkObj.get("par_type").isJsonNull() && !checkObj.get("par_type").getAsString().equals(parTypeFilter)) return false;
-                            else return true;
-                        }
+                        if (!checkObj.get("par_type").isJsonNull() && !checkObj.get("par_type").getAsString().equals(parTypeFilter)) return false;
+                        else return true;
+                    }
                 );
 
                 search.addCriteria(
-                        (checkObj) -> {
-                            Boolean condPrecipFilter = true;
-                            String typeFilter = "insulated";
+                    (checkObj) -> {
+                        Boolean condPrecipFilter = true;
+                        String typeFilter = "insulated";
 
-                            if (!checkObj.get("conditions").isJsonNull()) {
-                                JsonObject conds = checkObj.get("conditions").getAsJsonObject();
-                                if (!conds.get("precip").isJsonNull() && conds.get("precip").getAsBoolean() == condPrecipFilter) return true;
-                            }
-                            if (checkObj.get("type").getAsString().equals(typeFilter)) return true;
-                            return false;
+                        if (!checkObj.get("conditions").isJsonNull()) {
+                            JsonObject conds = checkObj.get("conditions").getAsJsonObject();
+                            if (!conds.get("precip").isJsonNull() && conds.get("precip").getAsBoolean() == condPrecipFilter) return true;
                         }
+                        if (checkObj.get("type").getAsString().equals(typeFilter)) return true;
+                        return false;
+                    }
                 );
 
                 client.makeRequest(search);
