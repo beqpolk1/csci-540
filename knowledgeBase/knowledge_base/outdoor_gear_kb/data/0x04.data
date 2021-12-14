@@ -1,4 +1,4 @@
-1:{"par_type":"jacket","name":"OR Foray","id":-2147483644,"conditions":{"precip":true,"precip_type":["rain","snow","mix"],"hi_temp":[80,25],"lo_temp":[60,15],"avg_temp":[75,20],"wind_avg":[30,0],"wind_gust":[50,0],"cloud_cover":[100,0]},"type":"rain"}
-2:{"par_type":"jacket","name":null,"id":-2147483643,"conditions":null,"type":"insulated"}
-3:{"par_type":"jacket","name":"NF Thermoball","id":-2147483642,"conditions":{"precip":false,"precip_type":["none"],"hi_temp":[65,35],"lo_temp":[50,20],"avg_temp":[60,30],"wind_avg":[20,0],"wind_gust":[30,0],"cloud_cover":[100,0]},"type":"insulated"}
-4:{"par_type":null,"name":null,"id":-2147483641,"conditions":null,"type":"lighting"}
+1:{"par_type":"jacket","name":"Marmot Precip","id":-2147483644,"conditions":{"precip":true,"precip_type":["rain","mix"],"hi_temp":[90,50],"lo_temp":[60,35],"avg_temp":[80,40],"wind_avg":[20,0],"wind_gust":[40,0],"cloud_cover":[100,0]},"type":"rain_jacket"}
+2:{"par_type":"jacket","name":"OR Foray","id":-2147483643,"conditions":{"precip":true,"precip_type":["rain","snow","mix"],"hi_temp":[80,25],"lo_temp":[60,15],"avg_temp":[75,20],"wind_avg":[30,0],"wind_gust":[50,0],"cloud_cover":[100,0]},"type":"rain_jacket"}
+3:{"par_type":"jacket","name":null,"id":-2147483642,"conditions":null,"type":"insulated_jacket"}
+4:{"par_type":"jacket","name":"NF Thermoball","id":-2147483641,"conditions":{"precip":false,"precip_type":["none"],"hi_temp":[65,35],"lo_temp":[50,20],"avg_temp":[60,30],"wind_avg":[20,0],"wind_gust":[30,0],"cloud_cover":[100,0]},"type":"insulated_jacket"}

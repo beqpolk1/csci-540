@@ -1,4 +1,4 @@
-1:{"par_type":"lighting","name":null,"id":-2147483640,"conditions":null,"type":"headlamp"}
-2:{"par_type":"lighting","name":"BD Spot","id":-2147483639,"conditions":null,"type":"headlamp"}
-3:{"par_type":null,"name":null,"id":-2147483638,"conditions":null,"type":"backpack"}
-4:{"par_type":"backpack","name":null,"id":-2147483637,"conditions":null,"type":"pack_sm"}
+1:{"par_type":null,"name":null,"id":-2147483640,"conditions":null,"type":"lighting"}
+2:{"par_type":"lighting","name":null,"id":-2147483639,"conditions":null,"type":"headlamp"}
+3:{"par_type":"lighting","name":"BD Spot","id":-2147483638,"conditions":null,"type":"headlamp"}
+4:{"par_type":null,"name":null,"id":-2147483637,"conditions":null,"type":"backpack"}

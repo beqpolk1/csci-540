@@ -1,2 +1,2 @@
-1:{"duration":12,"par_activity":"hiking","id":-2147483632,"type":"hike_xlong","title":null,"gear":["headlamp","backpack_med"]}
-2:{"duration":12,"par_activity":"hiking","id":-2147483631,"type":"hike_xlong","title":"Bridger Ridge","gear":["trek_pole"]}
+1:{"duration":12,"par_type":"hiking","name":null,"id":-2147483625,"type":"hike_xlong","gear":["headlamp","backpack_med"]}
+2:{"duration":12,"par_type":"hiking","name":"Bridger Ridge","id":-2147483624,"type":"hike_xlong","gear":["trek_pole"]}
