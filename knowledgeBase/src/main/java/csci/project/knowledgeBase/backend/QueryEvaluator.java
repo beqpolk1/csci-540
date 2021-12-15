@@ -37,6 +37,7 @@ class QueryEvaluator {
                 }
             }
             reconciled = Reconciler.reconcile(queryTrans.getTouchedFacts(), knowledgeBase.getAvailFacts());
+            if (!reconciled) System.out.println(">>>>>FAILED TO RECONCILE QUERY RESULT: " + reqGear.toString());
         }
 
         knowledgeBase.closeTransaction(queryTrans.getId());

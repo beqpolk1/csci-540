@@ -35,6 +35,9 @@ public class DemoTest {
             user3Client.setInjectTest(true);
             SimUser user3 = new SimUser(makeAgent3(), user3Client, "Miriam");
             new Thread(user3).start();
+
+            SimUser user4 = new SimUser(makeAgent4(), new KbClient(knowledgeBase), "Nadia");
+            new Thread(user4).start();
         }
     }
 
@@ -250,11 +253,38 @@ public class DemoTest {
                 client.makeRequest(query);
                 output += query.getResponse().toString();
 
+                return output;
+            }
+        );
+
+        return agent;
+    }
+
+    private static Agent makeAgent4() {
+        Agent agent = new Agent();
+
+        //delete NF Thermoball gear item
+        agent.addAction(
+            (client) -> {
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
+                String output = "Deleting NF Thermoball gear item" + System.lineSeparator();
+
+                DeleteRequest delete = new DeleteRequest("gear");
+                delete.addCriteria(
+                    (checkObj) -> {
+                        String nameFilter = "NF Thermoball";
+                        return !checkObj.get("name").isJsonNull() && checkObj.get("name").getAsString().equals(nameFilter);
+                    }
+                );
+
+                client.makeRequest(delete);
+                output += delete.getResponse().toString();
+
                 return output;
             }
         );
