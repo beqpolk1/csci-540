@@ -12,10 +12,10 @@ public class DemoTest {
         KbManager knowledgeBase = new KbManager("outdoor_gear_kb");
 
         SimUser user1 = new SimUser(makeAgent1(), new KbClient(knowledgeBase), "Bob");
-        //user1.runAgent();
+        new Thread(user1).start();
 
         SimUser user2 = new SimUser(makeAgent2(), new KbClient(knowledgeBase), "Rafael");
-        user2.runAgent();
+        //new Thread(user2).start();
     }
 
     private static Agent makeAgent1() {

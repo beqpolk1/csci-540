@@ -2,7 +2,7 @@ package csci.project.knowledgeBase.testing;
 
 import csci.project.knowledgeBase.client.KbClient;
 
-public class SimUser {
+public class SimUser implements Runnable {
     private static Agent agent;
     private static KbClient client;
     private String agentName;
@@ -13,7 +13,7 @@ public class SimUser {
         agentName = newName;
     }
 
-    public void runAgent() {
+    public void run() {
         int actionCnt = 0;
 
         for (TestAction curAction : agent.getActions()) {
