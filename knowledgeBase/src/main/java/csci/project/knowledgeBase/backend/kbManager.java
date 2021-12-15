@@ -25,12 +25,12 @@ public class KbManager {
         transIds = new IdGen(1000);
         transactions = new HashMap<>();
         disk = new DiskHead();
-        rootDir = "knowledge_base\\" + newKb + "\\";
+        rootDir = "knowledge_base/" + newKb + "/";
 
         metaInfo = new HashMap<>();
         importMetaInfo();
 
-        blockMap = new JsonParser().parse(openReader(rootDir + "meta\\blockMap.meta")).getAsJsonObject();
+        blockMap = new JsonParser().parse(openReader(rootDir + "meta/blockMap.meta")).getAsJsonObject();
     }
 
     //basic linear scan
@@ -90,7 +90,7 @@ public class KbManager {
     }
 
     public JsonArray getAvailFacts() {
-        return new JsonParser().parse(openReader(rootDir + "meta\\availFacts.meta")).getAsJsonArray();
+        return new JsonParser().parse(openReader(rootDir + "meta/availFacts.meta")).getAsJsonArray();
     }
 
     public Transaction openTransaction() {
@@ -118,11 +118,11 @@ public class KbManager {
 
     private void importMetaInfo() {
         JsonParser parser = new JsonParser();
-        JsonArray allEntities = parser.parse(openReader(rootDir + "meta\\allEntities.meta")).getAsJsonObject().get("entities").getAsJsonArray();
+        JsonArray allEntities = parser.parse(openReader(rootDir + "meta/allEntities.meta")).getAsJsonObject().get("entities").getAsJsonArray();
 
         for (int i = 0; i <= allEntities.size() - 1; i++) {
             String entityName = allEntities.get(i).getAsString();
-            JsonObject curEntity = parser.parse(openReader(rootDir + "meta\\" + entityName + ".meta")).getAsJsonObject();
+            JsonObject curEntity = parser.parse(openReader(rootDir + "meta/" + entityName + ".meta")).getAsJsonObject();
             metaInfo.put(entityName, curEntity);
         }
     }
@@ -141,7 +141,7 @@ public class KbManager {
         String fileName = "availFacts.meta";
 
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(rootDir+ "meta\\" + fileName));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(rootDir+ "meta/" + fileName));
             writer.write("[" + System.lineSeparator());
 
             for (int i = 0; i <= facts.size() - 1; i++) {
