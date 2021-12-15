@@ -7,7 +7,7 @@ import csci.project.knowledgeBase.requests.GearQueryRequest;
 class QueryEvaluator {
     private static Transaction queryTrans;
 
-    public static JsonObject doQuery(GearQueryRequest query, KbManager knowledgeBase) {
+    public static JsonObject doQuery(GearQueryRequest query, KbManager knowledgeBase, boolean injectTest) {
         JsonObject activityObj, reqGear = new JsonObject();
         queryTrans = knowledgeBase.openTransaction();
         boolean reconciled = false;
@@ -29,6 +29,13 @@ class QueryEvaluator {
             reqGear = InferenceEngine.getGearForActivity(reqGearTypes, knowledgeBase, availFacts, queryTrans);
 
             InferenceEngine.getBestMatchGear(reqGear, query.getConditions());
+            if (injectTest) {
+                try {
+                    Thread.sleep(4000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
             reconciled = Reconciler.reconcile(queryTrans.getTouchedFacts(), knowledgeBase.getAvailFacts());
         }
 

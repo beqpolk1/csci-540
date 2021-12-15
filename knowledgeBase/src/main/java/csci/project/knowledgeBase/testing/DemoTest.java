@@ -9,7 +9,7 @@ import csci.project.knowledgeBase.requests.SearchRequest;
 
 public class DemoTest {
     public static void main(String[] args) {
-        String runMode, defaultRunMode = "read_only";
+        String runMode, defaultRunMode = "force_err";
         KbManager knowledgeBase = new KbManager("outdoor_gear_kb");
 
         if (args.length > 0) runMode = args[0];
@@ -29,6 +29,12 @@ public class DemoTest {
 
             SimUser user2 = new SimUser(makeAgent2(), new KbClient(knowledgeBase), "Rafael");
             new Thread(user2).start();
+        }
+        else if (runMode.equals("force_err")) {
+            KbClient user3Client = new KbClient(knowledgeBase);
+            user3Client.setInjectTest(true);
+            SimUser user3 = new SimUser(makeAgent3(), user3Client, "Miriam");
+            new Thread(user3).start();
         }
     }
 
@@ -221,6 +227,31 @@ public class DemoTest {
 
                 try {
                     Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return output;
+            }
+        );
+
+        return agent;
+    }
+
+    private static Agent makeAgent3() {
+        Agent agent = new Agent();
+
+        //query to get gear recommendations for College M activity, condition set 1
+        agent.addAction(
+            (client) -> {
+                String conditions = "{\"precip\":false,\"avg_temp\":55,\"wind_avg\":7,\"hi_temp\":69,\"precip_type\":\"none\",\"cloud_cover\":40.2,\"lo_temp\":42,\"wind_gust\":13}";
+                String output = "Getting gear for College M activity" + System.lineSeparator();
+                output += "    Conditions: " + conditions + System.lineSeparator();
+                GearQueryRequest query = new GearQueryRequest("College M", "name", conditions);
+                client.makeRequest(query);
+                output += query.getResponse().toString();
+
+                try {
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

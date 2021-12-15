@@ -58,8 +58,8 @@ public class KbManager {
     }
 
     //inference, knowledge look-up
-    public JsonObject doQuery(GearQueryRequest query) {
-        return QueryEvaluator.doQuery(query, this);
+    public JsonObject doQuery(GearQueryRequest query, boolean injectTest) {
+        return QueryEvaluator.doQuery(query, this, injectTest);
     }
 
     public JsonObject doDelete(DeleteRequest delete) {

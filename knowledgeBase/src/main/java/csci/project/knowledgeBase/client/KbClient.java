@@ -6,12 +6,19 @@ import csci.project.knowledgeBase.requests.Request;
 
 public class KbClient {
     private KbRequester requester;
+    private boolean injectTest;
 
     public KbClient(KbManager knowledgeBase) {
-        requester = new KbRequester(knowledgeBase);
+        injectTest = false;
+        requester = new KbRequester(knowledgeBase, injectTest);
     }
 
     public void makeRequest(Request request) {
         requester.makeRequest(request);
+    }
+
+    public void setInjectTest(boolean newVal) {
+        injectTest = newVal;
+        requester.setInjectTest(newVal);
     }
 }

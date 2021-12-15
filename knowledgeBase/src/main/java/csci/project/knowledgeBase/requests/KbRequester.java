@@ -6,8 +6,10 @@ import csci.project.knowledgeBase.backend.KbManager;
 
 public class KbRequester {
     private volatile KbManager knowledgeBase;
+    private boolean injectTest;
 
-    public KbRequester(KbManager newKb) {
+    public KbRequester(KbManager newKb, boolean newInjectTest) {
+        injectTest = newInjectTest;
         knowledgeBase = newKb;
     }
 
@@ -24,6 +26,8 @@ public class KbRequester {
             request.setResponse(ret);
         }
     }
+
+    public void setInjectTest(boolean newVal) { injectTest = newVal; }
 
     private void makeReadRequest(ReadRequest read) {
         if (read instanceof SearchRequest) {
@@ -49,7 +53,7 @@ public class KbRequester {
     }
 
     private void makeQueryRequest(GearQueryRequest query) {
-        JsonObject ret = knowledgeBase.doQuery(query);
+        JsonObject ret = knowledgeBase.doQuery(query, injectTest);
         query.setResponse(ret);
     }
 
