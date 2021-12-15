@@ -11,8 +11,8 @@ import java.util.*;
 class InferenceEngine {
     private static HashMap<String, Queue<String>> typeTree;
 
-    public static JsonObject getGearForActivity(JsonArray reqGearTypes, KbManager knowledgeBase, JsonArray availFacts) {
-        JsonObject reqGear = getCandidateGear(reqGearTypes.deepCopy(), knowledgeBase, availFacts);
+    public static JsonObject getGearForActivity(JsonArray reqGearTypes, KbManager knowledgeBase, JsonArray availFacts, Transaction queryTrans) {
+        JsonObject reqGear = getCandidateGear(reqGearTypes.deepCopy(), knowledgeBase, availFacts, queryTrans);
         JsonArray adjTypes = adjustGearTypes(reqGearTypes);
 
         reqGear = trimReqGear(adjTypes, reqGear);
@@ -106,7 +106,7 @@ class InferenceEngine {
         }
     }
 
-    private static JsonObject getCandidateGear(JsonArray typeArr, KbManager knowledgeBase, JsonArray availFacts) {
+    private static JsonObject getCandidateGear(JsonArray typeArr, KbManager knowledgeBase, JsonArray availFacts, Transaction queryTrans) {
         typeTree = new HashMap<>();
         HashSet<String> scanned = new HashSet<>();
         JsonObject candidates = new JsonObject();
@@ -128,7 +128,7 @@ class InferenceEngine {
                         else return false;
                     }
                 );
-                candidates.add(curElement.getAsString(), knowledgeBase.doSearch(search, availFacts));
+                candidates.add(curElement.getAsString(), knowledgeBase.doSearch(search, availFacts, queryTrans.getId()));
 
                 //search for all children gear types (i.e. types that have this type as a parent)
                 search = new SearchRequest("gear");
@@ -141,7 +141,7 @@ class InferenceEngine {
                         else return false;
                     }
                 );
-                JsonArray childTypes = knowledgeBase.doSearch(search, availFacts);
+                JsonArray childTypes = knowledgeBase.doSearch(search, availFacts, queryTrans.getId());
 
                 //add all child types the the array for processing, and build out the tree for internal use
                 for (int i = 0; i <= childTypes.size() - 1; i++) {
@@ -178,6 +178,7 @@ class InferenceEngine {
                         score++;
                     }
                 }
+                //boolean comparison
                 else if (curField.equals("precip")) {
                     boolean gearVal = gearConds.get(curField).getAsBoolean(), checkVal = conditions.get(curField).getAsBoolean();
                     if (gearVal != checkVal) {
@@ -188,6 +189,7 @@ class InferenceEngine {
                         score++;
                     }
                 }
+                //item containment check
                 else if (curField.equals("precip_type")) {
                     JsonArray eligibleVals = gearConds.getAsJsonArray(curField);
                     JsonElement checkVal = conditions.get(curField);

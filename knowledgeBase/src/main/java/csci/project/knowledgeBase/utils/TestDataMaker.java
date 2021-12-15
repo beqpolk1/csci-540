@@ -171,7 +171,7 @@ class TestDataMaker {
         newVals.put("conditions", null);
         newVals.put("type", "backpack_med");
         newVals.put("par_type", "backpack");
-        newVals.put("name", "Osprey Kestral");
+        newVals.put("name", "Osprey Kestrel");
         newVals.put("id", idGen.getId());
         ret.add(newVals);
 

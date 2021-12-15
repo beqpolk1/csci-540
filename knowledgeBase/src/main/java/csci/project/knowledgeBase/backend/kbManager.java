@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import csci.project.knowledgeBase.requests.GearQueryRequest;
 import csci.project.knowledgeBase.requests.SearchRequest;
+import csci.project.knowledgeBase.utils.IdGen;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -18,8 +19,12 @@ public class KbManager {
     private String rootDir;
     private Map<String, JsonObject> metaInfo;
     private JsonObject blockMap;
+    private HashMap<Integer, Transaction> transactions;
+    private IdGen transIds;
 
     public KbManager(String newKb) {
+        transIds = new IdGen(1000);
+        transactions = new HashMap<>();
         disk = new DiskHead();
         rootDir = "knowledge_base\\" + newKb + "\\";
 
@@ -30,7 +35,7 @@ public class KbManager {
     }
 
     //basic linear scan
-    public JsonArray doSearch(SearchRequest search, JsonArray factFilter) {
+    public JsonArray doSearch(SearchRequest search, JsonArray factFilter, Integer transactionId) {
         JsonArray ret = new JsonArray();
 
         JsonObject entMeta = metaInfo.get(search.getEntity());
@@ -41,7 +46,10 @@ public class KbManager {
 
             for (JsonObject curObj : blockContents) {
                 if (factFilter != null && !factFilter.contains(curObj.get("sysId"))) continue;
-                if (CriteriaChecker.matchesCriteria(curObj.getAsJsonObject("object"), search.getCriteria())) ret.add(curObj.getAsJsonObject("object"));
+                if (CriteriaChecker.matchesCriteria(curObj.getAsJsonObject("object"), search.getCriteria())) {
+                    ret.add(curObj.getAsJsonObject("object"));
+                    if (transactions.containsKey(transactionId)) transactions.get(transactionId).addTouchedFact(curObj.get("sysId").getAsInt());
+                }
             }
 
             curBlock = getBlock(curBlock.getNext());
@@ -57,6 +65,17 @@ public class KbManager {
 
     public JsonArray getAvailFacts() {
         return new JsonParser().parse(openReader(rootDir + "meta\\availFacts.meta")).getAsJsonArray();
+    }
+
+    public Transaction openTransaction() {
+        Transaction newTrans = new Transaction(transIds.getId());
+        newTrans.resetTouchedFacts();
+        transactions.put(newTrans.getId(), newTrans);
+        return newTrans;
+    }
+
+    public void closeTransaction(Integer transactionId) {
+        transactions.remove(transactionId);
     }
 
     private ExternalMem getBlock(String logiAddr) {
@@ -92,29 +111,29 @@ public class KbManager {
         return fileReader;
     }
 
-    JsonObject getEntityByType(String entity, String typeName) {
-        return getEntityByType(entity, typeName, null);
+    JsonObject getEntityByType(String entity, String typeName, Integer transactionId) {
+        return getEntityByType(entity, typeName, null, transactionId);
     }
 
-    JsonObject getEntityByType(String entity, String typeName, JsonArray factFilter) {
+    JsonObject getEntityByType(String entity, String typeName, JsonArray factFilter, Integer transactionId) {
         SearchRequest search = new SearchRequest(entity);
         search.addCriteria(
-                (checkObj) -> {
-                    String typeFilter = typeName;
-                    String checkVal = checkObj.get("type").getAsString();
-                    if (checkVal.equals(typeFilter) && checkObj.get("name").isJsonNull()) return true;
-                    else return false;
-                }
+            (checkObj) -> {
+                String typeFilter = typeName;
+                String checkVal = checkObj.get("type").getAsString();
+                if (checkVal.equals(typeFilter) && checkObj.get("name").isJsonNull()) return true;
+                else return false;
+            }
         );
 
-        return doSearch(search, factFilter).get(0).getAsJsonObject();
+        return doSearch(search, factFilter, transactionId).get(0).getAsJsonObject();
     }
 
-    JsonObject getEntityById(String entity, Number id) {
-        return getEntityById(entity, id, null);
+    JsonObject getEntityById(String entity, Number id, Integer transactionId) {
+        return getEntityById(entity, id, null, transactionId);
     }
 
-    JsonObject getEntityById(String entity, Number id, JsonArray factFilter) {
+    JsonObject getEntityById(String entity, Number id, JsonArray factFilter, Integer transactionId) {
         SearchRequest search = new SearchRequest(entity);
         search.addCriteria(
             (checkObj) -> {
@@ -124,14 +143,14 @@ public class KbManager {
             }
         );
 
-        return doSearch(search, factFilter).get(0).getAsJsonObject();
+        return doSearch(search, factFilter, transactionId).get(0).getAsJsonObject();
     }
 
-    JsonObject getEntityByName(String entity, String name) {
-        return getEntityByName(entity, name, null);
+    JsonObject getEntityByName(String entity, String name, Integer transactionId) {
+        return getEntityByName(entity, name, null, transactionId);
     }
 
-    JsonObject getEntityByName(String entity, String name, JsonArray factFilter) {
+    JsonObject getEntityByName(String entity, String name, JsonArray factFilter, Integer transactionId) {
         SearchRequest search = new SearchRequest(entity);
         search.addCriteria(
             (checkObj) -> {
@@ -142,6 +161,6 @@ public class KbManager {
             }
         );
 
-        return doSearch(search, factFilter).get(0).getAsJsonObject();
+        return doSearch(search, factFilter, transactionId).get(0).getAsJsonObject();
     }
 }

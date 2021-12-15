@@ -5,17 +5,20 @@ import com.google.gson.JsonObject;
 import csci.project.knowledgeBase.requests.GearQueryRequest;
 
 class QueryEvaluator {
+    private static Transaction queryTrans;
+
     public static JsonObject doQuery(GearQueryRequest query, KbManager knowledgeBase) {
         JsonObject activityObj;
+        queryTrans = knowledgeBase.openTransaction();
 
         if (query.getActivityId() != null) {
-            activityObj = knowledgeBase.getEntityById("activity", query.getActivityId());
+            activityObj = knowledgeBase.getEntityById("activity", query.getActivityId(), queryTrans.getId());
         }
         else if (query.getActivityType() != null) {
-            activityObj = knowledgeBase.getEntityByType("activity", query.getActivityType());
+            activityObj = knowledgeBase.getEntityByType("activity", query.getActivityType(), queryTrans.getId());
         }
         else if (query.getActivityName() != null) {
-            activityObj = knowledgeBase.getEntityByName("activity", query.getActivityName());
+            activityObj = knowledgeBase.getEntityByName("activity", query.getActivityName(), queryTrans.getId());
         }
         else {
             return new JsonObject();
@@ -23,9 +26,11 @@ class QueryEvaluator {
 
         JsonArray availFacts = knowledgeBase.getAvailFacts();
         JsonArray reqGearTypes = getAllGearReq(activityObj, knowledgeBase, new JsonArray(), availFacts);
-        JsonObject reqGear = InferenceEngine.getGearForActivity(reqGearTypes, knowledgeBase, availFacts);
+        JsonObject reqGear = InferenceEngine.getGearForActivity(reqGearTypes, knowledgeBase, availFacts, queryTrans);
 
         InferenceEngine.getBestMatchGear(reqGear, query.getConditions());
+
+        knowledgeBase.closeTransaction(queryTrans.getId());
         return reqGear;
     }
 
@@ -35,7 +40,7 @@ class QueryEvaluator {
 
         if (!activity.get("name").isJsonNull()) {
             String actType = activity.get("type").getAsString();
-            JsonObject parActivity = knowledgeBase.getEntityByType("activity", actType, availFacts);
+            JsonObject parActivity = knowledgeBase.getEntityByType("activity", actType, availFacts, queryTrans.getId());
             return getAllGearReq(parActivity, knowledgeBase, gearList, availFacts);
         }
         else if (activity.get("par_type").isJsonNull()) {
@@ -43,7 +48,7 @@ class QueryEvaluator {
         }
         else {
             String parentType = activity.get("par_type").getAsString();
-            JsonObject parActivity = knowledgeBase.getEntityByType("activity", parentType, availFacts);
+            JsonObject parActivity = knowledgeBase.getEntityByType("activity", parentType, availFacts, queryTrans.getId());
             return getAllGearReq(parActivity, knowledgeBase, gearList, availFacts);
         }
     }
