@@ -20,10 +20,10 @@ public class DemoTest {
         //search to get a gear item with a specific ID
         agent.addAction(
             (client) -> {
-                SearchRequest search = new SearchRequest("gear");
+                SearchRequest search = new SearchRequest("activity");
                 search.addCriteria(
                     (checkObj) -> {
-                        Number idFilter = -2147483645;
+                        Number idFilter = -2147483628;
                         Number checkVal = checkObj.get("id").getAsNumber().intValue();
                         if (checkVal.equals(idFilter)) return true;
                         else return false;

@@ -8,27 +8,29 @@ class QueryEvaluator {
     private static Transaction queryTrans;
 
     public static JsonObject doQuery(GearQueryRequest query, KbManager knowledgeBase) {
-        JsonObject activityObj;
+        JsonObject activityObj, reqGear = new JsonObject();
         queryTrans = knowledgeBase.openTransaction();
+        boolean reconciled = false;
 
-        if (query.getActivityId() != null) {
-            activityObj = knowledgeBase.getEntityById("activity", query.getActivityId(), queryTrans.getId());
-        }
-        else if (query.getActivityType() != null) {
-            activityObj = knowledgeBase.getEntityByType("activity", query.getActivityType(), queryTrans.getId());
-        }
-        else if (query.getActivityName() != null) {
-            activityObj = knowledgeBase.getEntityByName("activity", query.getActivityName(), queryTrans.getId());
-        }
-        else {
-            return new JsonObject();
-        }
+        while (!reconciled) {
+            queryTrans.resetTouchedFacts();
+            if (query.getActivityId() != null) {
+                activityObj = knowledgeBase.getEntityById("activity", query.getActivityId(), queryTrans.getId());
+            } else if (query.getActivityType() != null) {
+                activityObj = knowledgeBase.getEntityByType("activity", query.getActivityType(), queryTrans.getId());
+            } else if (query.getActivityName() != null) {
+                activityObj = knowledgeBase.getEntityByName("activity", query.getActivityName(), queryTrans.getId());
+            } else {
+                return new JsonObject();
+            }
 
-        JsonArray availFacts = knowledgeBase.getAvailFacts();
-        JsonArray reqGearTypes = getAllGearReq(activityObj, knowledgeBase, new JsonArray(), availFacts);
-        JsonObject reqGear = InferenceEngine.getGearForActivity(reqGearTypes, knowledgeBase, availFacts, queryTrans);
+            JsonArray availFacts = knowledgeBase.getAvailFacts();
+            JsonArray reqGearTypes = getAllGearReq(activityObj, knowledgeBase, new JsonArray(), availFacts);
+            reqGear = InferenceEngine.getGearForActivity(reqGearTypes, knowledgeBase, availFacts, queryTrans);
 
-        InferenceEngine.getBestMatchGear(reqGear, query.getConditions());
+            InferenceEngine.getBestMatchGear(reqGear, query.getConditions());
+            reconciled = Reconciler.reconcile(queryTrans.getTouchedFacts(), knowledgeBase.getAvailFacts());
+        }
 
         knowledgeBase.closeTransaction(queryTrans.getId());
         return reqGear;

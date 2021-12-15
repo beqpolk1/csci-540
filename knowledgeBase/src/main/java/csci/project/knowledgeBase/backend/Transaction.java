@@ -12,8 +12,10 @@ public class Transaction {
     }
 
     public Integer getId() { return id; }
+
     public void resetTouchedFacts() { touchedFacts = new JsonArray(); }
     public void addTouchedFact(Integer factId) {
         if (!touchedFacts.contains(new JsonPrimitive(factId))) touchedFacts.add(factId);
     }
+    public JsonArray getTouchedFacts() { return touchedFacts; }
 }
