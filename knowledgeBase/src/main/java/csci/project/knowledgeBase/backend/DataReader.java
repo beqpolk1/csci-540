@@ -16,7 +16,11 @@ class DataReader {
         List<JsonObject> results = new ArrayList<>();
         for (String curLine : rawData) {
             String jsonString = curLine.substring(curLine.indexOf(':') + 1);
-            results.add(parser.parse(jsonString).getAsJsonObject());
+            String sysId = curLine.substring(0, curLine.indexOf(':'));
+            JsonObject ret = new JsonObject();
+            ret.addProperty("sysId", Integer.parseInt(sysId));
+            ret.add("object", parser.parse(jsonString).getAsJsonObject());
+            results.add(ret);
         }
 
         return results;

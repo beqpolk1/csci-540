@@ -37,7 +37,7 @@ public class KbRequester {
     }
 
     private void makeSearchRequest(SearchRequest search) {
-        JsonArray results = knowledgeBase.doSearch(search);
+        JsonArray results = knowledgeBase.doSearch(search, null);
         JsonObject ret = new JsonObject();
 
         ret.addProperty("count", results.size());

@@ -1,6 +1,5 @@
 package csci.project.knowledgeBase.requests;
 
-import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 

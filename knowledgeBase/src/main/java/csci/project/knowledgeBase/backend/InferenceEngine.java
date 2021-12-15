@@ -11,8 +11,8 @@ import java.util.*;
 class InferenceEngine {
     private static HashMap<String, Queue<String>> typeTree;
 
-    public static JsonObject getGearForActivity(JsonArray reqGearTypes, KbManager knowledgeBase) {
-        JsonObject reqGear = getCandidateGear(reqGearTypes.deepCopy(), knowledgeBase);
+    public static JsonObject getGearForActivity(JsonArray reqGearTypes, KbManager knowledgeBase, JsonArray availFacts) {
+        JsonObject reqGear = getCandidateGear(reqGearTypes.deepCopy(), knowledgeBase, availFacts);
         JsonArray adjTypes = adjustGearTypes(reqGearTypes);
 
         reqGear = trimReqGear(adjTypes, reqGear);
@@ -106,7 +106,7 @@ class InferenceEngine {
         }
     }
 
-    private static JsonObject getCandidateGear(JsonArray typeArr, KbManager knowledgeBase) {
+    private static JsonObject getCandidateGear(JsonArray typeArr, KbManager knowledgeBase, JsonArray availFacts) {
         typeTree = new HashMap<>();
         HashSet<String> scanned = new HashSet<>();
         JsonObject candidates = new JsonObject();
@@ -128,7 +128,7 @@ class InferenceEngine {
                         else return false;
                     }
                 );
-                candidates.add(curElement.getAsString(), knowledgeBase.doSearch(search));
+                candidates.add(curElement.getAsString(), knowledgeBase.doSearch(search, availFacts));
 
                 //search for all children gear types (i.e. types that have this type as a parent)
                 search = new SearchRequest("gear");
@@ -141,7 +141,7 @@ class InferenceEngine {
                         else return false;
                     }
                 );
-                JsonArray childTypes = knowledgeBase.doSearch(search);
+                JsonArray childTypes = knowledgeBase.doSearch(search, availFacts);
 
                 //add all child types the the array for processing, and build out the tree for internal use
                 for (int i = 0; i <= childTypes.size() - 1; i++) {

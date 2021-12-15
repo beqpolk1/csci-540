@@ -21,29 +21,30 @@ class QueryEvaluator {
             return new JsonObject();
         }
 
-        JsonArray reqGearTypes = getAllGearReq(activityObj, knowledgeBase, new JsonArray());
-        JsonObject reqGear = InferenceEngine.getGearForActivity(reqGearTypes, knowledgeBase);
+        JsonArray availFacts = knowledgeBase.getAvailFacts();
+        JsonArray reqGearTypes = getAllGearReq(activityObj, knowledgeBase, new JsonArray(), availFacts);
+        JsonObject reqGear = InferenceEngine.getGearForActivity(reqGearTypes, knowledgeBase, availFacts);
 
         InferenceEngine.getBestMatchGear(reqGear, query.getConditions());
         return reqGear;
     }
 
     //recursively gather all required gear types for the activity and any parent activities
-    private static JsonArray getAllGearReq(JsonObject activity, KbManager knowledgeBase, JsonArray gearList) {
+    private static JsonArray getAllGearReq(JsonObject activity, KbManager knowledgeBase, JsonArray gearList, JsonArray availFacts) {
         gearList.addAll(activity.get("gear").getAsJsonArray());
 
         if (!activity.get("name").isJsonNull()) {
             String actType = activity.get("type").getAsString();
-            JsonObject parActivity = knowledgeBase.getEntityByType("activity", actType);
-            return getAllGearReq(parActivity, knowledgeBase, gearList);
+            JsonObject parActivity = knowledgeBase.getEntityByType("activity", actType, availFacts);
+            return getAllGearReq(parActivity, knowledgeBase, gearList, availFacts);
         }
         else if (activity.get("par_type").isJsonNull()) {
             return gearList;
         }
         else {
             String parentType = activity.get("par_type").getAsString();
-            JsonObject parActivity = knowledgeBase.getEntityByType("activity", parentType);
-            return getAllGearReq(parActivity, knowledgeBase, gearList);
+            JsonObject parActivity = knowledgeBase.getEntityByType("activity", parentType, availFacts);
+            return getAllGearReq(parActivity, knowledgeBase, gearList, availFacts);
         }
     }
 }

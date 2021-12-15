@@ -30,7 +30,7 @@ public class KbManager {
     }
 
     //basic linear scan
-    public JsonArray doSearch(SearchRequest search) {
+    public JsonArray doSearch(SearchRequest search, JsonArray factFilter) {
         JsonArray ret = new JsonArray();
 
         JsonObject entMeta = metaInfo.get(search.getEntity());
@@ -40,7 +40,8 @@ public class KbManager {
             Collection<JsonObject> blockContents = DataReader.readMem(curBlock, disk);
 
             for (JsonObject curObj : blockContents) {
-                if (CriteriaChecker.matchesCriteria(curObj, search.getCriteria())) ret.add(curObj);
+                if (factFilter != null && !factFilter.contains(curObj.get("sysId"))) continue;
+                if (CriteriaChecker.matchesCriteria(curObj.getAsJsonObject("object"), search.getCriteria())) ret.add(curObj.getAsJsonObject("object"));
             }
 
             curBlock = getBlock(curBlock.getNext());
@@ -52,6 +53,10 @@ public class KbManager {
     //inference, knowledge look-up
     public JsonObject doQuery(GearQueryRequest query) {
         return QueryEvaluator.doQuery(query, this);
+    }
+
+    public JsonArray getAvailFacts() {
+        return new JsonParser().parse(openReader(rootDir + "meta\\availFacts.meta")).getAsJsonArray();
     }
 
     private ExternalMem getBlock(String logiAddr) {
@@ -88,20 +93,28 @@ public class KbManager {
     }
 
     JsonObject getEntityByType(String entity, String typeName) {
+        return getEntityByType(entity, typeName, null);
+    }
+
+    JsonObject getEntityByType(String entity, String typeName, JsonArray factFilter) {
         SearchRequest search = new SearchRequest(entity);
         search.addCriteria(
-            (checkObj) -> {
-                String typeFilter = typeName;
-                String checkVal = checkObj.get("type").getAsString();
-                if (checkVal.equals(typeFilter) && checkObj.get("name").isJsonNull()) return true;
-                else return false;
-            }
+                (checkObj) -> {
+                    String typeFilter = typeName;
+                    String checkVal = checkObj.get("type").getAsString();
+                    if (checkVal.equals(typeFilter) && checkObj.get("name").isJsonNull()) return true;
+                    else return false;
+                }
         );
 
-        return doSearch(search).get(0).getAsJsonObject();
+        return doSearch(search, factFilter).get(0).getAsJsonObject();
     }
 
     JsonObject getEntityById(String entity, Number id) {
+        return getEntityById(entity, id, null);
+    }
+
+    JsonObject getEntityById(String entity, Number id, JsonArray factFilter) {
         SearchRequest search = new SearchRequest(entity);
         search.addCriteria(
             (checkObj) -> {
@@ -111,10 +124,14 @@ public class KbManager {
             }
         );
 
-        return doSearch(search).get(0).getAsJsonObject();
+        return doSearch(search, factFilter).get(0).getAsJsonObject();
     }
 
     JsonObject getEntityByName(String entity, String name) {
+        return getEntityByName(entity, name, null);
+    }
+
+    JsonObject getEntityByName(String entity, String name, JsonArray factFilter) {
         SearchRequest search = new SearchRequest(entity);
         search.addCriteria(
             (checkObj) -> {
@@ -125,6 +142,6 @@ public class KbManager {
             }
         );
 
-        return doSearch(search).get(0).getAsJsonObject();
+        return doSearch(search, factFilter).get(0).getAsJsonObject();
     }
 }
