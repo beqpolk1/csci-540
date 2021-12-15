@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import csci.project.knowledgeBase.backend.KbManager;
 
 public class KbRequester {
-    KbManager knowledgeBase;
+    private volatile KbManager knowledgeBase;
 
     public KbRequester(KbManager newKb) {
         knowledgeBase = newKb;
