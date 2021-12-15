@@ -104,7 +104,7 @@ class TestDataMaker {
         ret.add(newVals);
 
         newVals = new HashMap<>();
-        newVals.put("conditions", "{\"precip\":false,\"precip_type\":[\"none\"],\"hi_temp\":[65,35],\"lo_temp\":[50,20],\"avg_temp\":[60,30],\"wind_avg\":[20,0],\"wind_gust\":[30,0],\"cloud_cover\":[100,0]}");
+        newVals.put("conditions", "{\"precip\":false,\"precip_type\":[\"none\"],\"hi_temp\":[70,35],\"lo_temp\":[50,20],\"avg_temp\":[60,30],\"wind_avg\":[20,0],\"wind_gust\":[30,0],\"cloud_cover\":[100,0]}");
         newVals.put("type", "insulated_jacket");
         newVals.put("par_type", "jacket");
         newVals.put("name", "NF Thermoball");

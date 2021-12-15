@@ -17,7 +17,7 @@ public class DemoTest {
     private static Agent makeAgent1() {
         Agent agent = new Agent();
 
-        //search to get a gear item with a specific ID
+        //search to get an activity item with a specific ID
         agent.addAction(
             (client) -> {
                 SearchRequest search = new SearchRequest("activity");
@@ -25,13 +25,18 @@ public class DemoTest {
                     (checkObj) -> {
                         Number idFilter = -2147483628;
                         Number checkVal = checkObj.get("id").getAsNumber().intValue();
-                        if (checkVal.equals(idFilter)) return true;
-                        else return false;
+                        return checkVal.equals(idFilter);
                     }
                 );
 
                 client.makeRequest(search);
                 System.out.println(search.getResponse().toString());
+
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         );
 
@@ -44,27 +49,31 @@ public class DemoTest {
                     (checkObj) -> {
                         String parTypeFilter = "jacket";
 
-                        if (!checkObj.get("par_type").isJsonNull() && !checkObj.get("par_type").getAsString().equals(parTypeFilter)) return false;
-                        else return true;
+                        return checkObj.get("par_type").isJsonNull() || checkObj.get("par_type").getAsString().equals(parTypeFilter);
                     }
                 );
 
                 search.addCriteria(
                     (checkObj) -> {
-                        Boolean condPrecipFilter = true;
+                        boolean condPrecipFilter = true;
                         String typeFilter = "insulated";
 
                         if (!checkObj.get("conditions").isJsonNull()) {
                             JsonObject conds = checkObj.get("conditions").getAsJsonObject();
                             if (conds.has("precip") && !conds.get("precip").isJsonNull() && conds.get("precip").getAsBoolean() == condPrecipFilter) return true;
                         }
-                        if (checkObj.get("type").getAsString().equals(typeFilter)) return true;
-                        return false;
+                        return checkObj.get("type").getAsString().equals(typeFilter);
                     }
                 );
 
                 client.makeRequest(search);
                 System.out.println(search.getResponse().toString());
+
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         );
 
@@ -75,6 +84,12 @@ public class DemoTest {
                 GearQueryRequest query = new GearQueryRequest(-2147483625, null);
                 client.makeRequest(query);
                 System.out.println(query.getResponse().toString());
+
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         );
 
@@ -87,6 +102,12 @@ public class DemoTest {
                 GearQueryRequest query = new GearQueryRequest("hike_xlong", "type", conditions);
                 client.makeRequest(query);
                 System.out.println(query.getResponse().toString());
+
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         );
 
@@ -99,6 +120,12 @@ public class DemoTest {
                 GearQueryRequest query = new GearQueryRequest("hike_xlong", "type", conditions);
                 client.makeRequest(query);
                 System.out.println(query.getResponse().toString());
+
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         );
 
@@ -111,6 +138,12 @@ public class DemoTest {
                 GearQueryRequest query = new GearQueryRequest("Bridger Ridge", "name", conditions);
                 client.makeRequest(query);
                 System.out.println(query.getResponse().toString());
+
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         );
 
