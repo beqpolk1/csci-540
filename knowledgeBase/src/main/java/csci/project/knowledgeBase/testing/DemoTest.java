@@ -3,6 +3,7 @@ package csci.project.knowledgeBase.testing;
 import com.google.gson.JsonObject;
 import csci.project.knowledgeBase.backend.KbManager;
 import csci.project.knowledgeBase.client.KbClient;
+import csci.project.knowledgeBase.requests.DeleteRequest;
 import csci.project.knowledgeBase.requests.GearQueryRequest;
 import csci.project.knowledgeBase.requests.SearchRequest;
 
@@ -11,7 +12,10 @@ public class DemoTest {
         KbManager knowledgeBase = new KbManager("outdoor_gear_kb");
 
         SimUser user1 = new SimUser(makeAgent1(), new KbClient(knowledgeBase), "Bob");
-        user1.runAgent();
+        //user1.runAgent();
+
+        SimUser user2 = new SimUser(makeAgent2(), new KbClient(knowledgeBase), "Rafael");
+        user2.runAgent();
     }
 
     private static Agent makeAgent1() {
@@ -141,6 +145,61 @@ public class DemoTest {
 
                 try {
                     Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        );
+
+        return agent;
+    }
+
+    private static Agent makeAgent2() {
+        Agent agent = new Agent();
+
+        //delete a gear item with a specific ID
+        agent.addAction(
+            (client) -> {
+                System.out.println("Deleting specific gear item");
+
+                DeleteRequest delete = new DeleteRequest("gear");
+                delete.addCriteria(
+                    (checkObj) -> {
+                        Number idFilter = -2147483641;
+                        Number checkVal = checkObj.get("id").getAsNumber().intValue();
+                        return checkVal.equals(idFilter);
+                    }
+                );
+
+                client.makeRequest(delete);
+                System.out.println(delete.getResponse().toString());
+
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        );
+
+        //delete gear items that are jackets that are "rain_jacket" type
+        agent.addAction(
+            (client) -> {
+                System.out.println("Deleting gear items of type 'rain_jacket'");
+                DeleteRequest delete = new DeleteRequest("gear");
+
+                delete.addCriteria(
+                    (checkObj) -> {
+                        String typeFilter = "rain_jacket";
+                        return checkObj.get("type").getAsString().equals(typeFilter);
+                    }
+                );
+
+                client.makeRequest(delete);
+                System.out.println(delete.getResponse().toString());
+
+                try {
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

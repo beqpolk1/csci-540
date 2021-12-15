@@ -15,6 +15,9 @@ public class KbRequester {
         if (request instanceof ReadRequest) {
             makeReadRequest((ReadRequest) request);
         }
+        else if (request instanceof DmlRequest) {
+            makeDmlRequest((DmlRequest) request);
+        }
         else {
             JsonObject ret = new JsonObject();
             ret.addProperty("err", request.getClass().getSimpleName() + " is not a valid request type");
@@ -48,5 +51,21 @@ public class KbRequester {
     private void makeQueryRequest(GearQueryRequest query) {
         JsonObject ret = knowledgeBase.doQuery(query);
         query.setResponse(ret);
+    }
+
+    private void makeDmlRequest(DmlRequest dml) {
+        if (dml instanceof DeleteRequest) {
+            makeDeleteRequest((DeleteRequest) dml);
+        }
+        else {
+            JsonObject ret = new JsonObject();
+            ret.addProperty("err", dml.getClass().getSimpleName() + " is not a valid request type");
+            dml.setResponse(ret);
+        }
+    }
+
+    private void makeDeleteRequest(DeleteRequest delete) {
+        JsonObject ret = knowledgeBase.doDelete((DeleteRequest) delete);
+        delete.setResponse(ret);
     }
 }

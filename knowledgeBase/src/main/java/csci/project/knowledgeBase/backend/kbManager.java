@@ -3,13 +3,12 @@ package csci.project.knowledgeBase.backend;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import csci.project.knowledgeBase.requests.DeleteRequest;
 import csci.project.knowledgeBase.requests.GearQueryRequest;
 import csci.project.knowledgeBase.requests.SearchRequest;
 import csci.project.knowledgeBase.utils.IdGen;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.Reader;
+import java.io.*;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -63,6 +62,33 @@ public class KbManager {
         return QueryEvaluator.doQuery(query, this);
     }
 
+    public JsonObject doDelete(DeleteRequest delete) {
+        JsonObject entMeta = metaInfo.get(delete.getEntity());
+        int delCount = 0;
+        JsonArray availFacts = getAvailFacts();
+
+        ExternalMem curBlock = getBlock(entMeta.get("first_block").getAsString());
+        while (curBlock != null) {
+            Collection<JsonObject> blockContents = DataReader.readMem(curBlock, disk);
+
+            for (JsonObject curObj : blockContents) {
+                if (CriteriaChecker.matchesCriteria(curObj.getAsJsonObject("object"), delete.getCriteria())) {
+                    availFacts.remove(curObj.getAsJsonPrimitive("sysId"));
+                    writeAvailFacts(availFacts);
+
+                    if (DataWriter.deleteItem(curBlock, curObj.get("sysId").getAsInt(), disk)) delCount++;
+                }
+            }
+
+            curBlock = getBlock(curBlock.getNext());
+        }
+
+        JsonObject ret = new JsonObject();
+        ret.addProperty("status", "success");
+        ret.addProperty("count", delCount);
+        return ret;
+    }
+
     public JsonArray getAvailFacts() {
         return new JsonParser().parse(openReader(rootDir + "meta\\availFacts.meta")).getAsJsonArray();
     }
@@ -111,6 +137,28 @@ public class KbManager {
         return fileReader;
     }
 
+    private void writeAvailFacts(JsonArray facts) {
+        String fileName = "availFacts.meta";
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(rootDir+ "meta\\" + fileName));
+            writer.write("[" + System.lineSeparator());
+
+            for (int i = 0; i <= facts.size() - 1; i++) {
+                writer.write(facts.get(i).getAsInt() + (i < facts.size() - 1 ? "," : "") + System.lineSeparator());
+            }
+
+            writer.write("]");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Failed opening/closing output file!");
+            e.printStackTrace();
+        }
+    }
+
+    //----------------------------------------------------------------------------------
+    //HELPER SEARCHES
+    //----------------------------------------------------------------------------------
     JsonObject getEntityByType(String entity, String typeName, Integer transactionId) {
         return getEntityByType(entity, typeName, null, transactionId);
     }

@@ -1,7 +1,6 @@
 package csci.project.knowledgeBase.backend;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -42,6 +41,14 @@ class DiskHead
         scans++;
         curAddr = (block.getNext() != null ? block.getNext() : "");
         return recordsRaw;
+    }
+
+    public void flushToBlock(ExternalMem block, List<String> writeRecords) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(block.getPhysAddr()));
+        for (String curLine : writeRecords) {
+            writer.write(curLine + System.lineSeparator());
+        }
+        writer.close();
     }
 
     public void reset() {
