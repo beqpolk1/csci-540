@@ -9,7 +9,7 @@ import csci.project.knowledgeBase.requests.SearchRequest;
 
 public class DemoTest {
     public static void main(String[] args) {
-        String runMode, defaultRunMode = "force_err";
+        String runMode, defaultRunMode = "read_only";
         KbManager knowledgeBase = new KbManager("outdoor_gear_kb");
 
         if (args.length > 0) runMode = args[0];
