@@ -1,0 +1,1 @@
+java -cp knowledgeBase-0.1-jar-with-dependencies.jar csci.project.knowledgeBase.testing.DemoTest
