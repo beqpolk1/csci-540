@@ -1,0 +1,4 @@
+19:{"duration":null,"par_type":null,"name":null,"id":-2147483629,"type":"outdoors","gear":["first_aid_kit","pocket_knife","lighting","clothing"]}
+20:{"duration":null,"par_type":"outdoors","name":null,"id":-2147483628,"type":"hiking","gear":["map","backpack"]}
+21:{"duration":3,"par_type":"hiking","name":null,"id":-2147483627,"type":"hike_short","gear":["backpack_sm"]}
+22:{"duration":2,"par_type":"hiking","name":"College M","id":-2147483626,"type":"hike_short","gear":["backpack_sm"]}

@@ -1,0 +1,4 @@
+0:{"par_type":null,"name":null,"id":-2147483648,"conditions":null,"type":"clothing"}
+1:{"par_type":"clothing","name":null,"id":-2147483647,"conditions":null,"type":"jacket"}
+2:{"par_type":"clothing","name":null,"id":-2147483646,"conditions":null,"type":"pants"}
+3:{"par_type":"jacket","name":null,"id":-2147483645,"conditions":{"precip":true,"precip_type":["rain","snow","mix"]},"type":"rain_jacket"}
