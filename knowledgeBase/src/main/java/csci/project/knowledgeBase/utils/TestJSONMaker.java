@@ -17,6 +17,7 @@ public class TestJsonMaker {
         writeConditions();
         writeGear(internal, system);
         writeActivities(internal, system);
+        writeAvailFacts(system);
     }
 
     private static void writeConditions() {
@@ -150,5 +151,26 @@ public class TestJsonMaker {
         }
 
         return actObj;
+    }
+
+    private static void writeAvailFacts(IdGen system) {
+        String fileName = "availFacts.meta";
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(baseDir + fileName));
+            writer.write("[" + System.lineSeparator());
+
+            for (int i = 0; i < system.peek() - 1; i++) {
+                writer.write(i + (i < system.peek() - 2 ? "," : "") + System.lineSeparator());
+            }
+
+            writer.write("]");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Failed opening/closing output file!");
+            e.printStackTrace();
+        }
+
+        System.out.println("Wrote availFacts");
     }
 }
