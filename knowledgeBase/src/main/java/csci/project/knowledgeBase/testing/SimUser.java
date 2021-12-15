@@ -18,8 +18,8 @@ public class SimUser implements Runnable {
 
         for (TestAction curAction : agent.getActions()) {
             actionCnt++;
-            System.out.println("-----" + agentName + " (" + actionCnt + ")-----");
-            curAction.performAction(client);
+            String actionOutput = curAction.performAction(client);
+            System.out.println("-----" + agentName + " (" + actionCnt + ")-----" + System.lineSeparator() + actionOutput);
         }
     }
 }
