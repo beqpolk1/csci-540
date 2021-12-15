@@ -15,7 +15,7 @@ public class DemoTest {
         if (args.length > 0) runMode = args[0];
         else runMode = defaultRunMode;
 
-        if (runMode == "read_only") {
+        if (runMode.equals("read_only")) {
             SimUser user1 = new SimUser(makeAgent1(), new KbClient(knowledgeBase), "Bob");
             new Thread(user1).start();
         }
