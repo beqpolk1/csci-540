@@ -9,13 +9,27 @@ import csci.project.knowledgeBase.requests.SearchRequest;
 
 public class DemoTest {
     public static void main(String[] args) {
+        String runMode, defaultRunMode = "read_only";
         KbManager knowledgeBase = new KbManager("outdoor_gear_kb");
 
-        SimUser user1 = new SimUser(makeAgent1(), new KbClient(knowledgeBase), "Bob");
-        new Thread(user1).start();
+        if (args.length > 0) runMode = args[0];
+        else runMode = defaultRunMode;
 
-        SimUser user2 = new SimUser(makeAgent2(), new KbClient(knowledgeBase), "Rafael");
-        new Thread(user2).start();
+        if (runMode == "read_only") {
+            SimUser user1 = new SimUser(makeAgent1(), new KbClient(knowledgeBase), "Bob");
+            new Thread(user1).start();
+        }
+        else if (runMode.equals("delete_only")) {
+            SimUser user2 = new SimUser(makeAgent2(), new KbClient(knowledgeBase), "Rafael");
+            new Thread(user2).start();
+        }
+        else if (runMode.equals("read_delete")) {
+            SimUser user1 = new SimUser(makeAgent1(), new KbClient(knowledgeBase), "Bob");
+            new Thread(user1).start();
+
+            SimUser user2 = new SimUser(makeAgent2(), new KbClient(knowledgeBase), "Rafael");
+            new Thread(user2).start();
+        }
     }
 
     private static Agent makeAgent1() {
